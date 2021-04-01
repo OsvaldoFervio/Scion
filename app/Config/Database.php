@@ -56,24 +56,26 @@ class Database extends Config
 	 *
 	 * @var array
 	 */
-	public $tests = [
-		'DSN'      => '',
-		'hostname' => '127.0.0.1',
-		'username' => '',
-		'password' => '',
-		'database' => ':memory:',
-		'DBDriver' => 'SQLite3',
-		'DBPrefix' => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
-		'pConnect' => false,
-		'DBDebug'  => (ENVIRONMENT !== 'production'),
-		'charset'  => 'utf8',
-		'DBCollat' => 'utf8_general_ci',
-		'swapPre'  => '',
-		'encrypt'  => false,
-		'compress' => false,
-		'strictOn' => false,
-		'failover' => [],
-		'port'     => 3306,
+	public $server = [
+		'dsn'	=> '',
+		'hostname' => '162.241.61.145',
+		'username' => 'ocsysmx_scion',
+		'password' => '7rL?oB=$#Wp3',
+		'database' => 'ocsysmx_scionesports',
+		'dbdriver' => 'mysqli',
+		'dbprefix' => '',
+		'pconnect' => FALSE,
+		'db_debug' => (ENVIRONMENT !== 'production'),
+		'cache_on' => FALSE,
+		'cachedir' => '',
+		'char_set' => 'utf8mb4',
+		'dbcollat' => 'utf8mb4_spanish_ci',
+		'swap_pre' => '',
+		'encrypt' => FALSE,
+		'compress' => FALSE,
+		'stricton' => FALSE,
+		'failover' => array(),
+		'save_queries' => TRUE
 	];
 
 	//--------------------------------------------------------------------
