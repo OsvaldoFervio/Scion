@@ -38,7 +38,7 @@
 								<div class="col-lg-7 offset-md-1">
 									<div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
 										<h2><i class="booked-icon ion-edit"></i> &nbsp; Registro</h2>
-										<form method="get" enctype="multipart/form-data" id="contact-form" action="registrar">
+										<form method="post" enctype="multipart/form-data" id="contact-form" action="<?= base_url('signup/new') ?>">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="form-group form-group--lg form-avatar">
@@ -48,25 +48,25 @@
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="pass1" type="text" id="pass1" placeholder="Nombre*">
+														<input class="text-input form-control" name="first_name" type="text" id="first_name" placeholder="Nombre*">
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control" name="pass2" type="text" id="pass2" placeholder="Apellidos*">
+														<input class="text-input form-control" name="last_name" type="text" id="last_name" placeholder="Apellidos*">
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="pass1" type="date" id="pass1" placeholder="Nombre">
+														<input class="text-input form-control" name="birthdate" type="date" id="birthdate" placeholder="Nombre">
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control" name="pass2" type="text" id="pass2" placeholder="Sexo*">
+														<input class="text-input form-control" name="genre" type="text" id="genre" placeholder="Sexo*">
 													</div><!-- .form-password -->
 												</div>
 
@@ -75,24 +75,24 @@
 											<div class="form-group form-group--lg form-nickname">
 												<label for="nickname">Datos de la Cuenta</label>
 												<input class="text-input form-control" name="email" type="text" id="email" placeholder="tucorreo@domain.com*">
-												<input class="text-input form-control" name="email" type="text" id="email" placeholder="Repite correo*">
+												<input class="text-input form-control" type="text" id="email_confirm" placeholder="Repite correo*">
 											</div>
 
 											<div class="form-group form-group--lg form-nickname">
 												<label for="nickname">Nombre de usuario</label>
-												<input class="text-input form-control" name="email" type="text" id="email" placeholder="nickname*">
+												<input class="text-input form-control" name="username" type="text" id="username" placeholder="nickname*">
 											</div>
 
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="pass1" type="password" id="pass1" placeholder="Ingresa Contraseña*">
+														<input class="text-input form-control" name="password" type="password" id="pass1" placeholder="Ingresa Contraseña*">
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control" name="pass2" type="password" id="pass2" placeholder="Repite Contraseña*">
+														<input class="text-input form-control"  type="password" id="pass2" placeholder="Repite Contraseña*">
 													</div><!-- .form-password -->
 												</div>
 
@@ -107,7 +107,7 @@
 											</div>
 
 											<div class="form-submit ">
-												<input name="updateuser" type="submit" id="updateuser" class="btn btn-lg btn-primary" value="Registrarse">
+												<input type="submit" class="btn btn-lg btn-primary" value="Registrarse">
 											</div><!-- .form-submit -->
 										</form>
 									</div>
