@@ -5,20 +5,23 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table      = 'user';
-    protected $primaryKey = 'IDUser';
+    protected $table      = 'users';
+    protected $primaryKey = 'id';
 
-    //protected $useAutoIncrement = true;
+    protected $returnType     = 'App\Entities\User';
+    protected $useSoftDeletes = true;
 
-    protected $returnType     = 'array';
-    protected $useSoftDeletes = false;
+    protected $allowedFields = [
+        'first_name',
+        'last_name',
+        'birthdate',
+        'genre',
+        'email',
+        'username',
+        'password'
+    ];
 
-    protected $allowedFields = ['name', 'email'];
-
-    protected $useTimestamps = false;
-    //protected $createdField  = 'created_at';
-    //protected $updatedField  = 'updated_at';
-    //protected $deletedField  = 'deleted_at';
+    protected $useTimestamps = true;
 
     protected $validationRules    = [];
     protected $validationMessages = [];
