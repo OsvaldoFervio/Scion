@@ -3,7 +3,7 @@
 
   <!-- Logo - Image Based -->
   <div class="header__logo header__logo--img">
-    <a href="<?= base_url('Home') ?>"><img src="<?= base_url('images/logo.png') ?>" alt="Escapium"></a>
+    <a href="<?= base_url('/') ?>"><img src="<?= base_url('images/logo.png') ?>" alt="Escapium"></a>
   </div>
   <!-- Logo - Image Based / End -->
 
@@ -44,7 +44,7 @@
         </a>
       </li>
       <li class="nav-secondary__login">
-        <a href="<?= base_url('Login/Registro') ?>">
+        <a href="<?= base_url('signup') ?>">
           <i class="icon-user"></i>
           <span class="link-label">Registrate</span>
         </a>
