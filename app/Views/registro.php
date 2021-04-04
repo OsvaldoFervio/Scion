@@ -75,7 +75,7 @@
 											<div class="form-group form-group--lg form-nickname">
 												<label for="nickname">Datos de la Cuenta</label>
 												<input class="text-input form-control" name="email" type="text" id="email" placeholder="tucorreo@domain.com*">
-												<input class="text-input form-control" name="email" type="text" id="email_confirm" placeholder="Repite correo*">
+												<input class="text-input form-control" type="text" id="email_confirm" placeholder="Repite correo*">
 											</div>
 
 											<div class="form-group form-group--lg form-nickname">
@@ -92,7 +92,7 @@
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control" name="pass2" type="password" id="pass2" placeholder="Repite Contraseña*">
+														<input class="text-input form-control"  type="password" id="pass2" placeholder="Repite Contraseña*">
 													</div><!-- .form-password -->
 												</div>
 
