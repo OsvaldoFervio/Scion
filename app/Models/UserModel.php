@@ -26,4 +26,14 @@ class UserModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    protected $beforeInsert = ['hashPassword'];
+    protected $beforeUpdate = ['hashPassword'];
+
+    protected function hashPassword($data) {
+        if(!isset($data['data']['password'])) return $data;
+
+        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+        return $data;
+    }
 }
