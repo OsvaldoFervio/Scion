@@ -35,6 +35,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/signup', 'Register::index');
 $routes->post('/signup/new', 'Register::create');
+$routes->get('/login', 'Login::index');
+$routes->post('/login', 'Login::post');
 
 /*
  * --------------------------------------------------------------------

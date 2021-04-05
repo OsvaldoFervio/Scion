@@ -38,7 +38,7 @@
 
       <!-- Account -->
       <li class="nav-secondary__login">
-        <a href="<?= base_url('Login') ?>">
+        <a href="<?= base_url('login') ?>">
           <i class="icon-key"></i>
           <span class="link-label">Iniciar sesión</span>
         </a>
