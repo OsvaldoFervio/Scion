@@ -37,6 +37,7 @@
       <!-- Search Form Toggler / End -->
 
       <!-- Account -->
+      <?php if(! session()->get('user_id')) : ?>
       <li class="nav-secondary__login">
         <a href="<?= base_url('login') ?>">
           <i class="icon-key"></i>
@@ -49,8 +50,19 @@
           <span class="link-label">Registrate</span>
         </a>
       </li>
+      <?php else : ?>
+      <li class="nav-secondary__login">
+          <?= session()->get('username') ?>
+      </li>
+      <li class="nav-secondary__login">
+          <form action="<?= base_url('logout') ?>" method="post">
+              <div class="ml-2">
+                  <input type="submit" class="btn btn-primary btn-sm" value="Logout">
+              </div>
+          </form>
+      </li>
+      <?php endif ?>
       <!-- Account / End -->
-
     </ul>
     <!-- Secondary Nav / End -->
   </nav>
