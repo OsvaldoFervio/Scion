@@ -37,7 +37,7 @@ class Home extends BaseController
 	{
 		echo view('include_files/header');
 		echo view('include_files/navbar');
-		echo view('eventos');
+		echo view('event_list');
 		echo view('include_files/footer');
 	}
 
