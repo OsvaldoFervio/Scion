@@ -35,9 +35,13 @@ class Home extends BaseController
 
 	public function eventos()
 	{
-		echo view('include_files/header');
+		$modelEvent = model('EventModel');
+
+		$events = $modelEvent->findAll();
+
+	    echo view('include_files/header');
 		echo view('include_files/navbar');
-		echo view('event_list');
+		echo view('event_list', ['events' => $events]);
 		echo view('include_files/footer');
 	}
 
