@@ -5,12 +5,15 @@
         <main class="site-content">
             <div class="section-content">
                 <div class="container">
+                    <?php if(session()->get('success')) : ?>
+                        <div class="alert alert-success">Evento creado</div>
+                    <?php endif ?>
                     <div class="row">
                         <h1>Registrar evento</h1>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="" method="post">
+                            <form action="<?= base_url('events/create') ?>" method="post">
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label for="name">Nombre</label>
@@ -22,36 +25,44 @@
                                         <label for="event_type">Tipo</label>
                                         <select class="form-control" name="event_type" id="event_type">
                                             <option selected disabled>Selecciona una:</option>
-                                            <option>Internacional</option>
-                                            <option>Regional</option>
-                                            <option>País</option>
+                                            <?php foreach ($eventTypes as $eventType): ?>
+                                            <option value="<?=$eventType->id ?>">
+                                                <?= $eventType->name ?>
+                                            </option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="country">País</label>
                                         <select class="form-control" name="country_id" id="country">
                                             <option selected disabled>Selecciona uno:</option>
-                                            <option>Country 1</option>
-                                            <option>Contry 2</option>
-                                            <option>Country 3</option>
+                                            <?php foreach ($countries as $country): ?>
+                                            <option value="<?= $country->id ?>">
+                                                <?= $country->name ?>
+                                            </option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="category">Categoria</label>
                                         <select class="form-control" name="category" id="category">
                                             <option selected disabled>Selecciona una:</option>
-                                            <option>Una</option>
-                                            <option>Dos</option>
-                                            <option>Tres</option>
+                                            <?php foreach ($categories as $category): ?>
+                                            <option value="<?= $category->id ?>">
+                                                <?= $category->name ?>
+                                            </option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="difficulty">Dificultad</label>
                                         <select class="form-control" name="difficulty" id="difficulty">
                                             <option selected disabled>Seleciona una:</option>
-                                            <option>Fácil</option>
-                                            <option>Normal</option>
-                                            <option>Díficil</option>
+                                            <?php foreach ($difficulties as $difficulty): ?>
+                                            <option value="<?= $difficulty->id ?>">
+                                                <?= $difficulty->name ?>
+                                            </option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>
@@ -60,18 +71,22 @@
                                         <label for="videogame">Videojuego</label>
                                         <select class="form-control" name="videogame" id="videogame">
                                             <option selected disabled>Selecciona uno:</option>
-                                            <option>Videojuego 1</option>
-                                            <option>Videojuego 2</option>
-                                            <option>Videojuego 3</option>
+                                            <?php foreach ($videogames as $videogame): ?>
+                                            <option value="<?= $videogame->id ?>">
+                                                <?= $videogame->name ?>
+                                            </option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-3">
                                         <label for="platform">Plataforma</label>
-                                        <select class="form-control" name="platform" id="platform" multiple>
+                                        <select class="form-control" name="platform[]" id="platform" multiple>
                                             <option selected disabled>Selecciona una:</option>
-                                            <option>Plataforma 1</option>
-                                            <option>Plataforma 2</option>
-                                            <option>Plataforma 3</option>
+                                            <?php foreach ($platforms as $platform): ?>
+                                            <option value="<?= $platform->id ?>">
+                                                <?= $platform->name ?>
+                                            </option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>
@@ -88,9 +103,11 @@
                                         <label for="timezone">Zona horaria</label>
                                         <select type="text" class="form-control" name="timezone" id="timezone">
                                             <option selected disabled>Selecciona una:</option>
-                                            <option>Una</option>
-                                            <option>Dos</option>
-                                            <option>Tres</option>
+                                            <?php foreach ($timezones as $timezone): ?>
+                                            <option value="<?= $timezone->id ?>">
+                                                <?= $timezone->name ?>
+                                            </option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>
@@ -119,8 +136,9 @@
                                         <label for="currency">Moneda</label>
                                         <select class="form-control" name="currency" id="currency">
                                             <option selected disabled>Seleciona una:</option>
-                                            <option>USD</option>
-                                            <option>MXN</option>
+                                            <?php foreach ($currencies as $currency) : ?>
+                                            <option value="<?= $currency->id?>"><?= $currency->name ?></option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>
@@ -136,6 +154,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="award-name">Nombre</label>
+                                            <input type="text" class="form-control" name="award_name[]" id="award-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="award-quantity">Cantidad</label>
+                                            <input type="number" class="form-control" name="award_quantity[]" id="award-quantity">
+                                        </div>
+                                    </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="award-name">Nombre</label>
