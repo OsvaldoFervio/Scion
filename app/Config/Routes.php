@@ -39,6 +39,9 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login', 'Login::post');
 $routes->post('/logout', 'Logout::post');
 
+$routes->get('/events/new', 'Events::new');
+$routes->post('/events/create', 'Events::create');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
