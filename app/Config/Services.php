@@ -3,6 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseService;
+use App\Services\EventService;
 
 /**
  * Services Configuration file.
@@ -28,4 +29,14 @@ class Services extends BaseService
 	//
 	//     return new \CodeIgniter\Example();
 	// }
+
+    public static function event($getShared = false)
+    {
+        if(! $getShared)
+        {
+            return new EventService();
+        }
+
+        return static::getSharedInstance('event');
+    }
 }
