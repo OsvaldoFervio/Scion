@@ -10,7 +10,7 @@
                         <li class="filter__item"><button class="filter__link btn btn-outline-secondary" data-filter=".room--category-hard">Hard</button></li>
                     </ul>
                     <?php if(session()->get('user_id')) : ?>
-                    <a href="<?= base_url('Events/new')?>" class="btn btn-primary">Nuevo</a>
+                    <a href="<?= base_url('events/new')?>" class="btn btn-primary">Nuevo</a>
                     <?php endif ?>
                     <div class="row rooms rooms--grid js-rooms--grid">
                         <div class="room col-sm-6 col-md-3 room--category-normal">
