@@ -16,7 +16,7 @@ class EventService
     {
         $eventModel = model('EventModel');
         $userId = session()->get('user_id');
-        $eventData = $this->buildEventData($userId, $data);
+        $eventData = $this->buildEventData($data, $userId);
         $eventModel->save($eventData);
 
         $eventId = $eventModel->insertID;
@@ -25,6 +25,15 @@ class EventService
         $this->createEventPlatforms($eventId, $data);
         $this->createEventAwards($eventId, $data);
         $this->createEventStages($eventId, $data);
+    }
+
+    public function update($id, $data)
+    {
+        $eventData= $this->buildEventData($data);
+        $eventData['id'] = $id;
+        $this->model->save($eventData);
+
+        $this->updateEventPlatforms($id, $data);
     }
 
     public function getById($id) {
@@ -44,6 +53,17 @@ class EventService
     public function getStagesByEventId($id) {
         $model = model('EventStageModel');
         return $model->where('event_id', $id)->findAll();
+    }
+
+    public function getPlatformsByEventId($id)
+    {
+        $model = model('EventPlatformModel');
+        $preparedQuery = $model->db->prepare(function($db){
+            $query = 'SELECT p.id as platform_id, p.name, ep.platform_id as id FROM platforms p LEFT JOIN event_platforms ep ON p.id = ep.platform_id AND ep.event_id = ?';
+            return $db->query($query);
+        });
+        $result = $preparedQuery->execute($id);
+        return $result->getResult();
     }
 
     protected function createEventDetails($eventId, $data)
@@ -79,11 +99,26 @@ class EventService
         $model->insertBatch($eventStageData);
     }
 
-    protected function buildEventData($user_id, $data): array
+    protected function updateEventPlatforms($eventId, $data) {
+        $model = model('EventPlatformModel');
+        $platforms = $data['platform'];
+        $eventPlatformData = $this->buildEventPlatformsData($eventId, $platforms);
+        foreach ($eventPlatformData as $eventPlatform){
+            $model->where('event_id', $eventPlatform['event_id']);
+            $result = $model->where('platform_id', $eventPlatform['platform_id'])->first();
+            if(! $result) {
+                $model->insert($eventPlatform);
+                log_message('error', 'New event platform created');
+            }
+        }
+        log_message('error', 'Update event platform done!');
+    }
+
+    protected function buildEventData($data, $user_id = null): array
     {
         return [
             'name' => $data['name'],
-            'user_id' => $user_id,
+            'user_id' => !$user_id ? $data['user_id'] : $user_id,
             'type_id' => $data['event_type'],
             'category_id' => $data['category'],
             'difficulty_id' => $data['difficulty'],
