@@ -5,9 +5,11 @@ namespace App\Services;
 class EventService
 {
 
+    protected $model = null;
+
     public function __construct()
     {
-
+        $this->model = model('EventModel');
     }
 
     public function create($data)
@@ -23,6 +25,25 @@ class EventService
         $this->createEventPlatforms($eventId, $data);
         $this->createEventAwards($eventId, $data);
         $this->createEventStages($eventId, $data);
+    }
+
+    public function getById($id) {
+        return $event = $this->model->find($id);
+    }
+
+    public function getDetailsByEventId($id) {
+        $model = model('EventDetailModel');
+        return $model->where('event_id', $id)->first();
+    }
+
+    public function getAwardsByEventId($id) {
+        $model = model('EventAwardModel');
+        return $model->where('event_id', $id)->findAll();
+    }
+
+    public function getStagesByEventId($id) {
+        $model = model('EventStageModel');
+        return $model->where('event_id', $id)->findAll();
     }
 
     protected function createEventDetails($eventId, $data)
