@@ -40,6 +40,11 @@
 		<main class="site-content">
 			<div class="section-content">
 				<div class="container">
+                    <div class="row">
+                        <div class="w-100 d-flex flex-column align-items-end">
+                            <a href="<?= base_url('events/edit/'.$event->id)?>" class="btn btn-primary">Editar</a>
+                        </div>
+                    </div>
 					<!-- Single Room - Content -->
 					<div class="single-room-content">
 						<div class="row">
