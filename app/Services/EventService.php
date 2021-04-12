@@ -34,6 +34,9 @@ class EventService
         $this->model->save($eventData);
 
         $this->updateEventPlatforms($id, $data);
+        $this->updateEventDetails($id, $data);
+        $this->updateEventAwards($id, $data);
+        $this->updateEventStages($id, $data);
     }
 
     public function getById($id) {
@@ -114,6 +117,39 @@ class EventService
         log_message('error', 'Update event platform done!');
     }
 
+    protected function updateEventDetails($eventId, $data)
+    {
+        $model = model('EventDetailModel');
+        $eventDetailData = $this->buildEventDetailsData($eventId, $data);
+        $eventDetail = $model->where('event_id', $eventId)->first();
+        if($eventDetail) {
+            $eventDetailData['id'] = $eventDetail->id;
+            $model->save($eventDetailData);
+        }
+    }
+
+    protected function updateEventAwards($eventId, $data)
+    {
+        $model = model('EventAwardModel');
+        $awardNames = $data['award_name'];
+        $awardQuantities = $data['award_quantity'];
+        $awardIds = $data['award_id'];
+        $eventAwardData = $this->buildEventAwardsData($eventId,$awardNames, $awardQuantities, $awardIds);
+        foreach($eventAwardData as $eventAward)
+            $model->save($eventAward);
+    }
+
+    protected function updateEventStages($eventId, $data)
+    {
+        $model = model('EventStageModel');
+        $stageNames = $data['stage_name'];
+        $stageDescriptions = $data['stage_description'];
+        $stageIds = $data['stage_id'];
+        $eventStageData = $this->buildEventStagesData($eventId, $stageNames, $stageDescriptions, $stageIds);
+        foreach($eventStageData as $eventStage)
+            $model->save($eventStage);
+    }
+
     protected function buildEventData($data, $user_id = null): array
     {
         return [
@@ -153,25 +189,31 @@ class EventService
         }, $data);
     }
 
-    protected function buildEventAwardsData($eventId, $data, $data1): array
+    protected function buildEventAwardsData($eventId, $data, $data1, $data2 = []): array
     {
-        return array_map(function($item, $item1) use ($eventId){
-            return [
+        return array_map(function($item, $item1, $item2) use ($eventId){
+            $data = [
                 'event_id' => $eventId,
                 'name' => $item,
                 'amount' => $item1
             ];
-        }, $data, $data1);
+            if($item2)
+                $data['id'] = $item2;
+            return $data;
+        }, $data, $data1, $data2);
     }
 
-    protected function buildEventStagesData($eventId, $data, $data1): array
+    protected function buildEventStagesData($eventId, $data, $data1, $data2 = []): array
     {
-        return array_map(function($item, $item1) use ($eventId){
-            return [
+        return array_map(function($item, $item1, $item2) use ($eventId){
+            $data = [
                 'event_id' => $eventId,
                 'name' => $item,
                 'description' => $item1
             ];
-        }, $data, $data1);
+            if($item2)
+                $data['id'] = $item2;
+            return $data;
+        }, $data, $data1, $data2);
     }
 }

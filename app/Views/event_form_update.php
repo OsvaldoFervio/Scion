@@ -202,6 +202,7 @@
                                 <div class="row">
                                     <?php foreach ($eventAwards as $award) : ?>
                                         <div class="col-6">
+                                            <input type="hidden" name="award_id[]" value="<?= $award->id ?>">
                                             <div class="form-group">
                                                 <label for="award-name">Nombre</label>
                                                 <input type="text" class="form-control" name="award_name[]" id="award-name" value="<?= $award->name ?>">
@@ -235,6 +236,7 @@
                                             </div>
                                             <?php foreach ($eventStages as $stage) : ?>
                                                 <div class="col-md-12">
+                                                    <input type="hidden" name="stage_id[]" value="<?= $stage->id ?>">
                                                     <div class="form-group col-md-12">
                                                         <label for="stage-name">Nombre</label>
                                                         <input class="form-control" name="stage_name[]" id="stage-name" value="<?= $stage->name ?>">
@@ -250,9 +252,7 @@
                                 </div>
                                 <div class="row">
                                     <h3>Descripción</h3>
-                                    <textarea class="form-control" name="description" id="description">
-                                        <?= $eventDetails->description ?>
-                                    </textarea>
+                                    <textarea class="form-control" name="description" id="description"><?= $eventDetails->description ?></textarea>
                                 </div>
                                 <div class="row">
                                     <h3>Imágenes</h3>
