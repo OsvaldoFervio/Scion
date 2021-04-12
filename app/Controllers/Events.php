@@ -6,8 +6,19 @@ namespace App\Controllers;
 
 class Events extends BaseController
 {
-    public function show() {
-        echo view('eventos');
+    public function show($id) {
+        $service = service('event');
+        $event = $service->getById($id);
+        $eventDetails = $service->getDetailsByEventId($id);
+        $eventAwards = $service->getAwardsByEventId($id);
+        $eventStages = $service->getStagesByEventId($id);
+        $data = [
+            'event' => $event,
+            'eventDetails' => $eventDetails,
+            'eventAwards' => $eventAwards,
+            'eventStages' => $eventStages
+        ];
+        echo view('eventos', $data);
     }
 
     public function new() {

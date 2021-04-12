@@ -41,6 +41,7 @@ $routes->post('/logout', 'Logout::post');
 
 $routes->get('/events/new', 'Events::new');
 $routes->post('/events/create', 'Events::create');
+$routes->get('/events/(:num)', 'Events::show/$1');
 
 /*
  * --------------------------------------------------------------------
