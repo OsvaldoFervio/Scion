@@ -57,7 +57,7 @@
                                 <!-- Image -->
 
                                 <figure class="room__img">
-                                    <a href="room-single.html"><img src="<?= base_url('/images/samples/room-grid-4-img1.jpg') ?>" alt=""></a>
+                                    <a href="<?= base_url('events/'.$event->id) ?>"><img src="<?= base_url('/images/samples/room-grid-4-img1.jpg') ?>" alt=""></a>
                                 </figure>
                                 <!-- Image / End -->
                             </div>
