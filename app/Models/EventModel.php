@@ -34,7 +34,13 @@ class EventModel extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 
-    protected $afterFind = ['getTypeName'];
+    protected $afterFind = [
+        'getTypeName',
+        'getCategoryName',
+        'getDifficultyName',
+        'getDateFormatted',
+        'getTimeZoneData'
+    ];
 
     protected function getTypeName(array $data) {
         if(isset($data['id'])) {
@@ -44,6 +50,40 @@ class EventModel extends Model
             foreach ($data['data'] as $item) {
                 $this->bindEventTypeData($item);
             }
+        }
+        return $data;
+    }
+
+    protected function getCategoryName(array $data) {
+        if(isset($data['id'])) {
+            $item = $data['data'];
+            $this->bindCategoryData($item);
+        }
+        return $data;
+    }
+
+    protected function getDifficultyName(array $data) {
+        if(isset($data['id'])) {
+            $item = $data['data'];
+            $this->bindDifficultyData($item);
+        }
+        return $data;
+    }
+
+    protected function getDateFormatted(array $data) {
+        if(isset($data['id'])) {
+            $item = $data['data'];
+            $dateString = $item->date;
+            $date = \DateTime::createFromFormat('Y-m-d', $dateString);
+            $item->date = $date->format('d \d\e M \d\e Y');
+        }
+        return $data;
+    }
+
+    protected function getTimezoneData(array $data) {
+        if(isset($data['id'])) {
+            $item = $data['data'];
+            $this->bindTimeZoneData($item);
         }
         return $data;
     }
@@ -58,6 +98,25 @@ class EventModel extends Model
                 $item->type_name = $typeName;
             }
         }
+    }
+
+    protected function bindCategoryData($item) {
+        $model = \model('CategoryModel');
+        $item->category_name = $model->find($item->category_id)->name;
+    }
+
+    protected function bindDifficultyData($item) {
+        $model = \model('DifficultyModel');
+        $item->difficulty_name = $model->find($item->difficulty_id)->name;
+    }
+
+    protected function bindTimeZoneData($item) {
+        $model = \model('TimeZoneModel');
+        $item->timezone_name = $model->find($item->timezone_id)->name;
+        $timezone = new \DateTimeZone($item->timezone_name);
+        $offset_timezone = $timezone->getOffset(new \DateTime('now', $timezone));
+        $hours = $offset_timezone / 3600;
+        $item->timezone_offset = $hours;
     }
 
     protected function getCountryName($id) {
