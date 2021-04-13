@@ -33,21 +33,20 @@ class Events extends BaseController
     }
 
     public function create() {
-        $data = $this->request->getRawInput();
-        $eventService = service('event');
-        $eventService->create($data);
+        $data = $this->request->getPost();
+        $eventId = $this->service->create($data);
+        $this->service->storeEventImages($eventId, $this->request->getFiles());
         return redirect()->redirect('/events/new')->with('success', 'Evento creado');
     }
 
     public function edit($id)
     {
-        $service = service('event');
         $data = $this->getData();
-        $event = $service->getById($id);
-        $eventDetails = $service->getDetailsByEventId($id);
-        $eventAwards = $service->getAwardsByEventId($id);
-        $eventStages = $service->getStagesByEventId($id);
-        $eventPlatforms = $service->getPlatformsByEventId($id);
+        $event = $this->service->getById($id);
+        $eventDetails = $this->service->getDetailsByEventId($id);
+        $eventAwards = $this->service->getAwardsByEventId($id);
+        $eventStages = $this->service->getStagesByEventId($id);
+        $eventPlatforms = $this->service->getPlatformsByEventId($id);
         $data['event'] = $event;
         $data['eventDetails'] = $eventDetails;
         $data['eventAwards'] = $eventAwards;
