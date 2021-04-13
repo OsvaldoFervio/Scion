@@ -25,6 +25,8 @@ class EventService
         $this->createEventPlatforms($eventId, $data);
         $this->createEventAwards($eventId, $data);
         $this->createEventStages($eventId, $data);
+
+        return $eventId;
     }
 
     public function update($id, $data)
@@ -100,6 +102,35 @@ class EventService
         $stageDescriptions = $data['stage_description'];
         $eventStageData = $this->buildEventStagesData($eventId, $stageNames, $stageDescriptions);
         $model->insertBatch($eventStageData);
+    }
+
+    public function storeEventImages($eventId, $images)
+    {
+        $imagePaths = $this->storeImages($eventId, $images);
+        $this->createEventImage($eventId, $imagePaths);
+    }
+
+    public function storeImages($eventId, $images)
+    {
+        $imagePaths = [];
+        $uploadsPath = getenv('images.uploads.path');
+        if($images){
+            foreach ($images['images'] as $image){
+                if($image->isValid() && ! $image->hasMoved()){
+                    $folder = $uploadsPath.'/event/'.$eventId.'/';
+                    $newName = $image->getRandomName();
+                    $image->move(ROOTPATH.'public/'.$folder, $newName);
+                    array_push($imagePaths, $folder.$newName);
+                }
+            }
+        }
+        return $imagePaths;
+    }
+
+    protected function createEventImage($eventId, $imagePaths) {
+        $model = model('EventImageModel');
+        $eventImageData = $this->buildEventImagesData($eventId, $imagePaths);
+        $model->insertBatch($eventImageData);
     }
 
     protected function updateEventPlatforms($eventId, $data) {
@@ -215,5 +246,15 @@ class EventService
                 $data['id'] = $item2;
             return $data;
         }, $data, $data1, $data2);
+    }
+
+    protected function buildEventImagesData($eventId, $imagePaths): array
+    {
+        return array_map(function($item) use ($eventId){
+            return [
+                'event_id' => $eventId,
+                'image_url' => base_url($item)
+            ];
+        }, $imagePaths);
     }
 }
