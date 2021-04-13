@@ -75,7 +75,7 @@ class EventModel extends Model
             $item = $data['data'];
             $dateString = $item->date;
             $date = \DateTime::createFromFormat('Y-m-d', $dateString);
-            $item->date = $date->format('d \d\e M \d\e Y');
+            $item->date_formatted = $date->format('d \d\e M \d\e Y');
         }
         return $data;
     }

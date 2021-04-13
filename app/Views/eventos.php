@@ -56,7 +56,7 @@
 
 							<div class="col-md-4">
 								<div class="room__meta-item-value">
-									<i class="icon-calendar"></i> <?= $event->date ?>
+									<i class="icon-calendar"></i> <?= $event->date_formatted ?>
 								</div>
 							</div>
 						</div>
