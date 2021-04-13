@@ -29,13 +29,13 @@
                                             <option selected disabled>Selecciona una:</option>
                                             <?php foreach ($eventTypes as $eventType): ?>
                                                 <?php if ($eventType->id == $event->type_id) : ?>
-                                                <option value="<?=$eventType->id ?>" selected>
-                                                    <?= $eventType->name ?>
-                                                </option>
+                                                    <option value="<?=$eventType->id ?>" selected>
+                                                        <?= $eventType->name ?>
+                                                    </option>
                                                 <?php else : ?>
-                                                <option value="<?=$eventType->id ?>">
-                                                    <?= $eventType->name ?>
-                                                </option>
+                                                    <option value="<?=$eventType->id ?>">
+                                                        <?= $eventType->name ?>
+                                                    </option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
@@ -45,9 +45,15 @@
                                         <select class="form-control" name="country_id" id="country">
                                             <option selected disabled>Selecciona uno:</option>
                                             <?php foreach ($countries as $country): ?>
-                                            <option value="<?= $country->id ?>">
-                                                <?= $country->name ?>
-                                            </option>
+                                                <?php if ($country->id == $event->country_id) : ?>
+                                                    <option value="<?= $country->id ?>" selected>
+                                                        <?= $country->name ?>
+                                                    </option>
+                                                <?php else : ?>
+                                                    <option value="<?= $country->id ?>">
+                                                        <?= $country->name ?>
+                                                    </option>
+                                                <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
@@ -57,13 +63,13 @@
                                             <option selected disabled>Selecciona una:</option>
                                             <?php foreach ($categories as $category): ?>
                                                 <?php if ($category->id == $event->category_id) : ?>
-                                                <option value="<?= $category->id ?>" selected>
-                                                    <?= $category->name ?>
-                                                </option>
+                                                    <option value="<?= $category->id ?>" selected>
+                                                        <?= $category->name ?>
+                                                    </option>
                                                 <?php else : ?>
-                                                <option value="<?= $category->id ?>">
-                                                    <?= $category->name ?>
-                                                </option>
+                                                    <option value="<?= $category->id ?>">
+                                                        <?= $category->name ?>
+                                                    </option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
@@ -74,13 +80,13 @@
                                             <option selected disabled>Seleciona una:</option>
                                             <?php foreach ($difficulties as $difficulty): ?>
                                                 <?php if ($difficulty->id == $event->difficulty_id) : ?>
-                                                <option value="<?= $difficulty->id ?>" selected>
-                                                    <?= $difficulty->name ?>
-                                                </option>
+                                                    <option value="<?= $difficulty->id ?>" selected>
+                                                        <?= $difficulty->name ?>
+                                                    </option>
                                                 <?php else : ?>
-                                                <option value="<?= $difficulty->id ?>">
-                                                    <?= $difficulty->name ?>
-                                                </option>
+                                                    <option value="<?= $difficulty->id ?>">
+                                                        <?= $difficulty->name ?>
+                                                    </option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
@@ -93,13 +99,13 @@
                                             <option selected disabled>Selecciona uno:</option>
                                             <?php foreach ($videogames as $videogame): ?>
                                                 <?php if ($videogame->id == $event->videogame_id) : ?>
-                                                <option value="<?= $videogame->id ?>" selected>
-                                                    <?= $videogame->name ?>
-                                                </option>
+                                                    <option value="<?= $videogame->id ?>" selected>
+                                                        <?= $videogame->name ?>
+                                                    </option>
                                                 <?php else : ?>
-                                                <option value="<?= $videogame->id ?>">
-                                                    <?= $videogame->name ?>
-                                                </option>
+                                                    <option value="<?= $videogame->id ?>">
+                                                        <?= $videogame->name ?>
+                                                    </option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
@@ -110,13 +116,13 @@
                                             <option selected disabled>Selecciona una:</option>
                                             <?php foreach ($platforms as $platform): ?>
                                                 <?php if ($platform->id) : ?>
-                                                <option value="<?= $platform->platform_id ?>" selected>
-                                                    <?= $platform->name ?>
-                                                </option>
+                                                    <option value="<?= $platform->platform_id ?>" selected>
+                                                        <?= $platform->name ?>
+                                                    </option>
                                                 <?php else : ?>
-                                                <option value="<?= $platform->platform_id ?>">
-                                                    <?= $platform->name ?>
-                                                </option>
+                                                    <option value="<?= $platform->platform_id ?>">
+                                                        <?= $platform->name ?>
+                                                    </option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
