@@ -13,7 +13,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="<?= base_url('events/create') ?>" method="post">
+                            <form action="<?= base_url('events/create') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label for="name">Nombre</label>
@@ -216,7 +216,7 @@
                                     <h3>Imágenes</h3>
                                     <div class="form-group col-md-12">
                                         <label id="images">Selecciona hasta 3 archivos:</label>
-                                        <input class="form-control" type="file" name="images" id="images" multiple>
+                                        <input class="form-control" type="file" name="images[]" id="images" multiple accept="image/jpeg,image/png,image/jpg">
                                     </div>
                                 </div>
                                 <div class="row">
