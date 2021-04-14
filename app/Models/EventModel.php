@@ -39,7 +39,8 @@ class EventModel extends Model
         'getCategoryName',
         'getDifficultyName',
         'getDateFormatted',
-        'getTimeZoneData'
+        'getTimeZoneData',
+        'getEventImage',
     ];
 
     protected function getTypeName(array $data) {
@@ -88,6 +89,19 @@ class EventModel extends Model
         return $data;
     }
 
+    protected function getEventImage(array $data)
+    {
+        if(isset($data['id'])) {
+            $item = $data['data'];
+            $this->bindEventImage($item);
+        } else {
+            foreach ($data['data'] as $item) {
+                $this->bindEventImage($item);
+            }
+        }
+        return $data;
+    }
+
     protected function bindEventTypeData($item) {
         $eventTypeModel = \model('EventTypeModel');
         if(isset($item->type_id)){
@@ -117,6 +131,13 @@ class EventModel extends Model
         $offset_timezone = $timezone->getOffset(new \DateTime('now', $timezone));
         $hours = $offset_timezone / 3600;
         $item->timezone_offset = $hours;
+    }
+
+    protected function bindEventImage($item) {
+        $model = \model('EventImageModel');
+        $eventImage = $model->where('event_id', $item->id)->first();
+        if($eventImage)
+            $item->image_url = $eventImage->image_url;
     }
 
     protected function getCountryName($id) {

@@ -57,7 +57,11 @@
                                 <!-- Image -->
 
                                 <figure class="room__img">
-                                    <a href="<?= base_url('events/'.$event->id) ?>"><img src="<?= base_url('/images/samples/room-grid-4-img1.jpg') ?>" alt=""></a>
+                                    <?php if($event->image_url) : ?>
+                                        <a href="<?= base_url('events/'.$event->id) ?>"><img src="<?= $event->image_url ?>" alt=""></a>
+                                    <?php else : ?>
+                                        <a href="<?= base_url('events/'.$event->id) ?>"><img src="<?= base_url('/images/samples/room-grid-4-img1.jpg') ?>" alt=""></a>
+                                    <?php endif ?>
                                 </figure>
                                 <!-- Image / End -->
                             </div>
