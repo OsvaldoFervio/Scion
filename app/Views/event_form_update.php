@@ -268,7 +268,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <input type="submit" class="btn btn-primary" value="Crear">
+                                    <input type="submit" class="btn btn-primary" value="Guardar">
                                 </div>
                             </form>
                         </div>
