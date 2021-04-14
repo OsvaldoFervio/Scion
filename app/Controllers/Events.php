@@ -62,6 +62,12 @@ class Events extends BaseController
         return redirect()->redirect('/events/edit/'.$id)->with('success', 'Evento actualizado');
     }
 
+    public function delete($id)
+    {
+        $this->service->delete($id);
+        return redirect()->redirect('/Home/eventos')->with('success', 'Evento eleminado');
+    }
+
     protected function getData() {
         $modelEventType = model('EventTypeModel');
         $modelCategory = model('CategoryModel');

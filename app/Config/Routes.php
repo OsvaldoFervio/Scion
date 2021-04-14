@@ -44,6 +44,7 @@ $routes->post('/events/create', 'Events::create');
 $routes->get('/events/(:num)', 'Events::show/$1');
 $routes->get('/events/edit/(:num)', 'Events::edit/$1');
 $routes->put('/events/(:num)', 'Events::updated/$1');
+$routes->delete('/events/(:num)', 'Events::delete/$1');
 
 /*
  * --------------------------------------------------------------------
