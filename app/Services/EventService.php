@@ -41,6 +41,10 @@ class EventService
         $this->updateEventStages($id, $data);
     }
 
+    public function delete($id) {
+        $this->model->delete($id);
+    }
+
     public function getById($id) {
         return $event = $this->model->find($id);
     }
