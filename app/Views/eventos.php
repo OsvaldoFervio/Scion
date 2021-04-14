@@ -42,8 +42,14 @@
 			<div class="section-content">
 				<div class="container">
                     <div class="row">
-                        <div class="w-100 d-flex flex-column align-items-end">
+                        <div class="w-100 d-flex justify-content-end">
                             <a href="<?= base_url('events/edit/'.$event->id)?>" class="btn btn-primary">Editar</a>
+                            <div class="mx-2">
+                                <form action="<?= base_url('events/'.$event->id)?>" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
 					<!-- Single Room - Content -->
