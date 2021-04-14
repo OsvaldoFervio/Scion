@@ -3,6 +3,9 @@
         <main class="site-content">
             <div class="section-content">
                 <div class="container">
+                    <?php if(session()->get('success')) : ?>
+                        <div class="alert alert-success">Evento eliminado correctamente</div>
+                    <?php endif ?>
                     <ul class="filter js-filter list-unstyled">
                         <li class="filter__item"><button class="filter__link btn btn-primary" data-filter="*">Todos</button></li>
                         <li class="filter__item"><button class="filter__link btn btn-outline-secondary" data-filter=".room--category-easy">Easy</button></li>
