@@ -111,7 +111,9 @@ class EventService
     public function storeEventImages($eventId, $images)
     {
         $imagePaths = $this->storeImages($eventId, $images);
-        $this->createEventImage($eventId, $imagePaths);
+        if(! empty($imagePaths)) {
+            $this->createEventImage($eventId, $imagePaths);
+        }
     }
 
     public function storeImages($eventId, $images)
