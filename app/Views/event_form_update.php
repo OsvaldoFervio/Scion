@@ -205,7 +205,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" id="award-container">
                                     <?php foreach ($eventAwards as $award) : ?>
                                         <div class="col-6">
                                             <input type="hidden" name="award_id[]" value="<?= $award->id ?>">
@@ -240,19 +240,21 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <?php foreach ($eventStages as $stage) : ?>
-                                                <div class="col-md-12">
-                                                    <input type="hidden" name="stage_id[]" value="<?= $stage->id ?>">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="stage-name">Nombre</label>
-                                                        <input class="form-control" name="stage_name[]" id="stage-name" value="<?= $stage->name ?>">
+                                            <div id="stage-container" class="row col-md-12">
+                                                <?php foreach ($eventStages as $stage) : ?>
+                                                    <div class="col-md-12">
+                                                        <input type="hidden" name="stage_id[]" value="<?= $stage->id ?>">
+                                                        <div class="form-group col-md-12">
+                                                            <label for="stage-name">Nombre</label>
+                                                            <input class="form-control" name="stage_name[]" id="stage-name" value="<?= $stage->name ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label for="stage-description">Descripción</label>
+                                                            <textarea class="form-control" name="stage_description[]" id="stage-description"><?= $stage->description ?></textarea>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label for="stage-description">Descripción</label>
-                                                        <textarea class="form-control" name="stage_description[]" id="stage-description"><?= $stage->description ?></textarea>
-                                                    </div>
-                                                </div>
-                                            <?php endforeach ?>
+                                                <?php endforeach ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -277,4 +279,5 @@
             </div>
         </main>
     </div>
+    <script src="<?= base_url('js/custom.js')?>"></script>
 </body>

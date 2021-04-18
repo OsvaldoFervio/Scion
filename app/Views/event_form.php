@@ -153,17 +153,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="award-name">Nombre</label>
-                                            <input type="text" class="form-control" name="award_name[]" id="award-name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="award-quantity">Cantidad</label>
-                                            <input type="number" class="form-control" name="award_quantity[]" id="award-quantity">
-                                        </div>
-                                    </div>
+                                <div class="row" id="award-container">
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="award-name">Nombre</label>
@@ -195,14 +185,16 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label for="stage-name">Nombre</label>
-                                                    <input class="form-control" name="stage_name[]" id="stage-name">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="stage-description">Descripción</label>
-                                                    <textarea class="form-control" name="stage_description[]" id="stage-description"></textarea>
+                                            <div id="stage-container" class="row col-md-12">
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="stage-name">Nombre</label>
+                                                        <input class="form-control" name="stage_name[]" id="stage-name">
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="stage-description">Descripción</label>
+                                                        <textarea class="form-control" name="stage_description[]" id="stage-description"></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,4 +221,5 @@
             </div>
         </main>
     </div>
+    <script src="<?= base_url('js/custom.js')?>"></script>
 </body>
