@@ -4,6 +4,8 @@
 namespace App\Controllers;
 
 
+use Config\Services;
+
 class Events extends BaseController
 {
     protected $service = null;
@@ -34,9 +36,13 @@ class Events extends BaseController
 
     public function create() {
         $data = $this->request->getPost();
-        $eventId = $this->service->create($data);
-        $this->service->storeEventImages($eventId, $this->request->getFiles());
-        return redirect()->redirect('/events/new')->with('success', 'Evento creado');
+        if($this->validate('event')) {
+            $eventId = $this->service->create($data);
+            $this->service->storeEventImages($eventId, $this->request->getFiles());
+            return redirect()->redirect('/events/new')->with('success', 'Evento creado');
+        } else {
+            return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
     }
 
     public function edit($id)
@@ -58,9 +64,14 @@ class Events extends BaseController
     public function update($id)
     {
         $data = $this->request->getPost();
-        $this->service->update($id, $data);
-        $this->service->storeEventImages($id, $this->request->getFiles());
-        return redirect()->redirect('/events/edit/'.$id)->with('success', 'Evento actualizado');
+        $validation = Services::validation();
+        if($validation->run($data, 'event')) {
+            $this->service->update($id, $data);
+            $this->service->storeEventImages($id, $this->request->getFiles());
+            return redirect()->redirect('/events/edit/'.$id)->with('success', 'Evento actualizado');
+        } else {
+            return redirect()->back()->with('errors', $validation->getErrors());
+        }
     }
 
     public function delete($id)

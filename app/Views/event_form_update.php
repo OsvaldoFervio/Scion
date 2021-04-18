@@ -8,6 +8,15 @@
                     <?php if(session()->get('success')) : ?>
                         <div class="alert alert-success">Evento actualizado</div>
                     <?php endif ?>
+                    <?php if (session()->get('errors')) : ?>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <?php foreach (session()->get('errors') as $error) : ?>
+                                    <li><?= esc($error) ?></li>
+                                <?php endforeach ?>
+                            </ul>
+                        </div>
+                    <?php endif ?>
                     <div class="row">
                         <h1>Actualizar evento</h1>
                     </div>
@@ -19,7 +28,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label for="name">Nombre</label>
-                                        <input class="form-control form-control-lg p-2" name="name" id="name" value="<?= $event->name ?>">
+                                        <input class="form-control form-control-lg p-2" name="name" id="name" value="<?= $event->name ?>" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -131,11 +140,11 @@
                                 <div class="row">
                                     <div class="form-group col-3">
                                         <label for="date">Fecha</label>
-                                        <input type="date" class="form-control" name="date" id="date" value="<?= $event->date ?>">
+                                        <input type="date" class="form-control" name="date" id="date" value="<?= $event->date ?>" required>
                                     </div>
                                     <div class="form-group col-3">
                                         <label for="time">Hora</label>
-                                        <input type="time" class="form-control" name="time" id="time" value="<?= $event->time ?>">
+                                        <input type="time" class="form-control" name="time" id="time" value="<?= $event->time ?>" required>
                                     </div>
                                     <div class="form-group col-3">
                                         <label for="timezone">Zona horaria</label>
@@ -161,11 +170,11 @@
                                 <div class="row">
                                     <div class="form-group col-2">
                                         <label for="currency">Num. Mínimo</label>
-                                        <input type="number" class="form-control" name="min_participants" id="min_participants" value="<?= $event->min_participants ?>">
+                                        <input type="number" class="form-control" name="min_participants" id="min_participants" value="<?= $event->min_participants ?>" required>
                                     </div>
                                     <div class="form-group col-2">
                                         <label for="max_participants">Num. Máximo</label>
-                                        <input type="number" class="form-control" name="max_participants" id="max_participants" value="<?= $event->max_participants ?>">
+                                        <input type="number" class="form-control" name="max_participants" id="max_participants" value="<?= $event->max_participants ?>" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -174,7 +183,7 @@
                                 <div class="row">
                                     <div class="form-group col-2">
                                         <label for="price">Precio</label>
-                                        <input type="number" class="form-control" name="price" id="price" value="<?= $event->price ?>">
+                                        <input type="number" class="form-control" name="price" id="price" value="<?= $event->price ?>" required>
                                     </div>
                                     <div class="form-group col-2">
                                         <label for="currency">Moneda</label>

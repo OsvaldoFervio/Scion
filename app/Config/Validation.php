@@ -40,4 +40,41 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+
+    // Event Form Rules
+    public $event = [
+        'name' => 'required',
+        'event_type' => 'required',
+        'category' => 'required',
+        'videogame' => 'required',
+        'platform' => 'required',
+        'date' => 'required',
+        'time' => 'required',
+        'timezone' => 'required',
+        'max_participants' => 'required',
+        'min_participants' => 'required',
+        'price' => 'required',
+        'currency' => 'required'
+    ];
+
+    public $event_errors = [
+        'event_type' => [
+            'required' => 'Elige un tipo de evento',
+        ],
+        'category' => [
+            'required' => 'Elige una categoria',
+        ],
+        'videogame' => [
+            'required' => 'Elige un videojuego de la lista',
+        ],
+        'platform' => [
+            'required' => 'Elige por lo menos una plataforma',
+        ],
+        'timezone' => [
+            'required' => 'Elige una zona horaria de la lista'
+        ],
+        'currency' => [
+            'required' => 'Elige una moneda para el precio',
+        ]
+    ];
 }
