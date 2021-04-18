@@ -30,8 +30,7 @@ class Login extends BaseController
                 ]);
                 return redirect()->redirect('/');
             }
-        } else {
-            return redirect()->back()->with('error', 'Datos incorrectos');
         }
+        return redirect()->back()->with('error', 'Datos incorrectos');
     }
 }
