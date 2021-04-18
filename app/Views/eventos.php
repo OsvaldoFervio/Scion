@@ -47,6 +47,7 @@
                             <div class="mx-2">
                                 <form action="<?= base_url('events/'.$event->id)?>" method="post">
                                     <input type="hidden" name="_method" value="DELETE">
+                                    <?= csrf_field() ?>
                                     <button type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>
                                 </form>
                             </div>

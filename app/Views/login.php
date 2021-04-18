@@ -25,7 +25,7 @@
 										<div id="profile-login" class="booked-tab-content tab-pane fade show active" role="tabpanel" aria-labelledby="profile-login-tab">
 											<div class="booked-form-wrap bookedClearFix">
 												<form id="loginform" action="<?= base_url('login') ?>" method="post">
-
+                                                    <?= csrf_field() ?>
 													<div class="form-group login-username">
 														<input type="text" name="email" id="email" class="form-control" placeholder="Email" required>
 													</div>

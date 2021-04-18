@@ -39,7 +39,8 @@
 									<div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
 										<h2><i class="booked-icon ion-edit"></i> &nbsp; Registro</h2>
 										<form method="post" enctype="multipart/form-data" id="contact-form" action="<?= base_url('signup/new') ?>">
-											<div class="row">
+                                            <?= csrf_field() ?>
+                                            <div class="row">
 												<div class="col-md-12">
 													<div class="form-group form-group--lg form-avatar">
 														<label for="avatar">Datos Personales</label>
