@@ -56,6 +56,7 @@
       </li>
       <li class="nav-secondary__login">
           <form action="<?= base_url('logout') ?>" method="post">
+              <?= csrf_field() ?>
               <div class="ml-2">
                   <input type="submit" class="btn btn-primary btn-sm" value="Logout">
               </div>
