@@ -15,19 +15,15 @@ class Register extends BaseController
     }
 
     public function create() {
-        $data = [
-            'first_name' => $this->request->getPost('first_name'),
-            'last_name' => $this->request->getPost('last_name'),
-            'birthdate' => $this->request->getPost('birthdate'),
-            'genre' => $this->request->getPost('genre'),
-            'username' => $this->request->getPost('username'),
-            'email' => $this->request->getPost('email'),
-            'password' => $this->request->getPost('password')
-        ];
-        $user = new User();
-        $user->fill($data);
-        $userModel = model('App\Models\UserModel', false);
-        $userModel->save($user);
-        $this->response->redirect('/');
+        if($this->validate('signup')) {
+            $data = $this->request->getPost();
+            $user = new User();
+            $user->fill($data);
+            $userModel = model('App\Models\UserModel', false);
+            $userModel->save($user);
+            $this->response->redirect('/');
+        } else {
+            return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
     }
 }

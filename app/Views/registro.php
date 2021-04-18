@@ -30,7 +30,7 @@
 										</figure>
 										<hr class="divider">
 										<p>
-											<label>Ya tienes una cuenta? <a href="">Inicia Sesión</a></label>
+											<label>Ya tienes una cuenta? <a href="<?= base_url('login') ?>">Inicia Sesión</a></label>
 										</p>
 									</div>
 								</div>
@@ -48,25 +48,25 @@
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="first_name" type="text" id="first_name" placeholder="Nombre*">
+                                                        <input class="text-input form-control" name="first_name" type="text" id="first_name" placeholder="Nombre*" required>
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control" name="last_name" type="text" id="last_name" placeholder="Apellidos*">
+														<input class="text-input form-control" name="last_name" type="text" id="last_name" placeholder="Apellidos*" required>
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="birthdate" type="date" id="birthdate" placeholder="Nombre">
+														<input class="text-input form-control" name="birthdate" type="date" id="birthdate" placeholder="Nombre" required>
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control" name="genre" type="text" id="genre" placeholder="Sexo*">
+														<input class="text-input form-control" name="genre" type="text" id="genre" placeholder="Sexo*" required>
 													</div><!-- .form-password -->
 												</div>
 
@@ -74,34 +74,57 @@
 
 											<div class="form-group form-group--lg form-nickname">
 												<label for="nickname">Datos de la Cuenta</label>
-												<input class="text-input form-control" name="email" type="text" id="email" placeholder="tucorreo@domain.com*">
-												<input class="text-input form-control" type="text" id="email_confirm" placeholder="Repite correo*">
+												<input class="text-input form-control" name="email" type="email" id="email" placeholder="tucorreo@domain.com*" required>
+                                                <?php if (session()->get('errors')) : ?>
+                                                    <?php if (! empty(session()->get('errors')['email'])) : ?>
+                                                    <p class="text-danger"><?= session()->get('errors')['email'] ?></p>
+                                                    <?php endif ?>
+                                                <?php endif ?>
+												<input class="text-input form-control" name="confirm_email" type="email" id="email_confirm" placeholder="Repite correo*" required>
+                                                <?php if (session()->get('errors')) : ?>
+                                                    <?php if (! empty(session()->get('errors')['confirm_email'])) : ?>
+                                                        <p class="text-danger"><?= session()->get('errors')['confirm_email'] ?></p>
+                                                    <?php endif ?>
+                                                <?php endif ?>
 											</div>
 
 											<div class="form-group form-group--lg form-nickname">
 												<label for="nickname">Nombre de usuario</label>
-												<input class="text-input form-control" name="username" type="text" id="username" placeholder="nickname*">
+												<input class="text-input form-control" name="username" type="text" id="username" placeholder="nickname*" required>
+                                                <?php if (session()->get('errors')) : ?>
+                                                    <?php if (! empty(session()->get('errors')['username'])) : ?>
+                                                        <p class="text-danger"><?= session()->get('errors')['username'] ?></p>
+                                                    <?php endif ?>
+                                                <?php endif ?>
 											</div>
 
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="password" type="password" id="pass1" placeholder="Ingresa Contraseña*">
+														<input class="text-input form-control" name="password" type="password" id="pass1" placeholder="Ingresa Contraseña*" required>
+                                                        <?php if (session()->get('errors')) : ?>
+                                                            <?php if (! empty(session()->get('errors')['password'])) : ?>
+                                                                <p class="text-danger"><?= session()->get('errors')['password'] ?></p>
+                                                            <?php endif ?>
+                                                        <?php endif ?>
 													</div><!-- .form-password -->
 												</div>
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control"  type="password" id="pass2" placeholder="Repite Contraseña*">
+														<input class="text-input form-control"  name="confirm_password" type="password" id="pass2" placeholder="Repite Contraseña*" required>
 													</div><!-- .form-password -->
 												</div>
-
-												<span class="text-danger">Las contraseñas deben coincidir, almenos una mayuscula y un caracter</span>
+                                                <?php if (session()->get('errors')) : ?>
+                                                    <?php if (! empty(session()->get('errors')['confirm_password'])) : ?>
+                                                        <p class="text-danger"><?= session()->get('errors')['confirm_password'] ?></p>
+                                                    <?php endif ?>
+                                                <?php endif ?>
 											</div>
 
 											<div class="form-group form-group--lg form-nickname">
 												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="rememberme">
+													<input type="checkbox" class="custom-control-input" id="rememberme" required>
 													<label class="custom-control-label" for="rememberme">He leído y acepto los</label> <a href="">Terminos y condiciones</a>
 												</div>
 											</div>

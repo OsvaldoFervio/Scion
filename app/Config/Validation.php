@@ -41,6 +41,43 @@ class Validation
 	// Rules
 	//--------------------------------------------------------------------
 
+    public $signup = [
+        'first_name' => 'required',
+        'last_name' => 'required',
+        'birthdate' => 'required',
+        'email' => 'required|valid_email|is_unique[users.email]',
+        'confirm_email' => 'required|matches[email]',
+        'password' => 'required|min_length[8]',
+        'confirm_password' => 'required|matches[password]',
+        'username' => 'required|is_unique[users.username]'
+    ];
+
+    public $signup_errors = [
+        'first_name' => [
+            'required' => 'Escribe un nombre',
+        ],
+        'last_name' => [
+            'required' => 'Escribe una apellido'
+        ],
+        'birthdate' => [
+            'required'=> 'Escribe una fecha de nacimiento'
+        ],
+        'email' => [
+            'is_unique' => 'Ya existe una cuenta con este correo',
+        ],
+        'username' => [
+            'is_unique' => 'Ya existe una cuenta con este nombre de usuario',
+        ],
+        'confirm_email' => [
+            'matches' => 'Los correos no coinciden',
+        ],
+        'password' => [
+            'min_length' => 'La contraseña debería tener mínimo 8 caracteres',
+        ],
+        'confirm_password' => [
+            'matches' => 'Las constraseñas no coinciden',
+        ]
+    ];
     // Event Form Rules
     public $event = [
         'name' => 'required',
