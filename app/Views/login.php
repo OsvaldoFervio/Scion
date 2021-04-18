@@ -27,11 +27,11 @@
 												<form id="loginform" action="<?= base_url('login') ?>" method="post">
 
 													<div class="form-group login-username">
-														<input type="text" name="email" id="email" class="form-control" placeholder="Email">
+														<input type="text" name="email" id="email" class="form-control" placeholder="Email" required>
 													</div>
 
 													<div class="form-group login-password">
-														<input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
+														<input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
 													</div>
 
 													<div class="login-remember">
