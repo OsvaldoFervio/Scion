@@ -59,6 +59,7 @@ class Events extends BaseController
     {
         $data = $this->request->getPost();
         $this->service->update($id, $data);
+        $this->service->storeEventImages($id, $this->request->getFiles());
         return redirect()->redirect('/events/edit/'.$id)->with('success', 'Evento actualizado');
     }
 
