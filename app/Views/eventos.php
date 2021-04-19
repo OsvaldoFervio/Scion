@@ -1,3 +1,4 @@
+<?php helper('admin'); ?>
 <?= $this->include('include_files/header') ?>
 <?= $this->include('include_files/navbar') ?>
 <body>
@@ -41,18 +42,20 @@
 		<main class="site-content">
 			<div class="section-content">
 				<div class="container">
-                    <div class="row">
-                        <div class="w-100 d-flex justify-content-end">
-                            <a href="<?= base_url('admin/events/edit/'.$event->id)?>" class="btn btn-primary">Editar</a>
-                            <div class="mx-2">
-                                <form action="<?= base_url('admin/events/delete/'.$event->id)?>" method="post">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <?= csrf_field() ?>
-                                    <button type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>
-                                </form>
+                    <?php if (is_admin()) : ?>
+                        <div class="row">
+                            <div class="w-100 d-flex justify-content-end">
+                                <a href="<?= base_url('admin/events/edit/'.$event->id)?>" class="btn btn-primary">Editar</a>
+                                <div class="mx-2">
+                                    <form action="<?= base_url('admin/events/delete/'.$event->id)?>" method="post">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <?= csrf_field() ?>
+                                        <button type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif ?>
 					<!-- Single Room - Content -->
 					<div class="single-room-content">
 						<div class="row">

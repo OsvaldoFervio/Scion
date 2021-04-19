@@ -1,3 +1,4 @@
+<?php helper('admin'); ?>
 <body>
     <div class="site-wrapper">
         <main class="site-content">
@@ -12,7 +13,7 @@
                         <li class="filter__item"><button class="filter__link btn btn-outline-secondary" data-filter=".room--category-normal">Normal</button></li>
                         <li class="filter__item"><button class="filter__link btn btn-outline-secondary" data-filter=".room--category-hard">Hard</button></li>
                     </ul>
-                    <?php if(session()->get('user_id')) : ?>
+                    <?php if(is_admin()) : ?>
                     <a href="<?= base_url('admin/events/new')?>" class="btn btn-primary">Nuevo</a>
                     <?php endif ?>
                     <div class="row rooms rooms--grid js-rooms--grid">
