@@ -39,12 +39,15 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login', 'Login::post');
 $routes->post('/logout', 'Logout::post');
 
-$routes->get('/events/new', 'Events::new');
-$routes->post('/events/create', 'Events::create');
+$routes->group('admin', function($routes) {
+    $routes->get('/events/new', 'Admin\Events::new');
+    $routes->post('/events/create', 'Admin\Events::create');
+    $routes->get('/events/edit/(:num)', 'Admin\Events::edit/$1');
+    $routes->put('/events/(:num)', 'Admin\Events::updated/$1');
+    $routes->delete('/events/delete/(:num)', 'Admin\Events::delete/$1');
+});
+
 $routes->get('/events/(:num)', 'Events::show/$1');
-$routes->get('/events/edit/(:num)', 'Events::edit/$1');
-$routes->put('/events/(:num)', 'Events::updated/$1');
-$routes->delete('/events/(:num)', 'Events::delete/$1');
 
 /*
  * --------------------------------------------------------------------
