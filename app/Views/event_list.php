@@ -13,7 +13,7 @@
                         <li class="filter__item"><button class="filter__link btn btn-outline-secondary" data-filter=".room--category-hard">Hard</button></li>
                     </ul>
                     <?php if(session()->get('user_id')) : ?>
-                    <a href="<?= base_url('events/new')?>" class="btn btn-primary">Nuevo</a>
+                    <a href="<?= base_url('admin/events/new')?>" class="btn btn-primary">Nuevo</a>
                     <?php endif ?>
                     <div class="row rooms rooms--grid js-rooms--grid">
                         <?php foreach ($events as $event) : ?>

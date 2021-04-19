@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="<?= base_url('events/update/'.$event->id) ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('admin/events/update/'.$event->id) ?>" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="_method" value="PUT">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="user_id" value="<?=$event->user_id ?>">

@@ -43,9 +43,9 @@
 				<div class="container">
                     <div class="row">
                         <div class="w-100 d-flex justify-content-end">
-                            <a href="<?= base_url('events/edit/'.$event->id)?>" class="btn btn-primary">Editar</a>
+                            <a href="<?= base_url('admin/events/edit/'.$event->id)?>" class="btn btn-primary">Editar</a>
                             <div class="mx-2">
-                                <form action="<?= base_url('events/'.$event->id)?>" method="post">
+                                <form action="<?= base_url('admin/events/delete/'.$event->id)?>" method="post">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <?= csrf_field() ?>
                                     <button type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>

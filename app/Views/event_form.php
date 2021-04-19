@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="<?= base_url('events/create') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('admin/events/create') ?>" method="post" enctype="multipart/form-data">
                                 <?= csrf_field() ?>
                                 <div class="form-group row">
                                     <div class="col-md-6">
