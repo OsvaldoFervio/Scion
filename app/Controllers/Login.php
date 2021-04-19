@@ -26,6 +26,7 @@ class Login extends BaseController
                 $session = session();
                 $session->set([
                     'user_id' => $result->id,
+                    'role_id' => $result->role_id,
                     'username' => $result->username
                 ]);
                 return redirect()->redirect('/');
