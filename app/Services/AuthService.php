@@ -14,9 +14,6 @@ class AuthService
     }
 
     public function isAdmin(): bool {
-        log_message('error', json_encode(session()->get('user_id')));
-        log_message('error', json_encode(session()->get('role_id')));
-        log_message('error', json_encode(session()->get('username')));
         return $this->isLoggedIn() and session()->get('role_id') == static::$ADMIN;
     }
 }
