@@ -45,6 +45,7 @@ class Validation
         'first_name' => 'required',
         'last_name' => 'required',
         'birthdate' => 'required',
+        'gender_id' => 'required',
         'email' => 'required|valid_email|is_unique[users.email]',
         'confirm_email' => 'required|matches[email]',
         'password' => 'required|min_length[8]',
@@ -61,6 +62,9 @@ class Validation
         ],
         'birthdate' => [
             'required'=> 'Escribe una fecha de nacimiento'
+        ],
+        'gender_id' => [
+            'required' => 'Elige un género'
         ],
         'email' => [
             'is_unique' => 'Ya existe una cuenta con este correo',
