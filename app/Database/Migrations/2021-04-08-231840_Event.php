@@ -389,20 +389,20 @@ class Event extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('event_images');
-        $this->forge->dropTable('event_platforms');
-        $this->forge->dropTable('event_stages');
-        $this->forge->dropTable('event_awards');
-        $this->forge->dropTable('event_details');
-        $this->forge->dropTable('events');
-        $this->forge->dropTable('videogame_platforms');
-        $this->forge->dropTable('videogames');
-        $this->forge->dropTable('platforms');
-        $this->forge->dropTable('event_types');
-        $this->forge->dropTable('timezones');
-        $this->forge->dropTable('difficulties');
-        $this->forge->dropTable('currencies');
-        $this->forge->dropTable('countries');
-        $this->forge->dropTable('categories');
+		$this->forge->dropTable('event_images', true);
+        $this->forge->dropTable('event_platforms', true);
+        $this->forge->dropTable('event_stages', true);
+        $this->forge->dropTable('event_awards', true);
+        $this->forge->dropTable('event_details', true);
+        $this->forge->dropTable('events', true);
+        $this->forge->dropTable('videogame_platforms', true);
+        $this->forge->dropTable('videogames', true);
+        $this->forge->dropTable('platforms', true);
+        $this->forge->dropTable('event_types', true);
+        $this->forge->dropTable('timezones', true);
+        $this->forge->dropTable('difficulties', true);
+        $this->forge->dropTable('currencies', true);
+        $this->forge->dropTable('countries', true);
+        $this->forge->dropTable('categories', true);
 	}
 }
