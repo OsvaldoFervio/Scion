@@ -37,7 +37,8 @@ class Home extends BaseController
 	{
 		$modelEvent = model('EventModel');
 
-		$events = $modelEvent->paginate();
+		$events = $modelEvent->orderBy('created_at', 'desc')
+                             ->paginate();
 
 	    echo view('include_files/header');
 		echo view('include_files/navbar');
