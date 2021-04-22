@@ -126,11 +126,9 @@ class EventModel extends Model
 
     protected function bindTimeZoneData($item) {
         $model = \model('TimeZoneModel');
-        $item->timezone_name = $model->find($item->timezone_id)->name;
-        $timezone = new \DateTimeZone($item->timezone_name);
-        $offset_timezone = $timezone->getOffset(new \DateTime('now', $timezone));
-        $hours = $offset_timezone / 3600;
-        $item->timezone_offset = $hours;
+        $timezone = $model->find($item->timezone_id);
+        $item->timezone_name = $timezone->name;
+        $item->timezone_offset = $timezone->offset;
     }
 
     protected function bindEventImage($item) {

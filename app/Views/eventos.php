@@ -103,7 +103,7 @@
 
 									<div class="room__meta-item">
 										<div class="room__meta-item-value">
-											<i class="icon-clock"></i> (UTC<?= $event->timezone_offset ?>)
+											<i class="icon-clock"></i> <?= $event->timezone_offset ?>
 										</div>
 										<div class="room__meta-item-label"><?= $event->timezone_name ?> </div>
 									</div>
