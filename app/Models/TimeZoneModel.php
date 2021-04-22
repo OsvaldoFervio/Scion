@@ -14,6 +14,8 @@ class TimeZoneModel extends Model
 
     protected $allowedFields = [
         'name',
+        'description',
+        'offset',
         'active',
     ];
 
