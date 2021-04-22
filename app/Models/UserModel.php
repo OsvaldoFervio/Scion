@@ -12,10 +12,11 @@ class UserModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
+        'role_id',
+        'gender_id',
         'first_name',
         'last_name',
         'birthdate',
-        'genre',
         'email',
         'username',
         'password'
