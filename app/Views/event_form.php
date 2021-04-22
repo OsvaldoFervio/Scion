@@ -115,7 +115,7 @@
                                             <option selected disabled>Selecciona una:</option>
                                             <?php foreach ($timezones as $timezone): ?>
                                             <option value="<?= $timezone->id ?>">
-                                                <?= $timezone->name ?>
+                                                <?= $timezone->description ?>
                                             </option>
                                             <?php endforeach ?>
                                         </select>

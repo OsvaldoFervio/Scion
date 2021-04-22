@@ -154,11 +154,11 @@
                                             <?php foreach ($timezones as $timezone): ?>
                                                 <?php if ($timezone->id == $event->timezone_id) : ?>
                                                     <option value="<?= $timezone->id ?>" selected>
-                                                        <?= $timezone->name ?>
+                                                        <?= $timezone->description ?>
                                                     </option>
                                                 <?php else : ?>
                                                     <option value="<?= $timezone->id ?>">
-                                                        <?= $timezone->name ?>
+                                                        <?= $timezone->description ?>
                                                     </option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
