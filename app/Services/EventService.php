@@ -92,20 +92,24 @@ class EventService
 
     protected function createEventAwards($eventId, $data)
     {
-        $model = model('EventAwardModel');
-        $awardNames = $data['award_name'];
-        $awardQuantities = $data['award_quantity'];
-        $eventAwardData = $this->buildEventAwardsData($eventId, $awardNames, $awardQuantities);
-        $model->insertBatch($eventAwardData);
+        if(!empty($data['award_name'])) {
+            $model = model('EventAwardModel');
+            $awardNames = $data['award_name'];
+            $awardQuantities = $data['award_quantity'];
+            $eventAwardData = $this->buildEventAwardsData($eventId, $awardNames, $awardQuantities);
+            $model->insertBatch($eventAwardData);
+        }
     }
 
     protected function createEventStages($eventId, $data)
     {
-        $model = model('EventStageModel');
-        $stageNames = $data['stage_name'];
-        $stageDescriptions = $data['stage_description'];
-        $eventStageData = $this->buildEventStagesData($eventId, $stageNames, $stageDescriptions);
-        $model->insertBatch($eventStageData);
+        if(!empty($data['stage_name'])) {
+            $model = model('EventStageModel');
+            $stageNames = $data['stage_name'];
+            $stageDescriptions = $data['stage_description'];
+            $eventStageData = $this->buildEventStagesData($eventId, $stageNames, $stageDescriptions);
+            $model->insertBatch($eventStageData);
+        }
     }
 
     public function storeEventImages($eventId, $images)
@@ -167,24 +171,28 @@ class EventService
 
     protected function updateEventAwards($eventId, $data)
     {
-        $model = model('EventAwardModel');
-        $awardNames = $data['award_name'];
-        $awardQuantities = $data['award_quantity'];
-        $awardIds = $data['award_id'];
-        $eventAwardData = $this->buildEventAwardsData($eventId,$awardNames, $awardQuantities, $awardIds);
-        foreach($eventAwardData as $eventAward)
-            $model->save($eventAward);
+        if(!empty($data['award_name'])) {
+            $model = model('EventAwardModel');
+            $awardNames = $data['award_name'];
+            $awardQuantities = $data['award_quantity'];
+            $awardIds = !empty($data['award_id']) ? $data['award_id'] : [];
+            $eventAwardData = $this->buildEventAwardsData($eventId,$awardNames, $awardQuantities, $awardIds);
+            foreach($eventAwardData as $eventAward)
+                $model->save($eventAward);
+        }
     }
 
     protected function updateEventStages($eventId, $data)
     {
-        $model = model('EventStageModel');
-        $stageNames = $data['stage_name'];
-        $stageDescriptions = $data['stage_description'];
-        $stageIds = $data['stage_id'];
-        $eventStageData = $this->buildEventStagesData($eventId, $stageNames, $stageDescriptions, $stageIds);
-        foreach($eventStageData as $eventStage)
-            $model->save($eventStage);
+        if(!empty($data['stage_name'])) {
+            $model = model('EventStageModel');
+            $stageNames = $data['stage_name'];
+            $stageDescriptions = $data['stage_description'];
+            $stageIds = !empty($data['stage_id']) ? $data['stage_id'] : [];
+            $eventStageData = $this->buildEventStagesData($eventId, $stageNames, $stageDescriptions, $stageIds);
+            foreach($eventStageData as $eventStage)
+                $model->save($eventStage);
+        }
     }
 
     protected function buildEventData($data, $user_id = null): array
