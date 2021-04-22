@@ -67,7 +67,17 @@
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password last">
-														<input class="text-input form-control" name="genre" type="text" id="genre" placeholder="Sexo*" required>
+														<select class="form-control" name="gender_id" id="gender">
+                                                            <option disabled selected>Seleciona un sexo:</option>
+                                                            <?php foreach ($genders as $gender) : ?>
+                                                                <option value="<?= $gender->id ?>"><?= $gender->name ?></option>
+                                                            <?php endforeach ?>
+                                                        </select>
+                                                        <?php if (session()->get('errors')) : ?>
+                                                            <?php if (! empty(session()->get('errors')['gender_id'])) : ?>
+                                                                <p class="text-danger"><?= session()->get('errors')['gender_id'] ?></p>
+                                                            <?php endif ?>
+                                                        <?php endif ?>
 													</div><!-- .form-password -->
 												</div>
 

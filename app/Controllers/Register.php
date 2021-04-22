@@ -8,9 +8,14 @@ use App\Entities\User;
 class Register extends BaseController
 {
     public function index() {
+
+        $model = model('GenderModel');
+        $data = [
+            'genders' => $model->findAll()
+        ];
         echo view('include_files/header');
         echo view('include_files/navbar');
-        echo view('registro');
+        echo view('registro', $data);
         echo view('include_files/footer');
     }
 
