@@ -15,7 +15,7 @@ class UserModel extends Model
         'first_name',
         'last_name',
         'birthdate',
-        'genre',
+        'gender_id',
         'email',
         'username',
         'password'
