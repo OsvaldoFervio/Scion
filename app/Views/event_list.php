@@ -18,7 +18,7 @@
                     <?php endif ?>
                     <div class="row rooms rooms--grid js-rooms--grid">
                         <?php foreach ($events as $event) : ?>
-                        <div class="room col-sm-6 col-md-3 room--category-normal">
+                        <div class="room col-sm-6 col-md-3 room--category-<?= strtolower($event->difficulty_name) ?>">
                             <div class="room__inner">
                                 <div class="room__body">
                                     <!-- Rating -->
@@ -34,7 +34,7 @@
                                     <!-- Rating / End -->
 
                                     <!-- Title -->
-                                    <h2 class="room__title"><a href="room-single.html"><?= $event->name ?></a><span> $25 USD</span></h2>
+                                    <h2 class="room__title"><a href="<?= base_url('events/'.$event->id) ?>"><?= $event->name ?></a><span> $25 USD</span></h2>
                                     <!-- Title / End -->
 
                                     <!-- Meta -->

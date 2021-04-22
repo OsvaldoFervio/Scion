@@ -67,6 +67,10 @@ class EventModel extends Model
         if(isset($data['id'])) {
             $item = $data['data'];
             $this->bindDifficultyData($item);
+        } else {
+            foreach ($data['data'] as $item) {
+                $this->bindDifficultyData($item);
+            }
         }
         return $data;
     }
