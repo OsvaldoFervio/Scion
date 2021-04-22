@@ -24,14 +24,14 @@
 									<div class="tab-content">
 										<div id="profile-login" class="booked-tab-content tab-pane fade show active" role="tabpanel" aria-labelledby="profile-login-tab">
 											<div class="booked-form-wrap bookedClearFix">
-												<form name="loginform" id="loginform" action="Login/login" method="post">
-
+												<form id="loginform" action="<?= base_url('login') ?>" method="post">
+                                                    <?= csrf_field() ?>
 													<div class="form-group login-username">
-														<input type="text" name="log" id="user_login" class="form-control" value="" size="20" placeholder="Email">
+														<input type="text" name="email" id="email" class="form-control" placeholder="Email" required>
 													</div>
 
 													<div class="form-group login-password">
-														<input type="password" name="pwd" id="user_pass" class="form-control" value="" size="20" placeholder="Contraseña">
+														<input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
 													</div>
 
 													<div class="login-remember">
@@ -42,7 +42,7 @@
 													</div>
 
 													<div class="login-submit">
-														<input type="submit" name="wp-submit" id="wp-submit" class="btn btn-lg btn-primary" value="Iniciar">
+														<input type="submit" id="wp-submit" class="btn btn-lg btn-primary" value="Iniciar">
 													</div>
 
 												</form>
@@ -59,6 +59,11 @@
 												</form>
 											</div>
 										</div>
+                                        <?php if(session()->getFlashdata('error')) : ?>
+                                        <div class="alert alert-danger text-center">
+                                            <?= session()->getFlashdata('error') ?>
+                                        </div>
+                                        <?php endif ?>
 									</div>
 								</div><!-- END #booked-page-form -->
 							</div>

@@ -33,6 +33,21 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/signup', 'Register::index');
+$routes->post('/signup/new', 'Register::create');
+$routes->get('/login', 'Login::index');
+$routes->post('/login', 'Login::post');
+$routes->post('/logout', 'Logout::post');
+
+$routes->group('admin', function($routes) {
+    $routes->get('/events/new', 'Admin\Events::new');
+    $routes->post('/events/create', 'Admin\Events::create');
+    $routes->get('/events/edit/(:num)', 'Admin\Events::edit/$1');
+    $routes->put('/events/(:num)', 'Admin\Events::updated/$1');
+    $routes->delete('/events/delete/(:num)', 'Admin\Events::delete/$1');
+});
+
+$routes->get('/events/(:num)', 'Events::show/$1');
 
 /*
  * --------------------------------------------------------------------

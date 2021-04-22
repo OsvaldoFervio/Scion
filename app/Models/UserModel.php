@@ -5,22 +5,35 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table      = 'user';
-    protected $primaryKey = 'IDUser';
+    protected $table      = 'users';
+    protected $primaryKey = 'id';
 
-    //protected $useAutoIncrement = true;
+    protected $returnType     = 'App\Entities\User';
+    protected $useSoftDeletes = true;
 
-    protected $returnType     = 'array';
-    protected $useSoftDeletes = false;
+    protected $allowedFields = [
+        'first_name',
+        'last_name',
+        'birthdate',
+        'genre',
+        'email',
+        'username',
+        'password'
+    ];
 
-    protected $allowedFields = ['name', 'email'];
-
-    protected $useTimestamps = false;
-    //protected $createdField  = 'created_at';
-    //protected $updatedField  = 'updated_at';
-    //protected $deletedField  = 'deleted_at';
+    protected $useTimestamps = true;
 
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    protected $beforeInsert = ['hashPassword'];
+    protected $beforeUpdate = ['hashPassword'];
+
+    protected function hashPassword($data) {
+        if(!isset($data['data']['password'])) return $data;
+
+        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+        return $data;
+    }
 }

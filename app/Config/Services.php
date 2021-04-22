@@ -2,7 +2,9 @@
 
 namespace Config;
 
+use App\Services\AuthService;
 use CodeIgniter\Config\BaseService;
+use App\Services\EventService;
 
 /**
  * Services Configuration file.
@@ -28,4 +30,23 @@ class Services extends BaseService
 	//
 	//     return new \CodeIgniter\Example();
 	// }
+
+    public static function event($getShared = false)
+    {
+        if(! $getShared)
+        {
+            return new EventService();
+        }
+
+        return static::getSharedInstance('event');
+    }
+
+    public static function auth($getShared = false)
+    {
+        if(! $getShared)
+        {
+            return new AuthService();
+        }
+        return static::getSharedInstance('auth');
+    }
 }

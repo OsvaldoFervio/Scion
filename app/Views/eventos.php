@@ -1,3 +1,6 @@
+<?php helper('admin'); ?>
+<?= $this->include('include_files/header') ?>
+<?= $this->include('include_files/navbar') ?>
 <body>
 	<div class="site-wrapper">
 		<div id="js-preloader-overlay" class="preloader-overlay">
@@ -19,14 +22,15 @@
 
 		<div class="room-slider-wrapper">
 			<div class="room-slider js-room-single-slick">
-				<div class="room-slider__item room-slider__item--img-1"></div>
-				<div class="room-slider__item room-slider__item--img-2"></div>
+                <div class="room-slider__item" style="background: url(<?=$event->image_url?>)"></div>
+				<!--<div class="room-slider__item room-slider__item--img-1"></div>-->
+				<!--<div class="room-slider__item room-slider__item--img-2"></div>-->
 			</div>
 
 			<!-- Room Title -->
 			<div class="single-room-heading">
 				<div class="container">
-					<h1 class="single-room-heading__title">Season One </h1>
+					<h1 class="single-room-heading__title"><?= $event->name ?> </h1>
 				</div>
 			</div>
 			<!-- Room Title / End -->
@@ -38,18 +42,32 @@
 		<main class="site-content">
 			<div class="section-content">
 				<div class="container">
+                    <?php if (is_admin()) : ?>
+                        <div class="row">
+                            <div class="w-100 d-flex justify-content-end">
+                                <a href="<?= base_url('admin/events/edit/'.$event->id)?>" class="btn btn-primary">Editar</a>
+                                <div class="mx-2">
+                                    <form action="<?= base_url('admin/events/delete/'.$event->id)?>" method="post">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <?= csrf_field() ?>
+                                        <button type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
 					<!-- Single Room - Content -->
 					<div class="single-room-content">
 						<div class="row">
 							<div class="col-md-3">
 								<div class="room__meta-item-value">
-									<i class="icon-tag"></i> Categoría: Deportes
+									<i class="icon-tag"></i> Categoría: <?= $event->category_name ?>
 								</div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="room__meta-item-value">
-									<i class="icon-calendar"></i> 1 de Julio de 2021
+									<i class="icon-calendar"></i> <?= $event->date_formatted ?>
 								</div>
 							</div>
 						</div>
@@ -73,58 +91,48 @@
 											<!-- Rating / End -->
 
 										</div>
-										<div class="room__meta-item-label">Hard</div>
+										<div class="room__meta-item-label"><?= $event->difficulty_name ?></div>
 									</div>
 
 									<div class="room__meta-item">
 										<div class="room__meta-item-value">
-											<i class="ion-person-stalker"></i> 9
+											<i class="ion-person-stalker"></i> <?= $event->max_participants ?>
 										</div>
 										<div class="room__meta-item-label">Participantes</div>
 									</div>
 
 									<div class="room__meta-item">
 										<div class="room__meta-item-value">
-											<i class="icon-clock"></i> (UTC-06:00)
+											<i class="icon-clock"></i> <?= $event->timezone_offset ?>
 										</div>
-										<div class="room__meta-item-label">America/Mexico City </div>
+										<div class="room__meta-item-label"><?= $event->timezone_name ?> </div>
 									</div>
 								</div>
 								<!-- Meta / End -->
 
-								<p>Scion Series 2021 Season One es el torneo más importante organizado por Scion Esports Series S.A. de C.V. en colaboración con S.H. Designate para brindarles una gran competencia y una experiencia nueva de juego en la modalidad de Perspectiva Primera Persona (PPP) así para que demuestres tus habilidades y de lo que eres capaz en el juego para dispositivos móviles del momento PUBG Mobile.</p>
-								<p>Inscripciones abiertas del 1 de Febrero 2021 - 13 de Junio 2021</p>
-								<p>Costo de inscripción por equipo $15 USD.</p>
+								<?php if ($eventDetails) :  ?>
+                                    <p><?= $eventDetails->description ?></p>
+                                <?php else : ?>
+                                <p>No hay una descripción</p>
+                                <?php endif ?>
 
 							</div>
 
 							<div class="col-md-4">
 								<!-- Room Details -->
 								<ul class="room-details">
-									<li class="room-details__item">
-										<i class="fas fa-trophy"></i>
-										PRIZE POOL! +$2500 USD
-									</li>
-									<li class="room-details__item">
-										<i class="fas fa-trophy"></i>
-										Primer Lugar - $ 1100 USD
-									</li>
-									<li class="room-details__item">
-										<i class="fas fa-trophy"></i>
-										Second Place - $ 500 USD
-									</li>
-									<li class="room-details__item">
-										<i class="fas fa-trophy"></i>
-										Third Place - $ 300 USD
-									</li>
-									<li class="room-details__item">
-										<i class="fas fa-trophy"></i>
-										4th- 8th Place - $ 60 USD
-									</li>
-									<li class="room-details__item">
-										<i class="fas fa-trophy"></i>
-										9th- 16th Place - $ 25 USD
-									</li>
+                                    <?php if ($eventAwards) : ?>
+                                        <?php foreach ($eventAwards as $award) : ?>
+                                            <li class="room-details__item">
+                                                <i class="fas fa-trophy"></i>
+                                                <?= $award->name ?> <?= $award->amount ?>
+                                            </li>
+                                        <?php endforeach ?>
+                                    <?php else : ?>
+                                        <li class="room-details__item">
+                                            NO HAY PREMIOS
+                                        </li>
+                                    <?php endif ?>
 								</ul>
 								<!-- Room Details / End -->
 
@@ -146,17 +154,11 @@
 								</div>
 								<!-- Meta / End -->
 
-								<p>
-									Reglas de competencia en español:<br>
-									<i class="fas fa-book"></i>
-									<a href="https://docs.google.com/document/d/1yCq0SUGulHZA7l6xPtaePMZVqA-WOYklbxlXjkRy_e0/edit?usp=sharing">Consultar aquí!</a><br>
-									Cuenta PayPal para realizar el pago: https://www.paypal.me/sciones
-								</p>
-
-								<p>Los equipos podrán registrarse posteriormente de haber hecho el pago, ya que de lo contrario no será válido su registro y no habrá resultado exitoso. Una vez realizado el pago de inscripción el capitán o manager del equipo deberá presentar a los organizadores del torneo su comprobante de pago para así tener acceso a una inscripción exitosa.<br>
-									En caso de tener alguna duda o problema ponerse en contacto con los organizadores del torneo en la fanpage oficial, correo electrónico o WhatsApp. <br>
-									Fanpage oficial de Scion Esports Series: https://www.facebook.com/scionesps
-								</p>
+                                <?php if ($eventDetails and $eventDetails->rules) :  ?>
+                                    <p><?= $eventDetails->rules ?></p>
+                                <?php else : ?>
+                                    <p>No se definieron reglas</p>
+                                <?php endif ?>
 							</div>
 
 							<div class="col-md-4">
@@ -165,52 +167,16 @@
 									<h3>Estructura</h3>
 								</div>
 
-								<div class="size-content">
-									<div class="title">1. Qualifiers Phase</div>
-									<div class="item">Grupo de rondas (FFA)</div>
-									<div class="item">
-										216 Equipos | 24 Grupos
-									</div>
-
-									<div class="item">
-										9 participantes por encuentro | 1 clasificado por encuentro
-									</div>
-
-								</div>
-
-								<div class="size-content">
-									<div class="title">2. Preliminaries Phase</div>
-									<div class="item">Grupo de rondas (FFA)</div>
-									<div class="item">
-										108 Equipos | 12 Grupos
-									</div>
-
-									<div class="item">
-										9 participantes por encuentro | 1 clasificado por encuentro
-									</div>
-								</div>
-
-								<div class="size-content">
-									<div class="title">3. Knockout Stage</div>
-									<div class="item">Grupo de rondas (FFA)</div>
-									<div class="item">
-										36 Equipos | 4 Grupos
-									</div>
-
-									<div class="item">
-										9 participantes por encuentro | 1 clasificado por encuentro
-									</div>
-								</div>
-
-								<div class="size-content">
-									<div class="title">4. Finals</div>
-									<div class="item">Eliminación directa (FFA)</div>
-									<div class="item">
-										18 Equipos |
-										18 participantes por encuentro |
-										3 clasificados por encuentro
-									</div>
-								</div>
+                                <?php if ($eventStages) :?>
+                                    <?php foreach ($eventStages as $index => $stage) : ?>
+                                        <div class="size-content p-2">
+                                            <div class="title"><?= $index + 1 ?>. <?= $stage->name ?></div>
+                                            <div class="item"><?= $stage->description ?></div>
+                                        </div>
+                                    <?php endforeach ?>
+                                <?php else : ?>
+                                <div>Por definir</div>
+                                <?php endif ?>
 								<!-- Room Details / End -->
 							</div>
 						</div>
@@ -507,4 +473,5 @@
 		</form>
 		<!-- Search Form / End -->
 	</div><!-- .site-wrapper -->
+    <?= $this->include('include_files/footer') ?>
 </body>

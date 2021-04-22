@@ -3,7 +3,7 @@
 
   <!-- Logo - Image Based -->
   <div class="header__logo header__logo--img">
-    <a href="<?= base_url('Home') ?>"><img src="<?= base_url('images/logo.png') ?>" alt="Escapium"></a>
+    <a href="<?= base_url('/') ?>"><img src="<?= base_url('images/logo.png') ?>" alt="Escapium"></a>
   </div>
   <!-- Logo - Image Based / End -->
 
@@ -37,20 +37,33 @@
       <!-- Search Form Toggler / End -->
 
       <!-- Account -->
+      <?php if(! session()->get('user_id')) : ?>
       <li class="nav-secondary__login">
-        <a href="<?= base_url('Login') ?>">
+        <a href="<?= base_url('login') ?>">
           <i class="icon-key"></i>
           <span class="link-label">Iniciar sesión</span>
         </a>
       </li>
       <li class="nav-secondary__login">
-        <a href="<?= base_url('Login/Registro') ?>">
+        <a href="<?= base_url('signup') ?>">
           <i class="icon-user"></i>
           <span class="link-label">Registrate</span>
         </a>
       </li>
+      <?php else : ?>
+      <li class="nav-secondary__login">
+          <?= session()->get('username') ?>
+      </li>
+      <li class="nav-secondary__login">
+          <form action="<?= base_url('logout') ?>" method="post">
+              <?= csrf_field() ?>
+              <div class="ml-2">
+                  <input type="submit" class="btn btn-primary btn-sm" value="Logout">
+              </div>
+          </form>
+      </li>
+      <?php endif ?>
       <!-- Account / End -->
-
     </ul>
     <!-- Secondary Nav / End -->
   </nav>
