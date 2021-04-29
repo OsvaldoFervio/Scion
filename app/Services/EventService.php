@@ -128,9 +128,10 @@ class EventService
             foreach ($images['images'] as $image){
                 if($image->isValid() && ! $image->hasMoved()){
                     $folder = $uploadsPath.'/event/'.$eventId.'/';
+                    $folderurl = 'public/event/'.$eventId.'/';
                     $newName = $image->getRandomName();
                     $image->move(ROOTPATH.'public/'.$folder, $newName);
-                    array_push($imagePaths, $folder.$newName);
+                    array_push($imagePaths, $folderurl.$newName);
                 }
             }
         }
