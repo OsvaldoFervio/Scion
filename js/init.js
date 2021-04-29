@@ -58,12 +58,12 @@
 			var $headerHeight = $('#header').innerHeight();
 			$('.page-heading').css('padding-top', $headerHeight);
 
-			$('#header').jPinning({
+			/*$('#header').jPinning({
 
 				// offset for header to hide or show in pixels
 				offset: 100,
 
-			});
+			});*/
 
 		},
 

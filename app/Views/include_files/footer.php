@@ -36,9 +36,9 @@
                 </div>
                 <div class="widget__content">
                   <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Iniciar Sesión</a></li>
-                    <li><a href="#">Registro</a></li>
+                    <li><a href="<?= base_url('Home') ?>">Inicio</a></li>
+                    <li><a href="<?= base_url('login') ?>">Iniciar Sesión</a></li>
+                    <li><a href="<?= base_url('signup') ?>">Registro</a></li>
                     
                   </ul>
                 </div>
@@ -53,9 +53,7 @@
                 </div>
                 <div class="widget__content">
                   <ul>
-                    <li><a href="#">Evento 1</a></li>
-                    <li><a href="#">Evento 2</a></li>
-                    <li><a href="#">Evento 3</a></li>
+                    <li><a href="<?= base_url('Home/eventos') ?>">Eventos</a></li>
                   </ul>
                 </div>
               </div>
@@ -140,3 +138,5 @@
   
   <!-- Template JS -->
   <script src="<?= base_url('js/init.js')?>"></script>
+
+  <script src="<?= base_url('js/translator/ctranslator.js')?>"></script>

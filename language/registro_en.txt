@@ -1,0 +1,17 @@
+lblRegistration:Register
+lblPersonales:Personal Data
+txt Name:Name*
+txt Surname:Surname
+txt Genre:Genre
+lblAccount:Account Information
+txtEmail:example@example.com*
+txtREmail:Repeat mail *
+lblUser:Username
+txtname:Nikname *
+txtPass:Enter a password *
+txRPass:Repeat password *
+lblMsg:Passwords must match
+lblTerms:I have read and accept the Terms and Conditions
+btnRegister:Register
+lblYaCuenta:Do you already have an account?
+lblStart:Login

@@ -1,0 +1,19 @@
+lblRegistro:Registro
+lblPersonales:Datos Personales
+txtNombre:Nombre*
+txtApellidos:Apellidos
+txtGenero:Genero
+lblCuenta:Datos de la Cuenta
+txtEmail:ejemplo@ejemplo.com*
+txtREmail:Repertir correo*
+lblUsuario:Nombre de Usuario
+txtname:Nikname*
+txtPass:Ingresa una contraseña*
+txRPass:Repite la contraseña*
+lblMsg:Las contraseñas deben coincidir
+lblTerminos:He leído y acepto los Terminos y Condiciones
+btnRegistrarse:Resçgistrarse
+lblYaCuenta:Ya tienes una cuenta?
+lblInicia:Inicia Sesión
+
+

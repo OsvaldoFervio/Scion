@@ -1,0 +1,16 @@
+lblSomos:Who are we?
+pSomos:Scion Esports Series is a Mexican company (legally constituted by the government of Mexico) dedicated to the organization of events related to the world of Gaming and eSports, where we seek offer great competitions, tournaments and events with high quality standards and outstanding management or organization to provide users with an iconic and emotional experience.
+lblNosotros:About Us
+lblGestion:Management, Innovation and Integration
+pGestion:Our philosophy is clear, to give memorable moments and experiences. We manage events of a nature digital entertainment such as esports competitions and tournaments aimed at all video game players from Latin America, South America and North America. We identify with innovation and the world of gaming. Fill the players with sensations, not only in fun but also in well-being as an individual.That each participant not only finds a challenge in our competitions but also a home where being able to function as an individual and a way to reach the highest competitive standard. At the same time we want to encourage coexistence and integration of society through video games, promote values ​​and create ties. As well as giving a showcase to other companies that want to collaborate with us.
+lblMision:Mission
+pMision:Take esports competition to more meaningful levels where the player (s) can get an iconic and memorable experience satisfying most of your five senses with excellence in service, attention and highly competitive tournaments with originality, creativity and innovation.
+lblVision:Vision
+pVision:To be the largest organizer of e-sports tournaments and competitions, significant, special and recognized in Latin America, South America and North America.
+lblValores:Values
+lblInnovation:Innovation
+pInnovacion:We are constantly searching and learning to create the most attractive competitions in the community in a unique way.
+lblConocimiento:Knowledge
+pConocimiento:We work based on experimentation and knowledge, our team lives day by day in the world of gaming studying first-hand the behavior of our public.
+lblEquipo:Teamwork
+pEquipo:We are an integral and high-performance team where each one fulfills an essential function, cohesive by the vision of the Scion Esports Series.

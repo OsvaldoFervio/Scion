@@ -1,5 +1,16 @@
 <!-- Header -->
-<header id="header" class="header">
+<div style="background: black; width: 100%; height: auto; text-align: right; padding: 2px 15px 5px 0; z-index: 103;">
+    <div id="cvelanguage" class="dropdown">
+        <button class="dropbtn">
+                Idioma
+        </button>
+        <div class="dropdown-content">
+          <a onclick="Initialize('es');"><img src="<?= base_url('images/es.png') ?>" style="width: 20px; height: 15px;"> es </a>
+          <a onclick="Initialize('en');"><img src="<?= base_url('images/en.png') ?>" style="width: 20px; height: 15px;"> en </a>
+        </div>
+    </div>    
+</div>
+<header id="header" class="header" style="position: inherit;">
 
   <!-- Logo - Image Based -->
   <div class="header__logo header__logo--img">

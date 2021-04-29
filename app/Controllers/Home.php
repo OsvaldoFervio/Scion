@@ -7,13 +7,13 @@ use App\Models\UserModel;
 class Home extends BaseController
 {
 	public function index()
-	{
-		//$user = new UserModel($db);
-		//$datos = $user->find('1');
-		//var_dump($datos);
+	{	
+		$modelEvent = model('EventModel');
+		$events = $modelEvent->orderBy('created_at', 'desc')
+                             ->paginate();
 		echo view('include_files/header');
-		echo view('include_files/navbar');
-		echo view('index');
+		echo view('include_files/navbar');	
+		echo view('index', ['events' => $events, 'pager' => $modelEvent->pager]);
 		echo view('include_files/footer');
 	}
 
@@ -36,7 +36,6 @@ class Home extends BaseController
 	public function eventos()
 	{
 		$modelEvent = model('EventModel');
-
 		$events = $modelEvent->orderBy('created_at', 'desc')
                              ->paginate();
 

@@ -92,59 +92,44 @@
                 </div>
                 <!-- Room #1 / End -->
 
-                <div class="row">
+                <div class="row">                  
                   <ul id="instagram-feed-tagged" class="widget-instagram__list widget-instagram__list--gutter-xs widget-instagram__list--4cols">
-                    <li class="widget-instagram__item aos-init aos-animate" data-aos="zoom-in" data-aos-duration="600">
-                      <a href="#" class="widget-instagram__link-wrapper" target="_blank">
-                        <span class="widget-instagram__plus-sign">
-                          <img src="images/samples/insta-shot-1.jpg" alt="" class="widget-instagram__img">
-                          <span class="widget-instagram__item-meta">
-                            <span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
-                            <span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+                    <?php
+                    $contar = 0;
+                    foreach ($events as $event) :
+                      $contar++;
+                    ?>
+                      <li class="widget-instagram__item aos-init aos-animate" data-aos="zoom-in" data-aos-duration="600">
+                        <a href="<?= base_url('events/' . $event->id) ?>" class="widget-instagram__link-wrapper" target="_blank">
+                          <span class="widget-instagram__plus-sign">
+                            <?php if ($event->image_url) : ?>
+                              <img src="<?= $event->image_url ?>" alt="" class="widget-instagram__img">
+                            <?php else : ?>
+                              <img src="<?= base_url('/images/event.png') ?>" alt="" class="widget-instagram__img">
+                            <?php endif ?>
+                            <span class="widget-instagram__item-meta">
+                              <h3 class="room__title"><?= strtoupper($event->name) ?></h3>
+                              <span class="widget-instagram__item-meta-likes"><i class="ion-person-stalker"></i> <?= $event->min_participants ?>-<?= $event->max_participants ?></span>
+                            </span>
                           </span>
-                        </span>
-                      </a>
+                        </a>
 
-                      <div class="room__meta-item">
-                        <i class="ion-location"></i> Internacional
-                      </div>
-                    </li>
+                        <?php if ($event->type_id == 3) : ?>
+                          <div class="room__meta-item">
+                            <i class="ion-location"></i> <?= $event->country_name ?>
+                          </div>
+                        <?php else : ?>
+                          <div class="room__meta-item">
+                            <i class="ion-location"></i> <?= $event->type_name ?>
+                          </div>
+                        <?php endif ?>
+                      </li>
+                    <?php
+                      if ($contar == 4)
+                        break;
 
-                    <li class="widget-instagram__item aos-init aos-animate" data-aos="zoom-in" data-aos-duration="600">
-                      <a href="#" class="widget-instagram__link-wrapper" target="_blank">
-                        <span class="widget-instagram__plus-sign">
-                          <img src="images/samples/insta-shot-2.jpg" alt="" class="widget-instagram__img">
-                          <span class="widget-instagram__item-meta">
-                            <span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
-                            <span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
-                          </span>
-                        </span>
-                      </a>
-                    </li>
-
-                    <li class="widget-instagram__item aos-init aos-animate" data-aos="zoom-in" data-aos-duration="600">
-                      <a href="#" class="widget-instagram__link-wrapper" target="_blank">
-                        <span class="widget-instagram__plus-sign">
-                          <img src="images/samples/insta-shot-3.jpg" alt="" class="widget-instagram__img">
-                          <span class="widget-instagram__item-meta">
-                            <span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
-                            <span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
-                          </span>
-                        </span>
-                      </a>
-                    </li>
-
-                    <li class="widget-instagram__item aos-init aos-animate" data-aos="zoom-in" data-aos-duration="600">
-                      <a href="#" class="widget-instagram__link-wrapper" target="_blank">
-                        <span class="widget-instagram__plus-sign">
-                          <img src="images/samples/insta-shot-4.jpg" alt="" class="widget-instagram__img">
-                          <span class="widget-instagram__item-meta">
-                            <span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
-                            <span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
-                          </span>
-                        </span>
-                      </a>
-                    </li>
+                    endforeach
+                    ?>
                   </ul>
                 </div>
               </div>
@@ -152,7 +137,6 @@
               <div>
                 <hr class="divider">
               </div>
-
             </div>
           </div>
         </div>
@@ -172,568 +156,66 @@
           <!-- Filter / End -->
 
           <!-- Rooms Grid - 4 cols -->
-          <div class="row rooms rooms--grid js-rooms--grid">
-            <!-- Room #1 -->
+          <div class="row rooms rooms--grid js-rooms--grid">           
+            <?php foreach ($events as $event) : ?>
+              <div class="room col-sm-6 col-md-3 room--category-<?= strtolower($event->difficulty_name) ?>">
+                <div class="room__inner">
+                  <div class="room__body">
+                    <!-- Rating -->
+                    <div class="room__complexity rating-icons">
+                      <!--<div class="rating-icons__placeholder">
+                        <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
+                      </div>
 
-            <div class="room col-sm-6 col-md-3 room--category-normal">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
+                      <div class="rating-icons__active">
+                        <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
+                      </div>-->
                     </div>
+                    <!-- Rating / End -->
 
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
+                    <!-- Title -->
+                    <h3 class="room__title"><a href="<?= base_url('events/' . $event->id) ?>"><?= strtoupper($event->name) ?></a></br><span> $25 USD</span></br></br></h3>
+                    <!-- Title / End -->
+
+                    <!-- Meta -->
+                    <div class="room__meta">
+                      <div class="room__meta-item">
+                        <i class="ion-calendar"></i><?= $event->date ?>
+                      </div>
+
+                      <div class="room__meta-item">
+                        <i class="ion-person-stalker"></i> <?= $event->min_participants ?>-<?= $event->max_participants ?>
+                      </div>
+                      <?php if ($event->type_id == 3) : ?>
+                        <div class="room__meta-item">
+                          <i class="ion-location"></i> <?= $event->country_name ?>
+                        </div>
+                      <?php else : ?>
+                        <div class="room__meta-item">
+                          <i class="ion-location"></i> <?= $event->type_name ?>
+                        </div>
+                      <?php endif ?>
                     </div>
+                    <!-- Meta / End -->
                   </div>
-                  <!-- Rating / End -->
+                  <!-- Image -->
 
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
+                  <figure class="room__img">
+                    <?php if ($event->image_url) : ?>
+                      <a href="<?= base_url('events/' . $event->id) ?>"><img src="<?= $event->image_url ?>" alt=""></a>
+                    <?php else : ?>
+                      <a href="<?= base_url('events/' . $event->id) ?>"><img src="<?= base_url('/images/event.png') ?>" alt=""></a>
+                    <?php endif ?>
+                  </figure>
+                  <!-- Image / End -->
                 </div>
-                <!-- Image -->
-
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img1.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
               </div>
-            </div>
-            <!-- Room #1 / End -->
-
-            <!-- Room #2 -->
-            <div class="room col-sm-6 col-md-3 room--category-hard">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img2.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #2 / End -->
-
-            <!-- Room #3 -->
-            <div class="room col-sm-6 col-md-3 room--category-easy">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img3.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #3 / End -->
-
-            <!-- Room #4 -->
-            <div class="room col-sm-6 col-md-3 room--category-hard">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-
-                  <!-- Rating / End -->
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img4.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-
-              </div>
-            </div>
-            <!-- Room #4 / End -->
-
-            <!-- Room #5 -->
-            <div class="room col-sm-6 col-md-3 room--category-easy">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img5.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #5 / End -->
-
-            <!-- Room #6 -->
-            <div class="room col-sm-6 col-md-3 room--category-easy">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 15-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img6.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #6 / End -->
-
-            <!-- Room #7 -->
-            <div class="room col-sm-6 col-md-3 room--category-hard">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img7.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #7 / End -->
-
-            <!-- Room #8 -->
-            <div class="room col-sm-6 col-md-3 room--category-easy">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img8.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-
-              </div>
-            </div>
-            <!-- Room #8 / End -->
-
-            <!-- Room #9 -->
-            <div class="room col-sm-6 col-md-3 room--category-normal">
-              <div class="room__inner">
-                <div class="room__body">
-
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-
-                  <!-- Meta / End -->
-                </div>
-                <!-- Image -->
-
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img9.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #9 / End -->
-
-            <!-- Room #10 -->
-            <div class="room col-sm-6 col-md-3 room--category-easy">
-              <div class="room__inner">
-                <div class="room__body">
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img3.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #10 / End -->
-
-            <!-- Room #11 -->
-            <div class="room col-sm-6 col-md-3 room--category-hard">
-              <div class="room__inner">
-                <div class="room__body">
-
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-calendar"></i>01/07/2020
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 5-6
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> México
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img4.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #11 / End -->
-
-            <!-- Room #12 -->
-            <div class="room col-sm-6 col-md-3 room--category-hard">
-              <div class="room__inner">
-                <div class="room__body">
-
-                  <!-- Rating -->
-                  <div class="room__complexity rating-icons">
-                    <div class="rating-icons__placeholder">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-
-                    <div class="rating-icons__active">
-                      <i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i><i class="ion-star"></i>
-                    </div>
-                  </div>
-                  <!-- Rating / End -->
-
-                  <!-- Title -->
-                  <h2 class="room__title"><a href="room-single.html">Nombre del Evento</a><span> $25 USD</span></h2>
-                  <!-- Title / End -->
-
-                  <!-- Meta -->
-                  <div class="room__meta">
-                    <div class="room__meta-item">
-                      <i class="ion-person-stalker"></i> 2-3
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="icon-clock"></i> 60
-                    </div>
-
-                    <div class="room__meta-item">
-                      <i class="ion-location"></i> LA 20198
-                    </div>
-                  </div>
-                  <!-- Meta / End -->
-                </div>
-
-                <!-- Image -->
-                <figure class="room__img">
-                  <a href="room-single.html"><img src="images/samples/room-grid-4-img2.jpg" alt=""></a>
-                </figure>
-                <!-- Image / End -->
-              </div>
-            </div>
-            <!-- Room #12 / End -->
+            <?php endforeach ?>
           </div>
+          <?= $pager->links() ?>
           <!-- Rooms Grid - 4 cols / End  -->
 
-          <!-- Blog Navigation -->
+          <!-- Blog Navigation 
           <nav aria-label="Room navigation">
             <ul class="pagination pagination--circle justify-content-center">
               <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -743,7 +225,7 @@
               <li class="page-item"><a class="page-link" href="#">10</a></li>
             </ul>
           </nav>
-          <!-- Blog Navigation / End -->
+           Blog Navigation / End -->
         </div>
       </div>
       <!-- Section: Latest Blog Posts / End -->

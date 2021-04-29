@@ -5816,8 +5816,8 @@ body.search-active .search-form-control .search-form-toggler__icon {
 
 @media (min-width: 992px) {
   .section-content {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 50px;
+    padding-bottom: 0px;
   }
 }
 
@@ -6689,7 +6689,7 @@ Images
   vertical-align: top;
   margin: 0;
   width: 100%;
-  height: auto;
+  height: 200px;
   -webkit-transition: opacity .3s ease-in-out;
   transition: opacity .3s ease-in-out;
 }
@@ -7909,8 +7909,9 @@ Images
   transition: -webkit-transform 0.4s;
   transition: transform 0.4s;
   transition: transform 0.4s, -webkit-transform 0.4s;
+  border-radius: 3px;
   width: 100%;
-  height: auto;
+  height: 230px;
 }
 
 .rooms--grid .room__img a {
@@ -7952,8 +7953,7 @@ Images
   margin-bottom: 0;
 }
 
-.rooms--grid .room__title {
-  font-size: 1.125rem;
+.rooms--grid .room__title {  
   margin-bottom: 0;
 }
 

@@ -22,7 +22,7 @@
 
 		<div class="room-slider-wrapper">
 			<div class="room-slider js-room-single-slick">
-                <div class="room-slider__item" style="background: url(<?=$event->image_url?>)"></div>
+                <div class="room-slider__item" style="background: url(<?=$event->image_url?>); background-repeat: no-repeat; background-size: cover;"></div>
 				<!--<div class="room-slider__item room-slider__item--img-1"></div>-->
 				<!--<div class="room-slider__item room-slider__item--img-2"></div>-->
 			</div>

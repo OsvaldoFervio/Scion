@@ -1,0 +1,6 @@
+lblTitulo:Season One
+lblCategoria:Category
+lblParticipantes:Participants
+lblReglas:Rules
+lblEstructura:Structure
+lblOtros:Other Events
