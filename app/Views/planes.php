@@ -1,26 +1,14 @@
 <body data-spy="scroll" data-target="#navbar-example">
   <main id="main">
     <!-- ======= Sección Nosotros ======= -->
-    <div id="about" class="about-area area-padding">
+    <div id="about" class="site-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline text-center">
             </div>
           </div>
-        </div>
-        <div class="row">
-          <!-- single-well start-->
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="well-left">
-              <div class="single-well">
-                <a href="#">
-                  <img src="images/about/1.jpg" alt="">
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>        
 
         <div class="row" style="margin-top: 100px;">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -182,24 +170,4 @@
       </div>
     </div><!-- End Sección Nosotros -->
   </main><!-- End #main -->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="vendor/php-email-form/validate.js"></script>
-  <script src="vendor/appear/jquery.appear.js"></script>
-  <script src="vendor/knob/jquery.knob.js"></script>
-  <script src="vendor/parallax/parallax.js"></script>
-  <script src="vendor/wow/wow.min.js"></script>
-  <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="vendor/nivo-slider/js/jquery.nivo.slider.js"></script>
-  <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="vendor/venobox/venobox.min.js"></script>
-  <!-- Template Main JS File -->
-
-  <script src="js/main.js"></script>
 </body>

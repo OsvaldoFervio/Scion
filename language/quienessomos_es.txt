@@ -1,0 +1,16 @@
+lblSomos:¿Quiénes Somos?
+pSomos:Scion Esports Series es una empresa Mexicana (legalmente constituida por el gobierno de México) dedicada a la organización de eventos relacionados al mundo del Gaming y los eSports, donde buscamos ofrecer grandes competencias, torneos y eventos con altos estándares de calidad y sobresaliente gestión u organización para brindarle a los usuarios una experiencia icónica y emotiva.
+lblNosotros:Acerca de Nosotros
+lblGestion:Gestión, Innovación e Integración
+pGestion:Nuestra filosofía es clara, dar momentos y experiencias memorables. Gestionamos eventos de índole lúdica digital como competencias y torneos de esports destinados a todos los jugadores de videojuegos de Latinoamérica, Sudamérica y Norteamérica. Nos identificamos con la innovación y el mundo del gaming. Llenar de sensaciones a los jugadores, no sólo en diversión sino en bienestar como individuo. Que cada participante no solo encuentre un desafío en nuestras competiciones sino también un hogar donde poder desenvolverse como individuo y un camino para llegar al máximo estándar competitivo. Al mismo tiempo queremos incentivar la convivencia y la integración de la sociedad por medio de los videojuegos, fomentar valores y crear lazos. Como también dar vitrina a otras empresas que quieran colaborar con nosotros. 
+lblMision:Misión
+pMision:Llevar a la competencia en los esports a niveles más significativos donde el/los jugadores puedan obtener una experiencia icónica y memorable satisfaciendo la mayor parte de sus cinco sentidos con excelencia en servicio, atención y torneos altamente competitivos con originalidad, creatividad e innovación.
+lblVision:Visión
+pVision:Ser la empresa organizadora de torneos y competencias de deportes electrónicos más grande, significativa, especial y reconocida de Latinoamérica, Sudamérica y Norteamérica.
+lblValores:Valores
+lblInnovacion:Innovación
+pInnovacion:Estamos en constante búsqueda y aprendizaje para crear las competencias más atractivas de la comunidad de forma única.
+lblConocimiento:Conocimiento
+pConocimiento:Trabajamos con base a la experimentación y el conocimiento, nuestro equipo vive día a día en el mundo del gaming estudiando de primera mano el comportamiento de nuestro público.
+lblEquipo:Trabajo en Equipo
+pEquipo:Somos un equipo integro y de alto rendimiento en donde cada uno cumple una función esecial, cohesionado por la visión de Scion Esports Series.

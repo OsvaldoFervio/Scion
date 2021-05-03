@@ -1,0 +1,14 @@
+lblCrear:Crear Equipo
+lblLogo:Agregar logo aquí
+lblRequeridos:Datos Requeridos
+lblEquipo:Equipo
+lblManager:Manager
+lblDiscord:Discord
+lblWhats:WhatsApp Manager
+lblCorreo:Email
+lblPais:País
+lblParticipantes:Participantes
+lblID:ID
+lblParticipante:Participante Nº
+lblTerminos:He leído y acepto los Terminos y Condiciones
+btnCrear:Crear Equipo

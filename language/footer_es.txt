@@ -1,0 +1,13 @@
+lblfMapa:Mapa del sitio
+lblfInicio:Inicio
+lblfSesion:Iniciar Sesión
+lblfRegistro:Registro
+lblfTorneos:Torneos y Eventos
+lblfMas:Más
+lblfEquipo:Crea tu equipo
+lblfTabla:Tabla de posiciones
+lblfAyuda:Ayuda
+lblfContacto:Contacto
+lblfCorreo:contacto@scionesps.com
+lblfTelefono:+52 123 456 7890
+lblfTerminos:Terminos y Condiciones

@@ -1,5 +1,16 @@
 <!-- Header -->
-<header id="header" class="header">
+<div style="background: black; width: 100%; height: auto; text-align: right; padding: 2px 15px 5px 0; z-index: 103;">
+    <div id="cvelanguage" class="dropdown">
+        <button class="dropbtn">
+                Idioma
+        </button>
+        <div class="dropdown-content">
+          <a onclick="Initialize('es');"><img src="<?= base_url('images/es.png') ?>" style="width: 20px; height: 15px;"> es </a>
+          <a onclick="Initialize('en');"><img src="<?= base_url('images/en.png') ?>" style="width: 20px; height: 15px;"> en </a>
+        </div>
+    </div>    
+</div>
+<header id="header" class="header" style="position: inherit;">
 
   <!-- Logo - Image Based -->
   <div class="header__logo header__logo--img">
@@ -11,12 +22,12 @@
   <!-- Main Navigation -->
   <nav class="main-nav">
     <ul class="main-nav__list">
-      <li class="active"><a href="<?= base_url('Home') ?>">Inicio</a></li>
-      <li class=""><a href="<?= base_url('Home/nosotros') ?>">¿Quienes somos?</a></li>
-      <li class=""><a href="<?= base_url('Home/planes') ?>">Planes</a> </li>
-      <li class=""><a href="<?= base_url('Home/eventos') ?>">Eventos</a></li>
-      <li class=""><a href="<?= base_url('Home/equipos') ?>">Equipo</a></li>
-      <li class=""><a href="<?= base_url('Home/tabposicion') ?>">Tabla Posiciones</a></li>
+      <li><a href="<?= base_url('Home') ?>">Inicio</a></li>
+      <li><a href="<?= base_url('Home/nosotros') ?>">¿Quienes somos?</a></li>
+      <li><a href="<?= base_url('Home/planes') ?>">Planes</a> </li>
+      <li><a href="<?= base_url('Home/eventos') ?>">Eventos</a></li>
+      <li><a href="<?= base_url('Home/equipos') ?>">Equipo</a></li>
+      <li><a href="<?= base_url('Home/tabposicion') ?>">Tabla Posiciones</a></li>
     </ul>
   </nav>
   <!-- Main Navigation / End -->

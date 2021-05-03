@@ -31,12 +31,15 @@
   <link href="<?= base_url('fonts/ionicons/css/ionicons.min.css') ?>" rel="stylesheet">
   <link href="<?= base_url('vendor/magnific-popup/magnific-popup.css') ?>" rel="stylesheet">
   <link href="<?= base_url('vendor/slick/slick.css') ?>" rel="stylesheet">
+ 
   <!-- Template CSS-->
   <link href="<?= base_url('css/style.css') ?>" rel="stylesheet">
   <!-- Booked CSS-->
   <link href="<?= base_url('css/booked.css') ?>" rel="stylesheet">
   <!-- Custom CSS-->
   <link href="<?= base_url('css/custom.css') ?>" rel="stylesheet">
+  <!-- Language CSS-->
+  <link href="<?= base_url('css/slanguage.css') ?>" rel="stylesheet">
 
 </head>
 

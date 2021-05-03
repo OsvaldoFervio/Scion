@@ -1,0 +1,8 @@
+lblSesion:Sign In
+lblRecuperar:Recover password
+txtUsuario:Email
+txtPass:Password
+lblRecordarme:Remember me
+btnIniciar:Access
+txtEnviar:What is your email?
+btnEvniar:Submit

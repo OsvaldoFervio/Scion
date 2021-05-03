@@ -1,0 +1,43 @@
+CRITICAL - 2021-04-29 14:07:44 --> You have not selected a database type to connect to.
+#0 C:\wamp64\www\ScionsGit\system\Database\Config.php(87): CodeIgniter\Database\Database->load(Array, 'server')
+#1 C:\wamp64\www\ScionsGit\system\Model.php(111): CodeIgniter\Database\Config::connect('server')
+#2 C:\wamp64\www\ScionsGit\system\Config\Factories.php(114): CodeIgniter\Model->__construct(NULL)
+#3 C:\wamp64\www\ScionsGit\system\Common.php(847): CodeIgniter\Config\Factories::__callStatic('models', Array)
+#4 C:\wamp64\www\ScionsGit\app\Controllers\Home.php(38): model('EventModel')
+#5 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(936): App\Controllers\Home->eventos()
+#6 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\wamp64\www\ScionsGit\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2021-04-29 14:14:14 --> You have not selected a database type to connect to.
+#0 C:\wamp64\www\ScionsGit\system\Database\Config.php(87): CodeIgniter\Database\Database->load(Array, 'server')
+#1 C:\wamp64\www\ScionsGit\system\Model.php(111): CodeIgniter\Database\Config::connect('server')
+#2 C:\wamp64\www\ScionsGit\system\Config\Factories.php(114): CodeIgniter\Model->__construct(NULL)
+#3 C:\wamp64\www\ScionsGit\system\Common.php(847): CodeIgniter\Config\Factories::__callStatic('models', Array)
+#4 C:\wamp64\www\ScionsGit\app\Controllers\Home.php(38): model('EventModel')
+#5 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(936): App\Controllers\Home->eventos()
+#6 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\wamp64\www\ScionsGit\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2021-04-29 15:37:01 --> Call to undefined function is_admin()
+#0 C:\wamp64\www\ScionsGit\system\View\View.php(220): include()
+#1 C:\wamp64\www\ScionsGit\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\wamp64\www\ScionsGit\system\Common.php(1217): CodeIgniter\View\View->render('index', Array, true)
+#3 C:\wamp64\www\ScionsGit\app\Controllers\Home.php(16): view('index')
+#4 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\ScionsGit\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-04-29 15:37:17 --> Undefined variable: events
+#0 C:\wamp64\www\ScionsGit\app\Views\index.php(179): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\S...', 179, Array)
+#1 C:\wamp64\www\ScionsGit\system\View\View.php(220): include('C:\\wamp64\\www\\S...')
+#2 C:\wamp64\www\ScionsGit\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\ScionsGit\system\Common.php(1217): CodeIgniter\View\View->render('index', Array, true)
+#4 C:\wamp64\www\ScionsGit\app\Controllers\Home.php(16): view('index')
+#5 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#6 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\wamp64\www\ScionsGit\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\wamp64\www\ScionsGit\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
