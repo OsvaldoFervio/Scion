@@ -22,12 +22,12 @@
   <!-- Main Navigation -->
   <nav class="main-nav">
     <ul class="main-nav__list">
-      <li class="active"><a href="<?= base_url('Home') ?>">Inicio</a></li>
-      <li class=""><a href="<?= base_url('Home/nosotros') ?>">¿Quienes somos?</a></li>
-      <li class=""><a href="<?= base_url('Home/planes') ?>">Planes</a> </li>
-      <li class=""><a href="<?= base_url('Home/eventos') ?>">Eventos</a></li>
-      <li class=""><a href="<?= base_url('Home/equipos') ?>">Equipo</a></li>
-      <li class=""><a href="<?= base_url('Home/tabposicion') ?>">Tabla Posiciones</a></li>
+      <li><a href="<?= base_url('Home') ?>">Inicio</a></li>
+      <li><a href="<?= base_url('Home/nosotros') ?>">¿Quienes somos?</a></li>
+      <li><a href="<?= base_url('Home/planes') ?>">Planes</a> </li>
+      <li><a href="<?= base_url('Home/eventos') ?>">Eventos</a></li>
+      <li><a href="<?= base_url('Home/equipos') ?>">Equipo</a></li>
+      <li><a href="<?= base_url('Home/tabposicion') ?>">Tabla Posiciones</a></li>
     </ul>
   </nav>
   <!-- Main Navigation / End -->

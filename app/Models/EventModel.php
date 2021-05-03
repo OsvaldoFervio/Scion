@@ -1,9 +1,5 @@
 <?php
-
-
 namespace App\Models;
-
-
 use CodeIgniter\Model;
 
 class EventModel extends Model
@@ -29,7 +25,6 @@ class EventModel extends Model
         'max_participants',
         'active'
     ];
-
 
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;

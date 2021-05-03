@@ -13,16 +13,15 @@ class Events extends BaseController
     }
 
     public function show($id) {
-        $event = $this->service->getById($id);
-        $eventDetails = $this->service->getDetailsByEventId($id);
-        $eventAwards = $this->service->getAwardsByEventId($id);
-        $eventStages = $this->service->getStagesByEventId($id);
-        $data = [
-            'event' => $event,
-            'eventDetails' => $eventDetails,
-            'eventAwards' => $eventAwards,
-            'eventStages' => $eventStages
-        ];
+
+        $modelEvent = model('EventModel');
+		$data['events'] = $modelEvent->where('id <', $id)->orderBy('created_at', 'desc')->paginate();
+
+        $data['event'] = $this->service->getById($id);
+        $data['eventDetails'] = $this->service->getDetailsByEventId($id);
+        $data['eventAwards'] = $this->service->getAwardsByEventId($id);
+        $data['eventStages'] = $this->service->getStagesByEventId($id);       
+
         echo view('eventos', $data);
     }
 }

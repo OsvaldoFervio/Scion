@@ -1,0 +1,32 @@
+table{
+    width:100%;
+    margin:0 auto;
+    color:white;
+    text-align:center;
+    border-radius: 5px;
+  }
+  tr{
+    cursor:pointer;
+  }
+  .destacado{
+    font-family:Arial;
+    font-weight:bold;
+    background-color:white;
+    color: black;
+  }
+  .linea1{
+    background-color:#232323;
+  }
+  .linea1:hover{
+    color:#fff;
+    font-weight: 500;
+    background-color:#084295;
+  }
+  .linea2{
+     background-color:#000000;
+  }
+  .linea2:hover{
+    color:#fff;
+    font-weight: 500;
+    background-color:#084295;
+  }  
