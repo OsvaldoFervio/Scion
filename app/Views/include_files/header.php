@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="es">
 <head>
   <!-- Basic Page Needs
   ================================================== -->
@@ -42,5 +42,3 @@
   <link href="<?= base_url('css/slanguage.css') ?>" rel="stylesheet">
 
 </head>
-
-<!-- <link href="<?= base_url('vendor/dashboard/jqvmap/dist/jqvmap.css') ?>" rel="stylesheet"/> -->

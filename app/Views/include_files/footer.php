@@ -12,13 +12,13 @@
                 <div class="widget__content">
                   <ul class="social-links social-links--circle">
                     <li class="social-links__item">
-                      <a class="social-links__link" href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a class="social-links__link" href="https://www.facebook.com/scionesps/"><i class="fab fa-facebook-f"></i></a>
                     </li>                   
                     <li class="social-links__item">
-                      <a class="social-links__link" href="#"><i class="fab fa-instagram"></i></a>
+                      <a class="social-links__link" href="https://www.instagram.com/scionesportsseries/"><i class="fab fa-instagram"></i></a>
                     </li>                   
                     <li class="social-links__item">
-                      <a class="social-links__link" href="#"><i class="fab fa-youtube"></i></a>
+                      <a class="social-links__link" href="https://discord.com/invite/h7wrFQP"><i class="fab fa-discord"></i></a>
                     </li>                   
                   </ul>
                 </div>
