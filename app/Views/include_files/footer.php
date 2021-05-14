@@ -12,13 +12,13 @@
                 <div class="widget__content">
                   <ul class="social-links social-links--circle">
                     <li class="social-links__item">
-                      <a class="social-links__link" href="https://www.facebook.com/scionesps/"><i class="fab fa-facebook-f"></i></a>
+                      <a class="social-links__link" href="https://www.facebook.com/scionesps/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     </li>                   
                     <li class="social-links__item">
-                      <a class="social-links__link" href="https://www.instagram.com/scionesportsseries/"><i class="fab fa-instagram"></i></a>
+                      <a class="social-links__link" href="https://www.instagram.com/scionesportsseries/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </li>                   
                     <li class="social-links__item">
-                      <a class="social-links__link" href="https://discord.com/invite/h7wrFQP"><i class="fab fa-discord"></i></a>
+                      <a class="social-links__link" href="https://discord.com/invite/h7wrFQP" target="_blank"><i class="fab fa-discord"></i></a>
                     </li>                   
                   </ul>
                 </div>
@@ -67,8 +67,8 @@
                 </div>
                 <div class="widget__content">
                   <ul>
-                    <li><a href="#">Crea tu equipo</a></li>
-                    <li><a href="#">Tabla Posiciones</a></li>
+                    <li><a href="<?= base_url('Home/equipos') ?>">Crea tu equipo</a></li>
+                    <li><a href="<?= base_url('Home/tabposicion') ?>">Tabla Posiciones</a></li>
                     <li><a href="#">Ayuda</a></li>
                   </ul>
                 </div>

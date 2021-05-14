@@ -1,3 +1,6 @@
+<?php helper('users'); ?>
+<?php include('paypal/config.php'); ?>
+
 <body data-spy="scroll" data-target="#navbar-example">
   <main id="main">
     <!-- ======= Sección Nosotros ======= -->
@@ -8,7 +11,7 @@
             <div class="section-headline text-center">
             </div>
           </div>
-        </div>        
+        </div>
 
         <div class="row" style="margin-top: 100px;">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -34,7 +37,15 @@
                   <li>No puede jugar con miembros sin tag (sólo en las fases que la organización determine).</li>
                   <li>No puede cambiar roster durante fases, solo uando se le indique en el reglamento y debe respetar todo el reglamento completo.</li>
                 </ul>
-                <a class="btn" href="#" title="Get Started">GET STARTED</a>
+                <?php if (is_user()) : ?>
+                  <?php $productId = 1; ?>
+                  <?php $productPrice = 15; ?>
+                  <?php $currency = "USD"; ?>
+                  <div id="paypal-buttonP1"></div>
+                  <?php include('paypal/paypalCheckoutP1.php'); ?>
+                <?php else : ?>
+                  <a class="btn" href="<?= base_url('signup') ?>" title="Get Started">GET STARTED</a>
+                <?php endif ?>
               </div>
               <!--End columin-1-->
 
@@ -62,7 +73,15 @@
                       al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también en caso de pasar
                       de ronda tiene derecho a elegir qué día jugar.</li>
                   </ul>
-                  <a class="btn" href="#" title="Get Started">GET STARTED</a>
+                  <?php if (is_user()) : ?>
+                    <?php $productId = 2; ?>
+                    <?php $productPrice = 45; ?>
+                    <?php $currency = "USD"; ?>
+                    <div id="paypal-buttonP2"></div>
+                    <?php include('paypal/paypalCheckoutP2.php'); ?>
+                  <?php else : ?>
+                    <a class="btn" href="<?= base_url('signup') ?>" title="Get Started">GET STARTED</a>
+                  <?php endif ?>
                 </center>
               </div>
               <!--End columin-2-->
@@ -91,7 +110,15 @@
                       al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también en caso de pasar
                       de ronda tiene derecho a elegir qué día jugar.</li>
                   </ul>
-                  <a class="btn" href="#" title="Get Started">GET STARTED</a>
+                  <?php if (is_user()) : ?>
+                    <?php $productId = 3; ?>
+                    <?php $productPrice = 80; ?>
+                    <?php $currency = "USD"; ?>
+                    <div id="paypal-buttonP3"></div>
+                    <?php include('paypal/paypalCheckoutP3.php'); ?>
+                  <?php else : ?>
+                    <a class="btn" href="<?= base_url('signup') ?>" title="Get Started">GET STARTED</a>
+                  <?php endif ?>
                 </center>
               </div>
               <!--End columin-3-->
@@ -126,7 +153,15 @@
                     se le pregunta al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también
                     en caso de pasar de ronda tiene derecho a elegir qué día jugar.</li>
                 </ul>
-                <a class="btn" href="#" title="Get Started">GET STARTED</a>
+                <?php if (is_user()) : ?>                  
+                  <?php $productId = 4; ?>
+                  <?php $productPrice = 99; ?>
+                  <?php $currency = "USD"; ?>
+                  <div id="paypal-buttonP4"></div>
+                  <?php include('paypal/paypalCheckoutP4.php'); ?>
+                <?php else : ?>
+                  <a class="btn" href="<?= base_url('signup') ?>" title="Get Started">GET STARTED</a>
+                <?php endif ?>
               </div>
               <!--End columin-1-->
 
@@ -157,7 +192,15 @@
                       se le pregunta al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también
                       en caso de pasar de ronda tiene derecho a elegir qué día jugar.</li>
                   </ul>
-                  <a class="btn" href="#" title="Get Started">GET STARTED</a>
+                  <?php if (is_user()) : ?>                    
+                    <?php $productId = 5; ?>
+                    <?php $productPrice = 170; ?>
+                    <?php $currency = "USD"; ?>
+                    <div id="paypal-buttonP5"></div>
+                    <?php include('paypal/paypalCheckoutP5.php'); ?>
+                  <?php else : ?>
+                    <a class="btn" href="<?= base_url('signup') ?>" title="Get Started">GET STARTED</a>
+                  <?php endif ?>
                 </center>
               </div>
               <!--End columin-2-->
