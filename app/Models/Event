@@ -1,0 +1,27 @@
+<?php
+class Candidate extends CI_Model{
+	function __construct(){
+		$this->load->database();
+	}
+
+
+	
+
+	public function getEvents(){	
+		$sql =  $this->db->get('events');
+		$sql=  $sql->result();
+		return $sql;
+
+	}
+
+		
+
+
+
+	
+
+	
+
+
+
+}
