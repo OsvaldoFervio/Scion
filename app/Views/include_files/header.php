@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="es">
 <head>
   <!-- Basic Page Needs
   ================================================== -->
@@ -40,7 +40,7 @@
   <link href="<?= base_url('css/custom.css') ?>" rel="stylesheet">
   <!-- Language CSS-->
   <link href="<?= base_url('css/slanguage.css') ?>" rel="stylesheet">  
-
+  
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 </head>
 

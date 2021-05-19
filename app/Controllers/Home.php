@@ -60,4 +60,12 @@ class Home extends BaseController
 		echo view('tabposicion');
 		echo view('include_files/footer');
 	}
+
+	public function dashboard()
+	{
+		echo view('include_files/header');
+		echo view('include_files/navbar');
+		echo view('Admin/index');
+		echo view('include_files/footer');
+	}
 }

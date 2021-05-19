@@ -23,7 +23,7 @@ class Database extends Config
 	 *
 	 * @var string
 	 */
-	public $defaultGroup = 'default';
+	public $defaultGroup = 'server';
 
 	/**
 	 * The default database connection.
@@ -57,15 +57,15 @@ class Database extends Config
 	 * @var array
 	 */
 	public $server = [
-		'dsn'	=> '',
+		'DSN'	=> '',
 		'hostname' => '162.241.61.145',
 		'username' => 'ocsysmx_scion',
 		'password' => '7rL?oB=$#Wp3',
 		'database' => 'ocsysmx_scionesports',
-		'dbdriver' => 'MySQLi',
-		'dbprefix' => '',
-		'pconnect' => FALSE,
-		'db_debug' => (ENVIRONMENT !== 'production'),
+		'DBDriver' => 'MySQLi',
+		'DBPrefix' => '',
+		'pConnect' => FALSE,
+		'DBDebug' => (ENVIRONMENT !== 'production'),
 		'cache_on' => FALSE,
 		'cachedir' => '',
 		'char_set' => 'utf8mb4',
