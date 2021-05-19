@@ -39,6 +39,9 @@
   <!-- Custom CSS-->
   <link href="<?= base_url('css/custom.css') ?>" rel="stylesheet">
   <!-- Language CSS-->
-  <link href="<?= base_url('css/slanguage.css') ?>" rel="stylesheet">
-
+  <link href="<?= base_url('css/slanguage.css') ?>" rel="stylesheet">  
+  
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 </head>
+
+<!-- <link href="<?= base_url('vendor/dashboard/jqvmap/dist/jqvmap.css') ?>" rel="stylesheet"/> -->

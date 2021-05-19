@@ -1,4 +1,6 @@
 function Initialize(cve) {
+    remplaceImg(cve);
+
     if(window.location.href.includes('home'))
         GetInicio(cve);
     if(window.location.href.includes('nosotros'))
@@ -15,6 +17,20 @@ function Initialize(cve) {
         GetLogin(cve);
     if(window.location.href.includes('registro'))
         GetRegistro(cve);
+}
+
+let lengimg = document.getElementsByClassName("dropbtn");
+function remplaceImg(cve) {
+    if(cve == "es")
+    {
+        lengimg[0].childNodes[0].src = "../images/es.png"; 
+        lengimg[0].childNodes[1].data = " es ";        
+    }  
+    else    
+    {
+        lengimg[0].childNodes[0].src = "../images/en.png";  
+        lengimg[0].childNodes[1].data = " en ";
+    }                       
 }
 
 function GetInicio(cve) {
