@@ -16,19 +16,87 @@ class Dashboard extends BaseController
     }
     
     public function index(){     
-        //$vista = $this->template('auth/login, $data'); 
-        $modelEvent = model('EventModel');
-        $events = $modelEvent->orderBy('created_at', 'desc')
-                             ->paginate();
+        // //$vista = $this->template('auth/login, $data'); 
+        // $modelEvent = model('EventModel');
+        // $events = $modelEvent->orderBy('created_at', 'desc')
+        //                      ->paginate();
+
+         $user = model('UserModel');  
+         $users = $user->findAll();
+
+         foreach ($users as $item) {
+            echo $item->id ;
+            echo $item->first_name;
+            echo $item->last_name;
+            echo $item->birthdate ;
+            echo $item->username ;
+            echo $item->email ;
+            echo $item->active ;
+         }
+         // return;
+         //var_dump($users);
+         //return;
                              
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/index');
+        echo view('Admin/index', ['users' => $users] );
         echo view('Admin/footer');
 
         // echo view('Dashboard/index',array('data'=>$data ,'totales'=>$totales),TRUE);
     }
 
+    public function eventos(){     
+        
+        $event = model('EventModel');  
+        $events = $event->findAll();
+
+                             
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/eventos', ['events' => $events] );
+        echo view('Admin/footer');
+
+    }
+
+    //Country
+    public function Country(){
+
+    }
+
+    public function createCountry(){
+
+    }
+    
+
+    //Platform
+    public function Platform(){
+
+    }
+
+    public function createPlatform(){
+
+    }
+
+    //Gaming
+    public function Gaming(){
+
+    }
+
+    public function createGaming(){
+
+    }
+
+    //Award
+    public function Award(){
+
+    }
+
+    public function createAward(){
+
+    }
+
+
+    //Events
     public function Event(){     
         //$vista = $this->template('auth/login, $data'); 
          $data = $this->getData();
