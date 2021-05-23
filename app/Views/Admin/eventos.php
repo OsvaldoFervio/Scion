@@ -38,7 +38,7 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <div class="col-md-6">
-                                        <h3>Usuarios<small> Directorio</small></h3>
+                                        <h3>Eventos<small> Listado</small></h3>
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="nav navbar-right panel_toolbox">
@@ -69,24 +69,31 @@
                                               <tr>                        
                                                 <th>Id</th>
                                                 <th>Nombre</th>
-                                                <th>Apellidos</th>
                                                 <th>Fecha</th>
-                                                <th>Usuario</th>
-                                                <th>Email</th>                        
-                                                <th>Activo</th>                                               
+                                                <th>Precio</th>
+                                                <th>Min-Max Part.</th>                        
+                                                <th>Activo</th>
+                                                <th>Equipos</th>
+                                                <th>Participantes</th>
+                                                <th>Total</th>
+                                                <th>Acciones</th>
+
                                               </tr>
                                             </thead>
                                             <tbody>
-                                              <?php foreach ($users as $item) : ?>
+                                              <?php foreach ($events as $item) : ?>
 
                                               <tr>
-                                                <td><?= $item->id ?></td>
-                                                <td><?= $item->first_name?></td>
-                                                <td><?= $item->last_name?></td>
-                                                <td><?= $item->birthdate ?></td>
-                                                <td><?= $item->username ?></td>
-                                                <td><?= $item->email ?></td>
+                                                <td><?= $item->videogame_id ?></td>
+                                                <td><?= $item->name?></td>
+                                                <td><?= $item->date?></td>
+                                                <td><?= $item->price ?></td>
+                                                <td><?= $item->min_participants.'-'.$item->max_participants  ?></td>
                                                 <td><?= $item->active ?></td>
+                                                <td>25</td>
+                                                <td>216</td>
+                                                <td>$5,400</td>
+                                                <td>Ver <br>Editar <br> Eliminar</td>
                                               </tr>
                                               <?php endforeach; ?> 
                                               

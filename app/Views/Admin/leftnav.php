@@ -16,7 +16,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="http://ampf.ocsys.mx/images/dashboard/img.jpg  " alt="..." class="img-circle profile_img">
+                            <img src="<?= base_url('images/logo@2x.png') ?>" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Bienvenido,</span>
@@ -35,22 +35,22 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard">Tablero 1</a></li>
-                                        <li><a href="index2.html">Tablero 2</a></li>
-                                        <li><a href="index3.html">Tablero 3</a></li>
+                                        <li><a href="<?= base_url('Dashboard/') ?>">Tablero 1</a></li>
+                                        <li><a href="<?= base_url('Dashboard/eventos') ?>">Tablero 2</a></li>
+                                        <li><a href="#">Tablero 3</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Catálogos <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard/perfil">Usuarios</a></li>
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard/curriculum">Videojuegos</a></li>
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard/registro">Plataformas</a></li>                                        
+                                        <li><a href="<?= base_url('Dashboard/') ?>">Usuarios</a></li>
+                                        <li><a href="#">Videojuegos</a></li>
+                                        <li><a href="#">Plataformas</a></li>                                        
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-desktop"></i> Registros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="<?= base_url('Dashboard/Event') ?>">Eventos</a></li>
-                                        <li><a href="media_gallery.html">Patrocinadores </a></li>                                      
+                                        <li><a href="#">Patrocinadores </a></li>                                      
                                     </ul>
                                 </li>                              
                             </ul>

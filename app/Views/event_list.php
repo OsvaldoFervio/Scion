@@ -36,7 +36,7 @@
                                         <!-- Rating / End -->
 
                                         <!-- Title -->
-                                        <h3 class="room__title"><a href="<?= base_url('events/' . $event->id) ?>"><?= $event->name ?></a><span> $25 USD</span></h3>
+                                        <h3 class="room__title"><a href="<?= base_url('events/' . $event->id) ?>"><?= $event->name ?></a><span> $<?= $event->price ?></span></h3>
                                         <!-- Title / End -->
 
                                         <!-- Meta -->
