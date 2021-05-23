@@ -15,36 +15,21 @@ class Dashboard extends BaseController
         $this->service = service('event');
     }
     
+    //TABLERO 1
     public function index(){     
-        // //$vista = $this->template('auth/login, $data'); 
-        // $modelEvent = model('EventModel');
-        // $events = $modelEvent->orderBy('created_at', 'desc')
-        //                      ->paginate();
-
-         $user = model('UserModel');  
-         $users = $user->findAll();
-
-         foreach ($users as $item) {
-            echo $item->id ;
-            echo $item->first_name;
-            echo $item->last_name;
-            echo $item->birthdate ;
-            echo $item->username ;
-            echo $item->email ;
-            echo $item->active ;
-         }
-         // return;
-         //var_dump($users);
-         //return;
-                             
+        
+        $user = model('UserModel');  
+        $users = $user->findAll();
+        $totals = $this->getTotals($user);
+        
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/index', ['users' => $users] );
+        echo view('Admin/index', ['users' => $users, 'totals' =>$totals] );
         echo view('Admin/footer');
 
-        // echo view('Dashboard/index',array('data'=>$data ,'totales'=>$totales),TRUE);
     }
 
+        //TABLERO 2
     public function eventos(){     
         
         $event = model('EventModel');  
@@ -54,6 +39,57 @@ class Dashboard extends BaseController
         echo view('Admin/head');
         echo view('Admin/leftnav');
         echo view('Admin/eventos', ['events' => $events] );
+        echo view('Admin/footer');
+
+    }
+
+        //TABLERO 3
+    public function pagos(){     
+        
+        $user = model('UserModel');  
+        $users = $user->findAll();
+        $totals = $this->getTotals($user);
+                             
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/pagos', ['users' => $users, 'totals' =>$totals] );
+        echo view('Admin/footer');
+
+    }
+
+    public function getTotals( $user )
+    {
+        
+        $active = 3;
+
+        $data = array('users' => $user->CountAll(),'active' =>$active, 'block' =>'' );  
+        $data['block']=$data['users'] - $data['active'];
+        return $data;
+    }
+
+
+
+
+    public function evento($id)
+    {
+
+        $modelEvent = model('EventModel');
+
+        $data['events'] = $modelEvent->where('id <', $id)->orderBy('created_at', 'desc')->paginate();
+        
+        $data['event'] = $this->service->getById($id);
+        $data['eventDetails'] = $this->service->getDetailsByEventId($id);
+        $data['eventAwards'] = $this->service->getAwardsByEventId($id);
+        $data['eventStages'] = $this->service->getStagesByEventId($id);       
+
+
+       // echo view('eventos', $data);
+
+        // var_dump($data);
+        // return;
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/evento', $data );
         echo view('Admin/footer');
 
     }
@@ -119,6 +155,43 @@ class Dashboard extends BaseController
             return redirect()->to(base_url('Dashboard/Event'))->with('success', 'Evento creado');
         } else {
             return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
+    }
+
+    public function EditEvent($id){     
+
+        $data = $this->getData();
+        $event = $this->service->getById($id);
+        $eventDetails = $this->service->getDetailsByEventId($id);
+        $eventAwards = $this->service->getAwardsByEventId($id);
+        $eventStages = $this->service->getStagesByEventId($id);
+        $eventPlatforms = $this->service->getPlatformsByEventId($id);
+        $data['event'] = $event;
+        $data['eventDetails'] = $eventDetails;
+        $data['eventAwards'] = $eventAwards;
+        $data['eventStages'] = $eventStages;
+        $data['platforms'] = $eventPlatforms;
+
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/event_edit',$data);
+        echo view('Admin/footer');
+
+
+
+        // echo view('Dashboard/index',array('data'=>$data ,'totales'=>$totales),TRUE);
+    }
+
+    public function update($id)
+    {
+        $data = $this->request->getPost();
+        $validation = Services::validation();
+        if($validation->run($data, 'event')) {
+            $this->service->update($id, $data);
+            $this->service->storeEventImages($id, $this->request->getFiles());
+            return redirect()->to(base_url('Dashboard/eventos/'))->with('success', 'Evento actualizado');
+        } else {
+            return redirect()->back()->with('errors', $validation->getErrors());
         }
     }
 

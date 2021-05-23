@@ -6,27 +6,22 @@
                         <div class="col-md-12 col-sm-12 ">
                             <div class="tile_count">                                
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Usuarios</span>
-                                    <div class="count">250</div>
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Pagos</span>
+                                    <div class="count"><?= $totals['users'] ?></div>
                                     <span class="count_bottom"><i class="green">1% </i> Última semana</span>
                                 </div>                            
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total mujeres</span>
-                                    <div class="count green">23</div>
+                                <div class="col-md-3 col-sm-4  tile_stats_count">
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Validados</span>
+                                    <div class="count green"><?= $totals['active'] ?></div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>9.2% </i> General</span>
                                 </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Hombres</span>
-                                    <div class="count">227</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>90.8% </i> General</span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
-                                    <div class="count">229</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>5% </i> Última semana</span>
-                                </div>
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Suscripciones</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Por Validar</span>
+                                    <div class="count red"><?= $totals['block'] ?></div>
+                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>90.8% </i> General</span>
+                                </div>                               
+                                <div class="col-md-3 col-sm-4  tile_stats_count">
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Ganancia</span>
                                     <div class="count">$15,250</div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-money"></i> USD</i> </span>
                                 </div>
@@ -38,7 +33,7 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <div class="col-md-6">
-                                        <h3>Eventos<small> Listado</small></h3>
+                                        <h3>Pagos<small> Listado</small></h3>
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="nav navbar-right panel_toolbox">
@@ -69,34 +64,33 @@
                                               <tr>                        
                                                 <th>Id</th>
                                                 <th>Nombre</th>
-                                                <th>Fecha</th>
-                                                <th>Precio</th>
-                                                <th>Min-Max Part.</th>                        
-                                                <th>Activo</th>
-                                                <th>Equipos</th>
-                                                <th>Participantes</th>
-                                                <th>Total</th>
+                                                <th>Apellidos</th>
+                                                <th>Fecha Pago</th>
+                                                <th>Usuario</th>
+                                                <th>Email</th>                        
+                                                <th>Evento</th>
+                                                <th>Pago</th>
                                                 <th>Acciones</th>
-
                                               </tr>
                                             </thead>
                                             <tbody>
-                                              <?php foreach ($events as $item) : ?>
+                                              <?php foreach ($users as $item) : ?>
 
                                               <tr>
                                                 <td><?= $item->id ?></td>
-                                                <td><?= $item->name?></td>
-                                                <td><?= $item->date?></td>
-                                                <td><?= $item->price ?></td>
-                                                <td><?= $item->min_participants.'-'.$item->max_participants  ?></td>
-                                                <td><?= $item->active ?></td>
-                                                <td>25</td>
-                                                <td>216</td>
-                                                <td>$5,400</td>
-                                                <td>
-                                                    <span class="count_top"><a href="<?=base_url('Dashboard/evento/'.$item->id)?>"><i class="fa fa-eye"></i>Ver</a> </span><br>
-                                                    <span class="count_top"><a href="<?=base_url('Dashboard/EditEvent/'.$item->id)?>"><i class="fa fa-edit"></i>Editar</a> </span><br>
-                                                    <span class="count_top"><a href="<?=base_url('Dashboard/evento/'.$item->id)?>"><i class="fa fa-close"></i>Eliminar</a> </span><br></td>
+                                                <td><?= $item->first_name?></td>
+                                                <td><?= $item->last_name?></td>
+                                                <td><?= $item->birthdate ?></td>
+                                                <td><?= $item->username ?></td>
+                                                <td><?= $item->email ?></td>
+                                                <td>Evento Random</td>
+                                                    <?php if($item->active) :?>                                                    
+                                                    <td>Pagado</td>
+                                                    <td><span class="count_top"><a href=""><i class="fa fa-money"></i>Pagado</a> </span></td>
+                                                    <?php else:  ?>
+                                                    <td>Por Validar</td>
+                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/activar/'.$item->id)?>"><i class="fa fa-edit"></i>Validar Pago</a> </span></td>
+                                                <?php endif ?>
                                               </tr>
                                               <?php endforeach; ?> 
                                               
