@@ -63,7 +63,7 @@
       </li>
       <?php else : ?>
       <li class="nav-secondary__login">
-          <?= session()->get('username') ?>
+          <!-- <?= session()->get('username') ?> -->
       </li>
       <li class="nav-secondary__login">
           <form action="<?= base_url('logout') ?>" method="post">

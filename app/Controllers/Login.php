@@ -29,7 +29,7 @@ class Login extends BaseController
                     'role_id' => $result->role_id,
                     'username' => $result->username
                 ]);
-                return redirect()->redirect('/');
+                return redirect()->redirect('Dashboard/');
             }
         }
         return redirect()->back()->with('error', 'Datos incorrectos');

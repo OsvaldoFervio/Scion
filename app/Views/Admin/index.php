@@ -7,24 +7,19 @@
                             <div class="tile_count">                                
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Usuarios</span>
-                                    <div class="count">250</div>
+                                    <div class="count"><?= $totals['users'] ?></div>
                                     <span class="count_bottom"><i class="green">1% </i> Última semana</span>
                                 </div>                            
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total mujeres</span>
-                                    <div class="count green">23</div>
+                                <div class="col-md-3 col-sm-4  tile_stats_count">
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
+                                    <div class="count green"><?= $totals['active'] ?></div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>9.2% </i> General</span>
                                 </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Hombres</span>
-                                    <div class="count">227</div>
+                                <div class="col-md-3 col-sm-4  tile_stats_count">
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Bloqueados</span>
+                                    <div class="count red"><?= $totals['block'] ?></div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>90.8% </i> General</span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
-                                    <div class="count">229</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>5% </i> Última semana</span>
-                                </div>
+                                </div>                               
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Suscripciones</span>
                                     <div class="count">$15,250</div>
@@ -73,7 +68,8 @@
                                                 <th>Fecha</th>
                                                 <th>Usuario</th>
                                                 <th>Email</th>                        
-                                                <th>Activo</th>                                               
+                                                <th>Activo</th>
+                                                <th>Acciones</th>
                                               </tr>
                                             </thead>
                                             <tbody>
@@ -86,7 +82,13 @@
                                                 <td><?= $item->birthdate ?></td>
                                                 <td><?= $item->username ?></td>
                                                 <td><?= $item->email ?></td>
-                                                <td><?= $item->active ?></td>
+                                                    <?php if($item->active) :?>                                                    
+                                                    <td>Activo</td>
+                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/bloquear/'.$item->id)?>"><i class="fa fa-close"></i>Bloquear</a> </span></td>
+                                                    <?php else:  ?>
+                                                    <td>Bloqueado</td>
+                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/activar/'.$item->id)?>"><i class="fa fa-edit"></i>Activar</a> </span></td>
+                                                <?php endif ?>
                                               </tr>
                                               <?php endforeach; ?> 
                                               
