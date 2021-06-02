@@ -23,8 +23,8 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	// public $baseURL = 'http://localhost/Scion/';
-	public $baseURL = 'http://scions.ocsys.mx/';
+	 public $baseURL = 'http://localhost/Scion/';
+	//public $baseURL = 'http://scions.ocsys.mx/';
 	
 
 	/**

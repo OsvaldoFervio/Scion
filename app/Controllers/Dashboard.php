@@ -118,9 +118,7 @@ class Dashboard extends BaseController
 
     }
 
-    public function createGaming(){
-
-    }
+    
 
     //Award
     public function Award(){
@@ -147,7 +145,7 @@ class Dashboard extends BaseController
 
     public function createEvent() {
         $data = $this->request->getPost();
-        var_dump($data);
+        //var_dump($data);
         //return;
         if($this->validate('event')) {
             $eventId = $this->service->create($data);
@@ -205,6 +203,19 @@ class Dashboard extends BaseController
             'footer' => $this->load->view('layout/footer','',TRUE),
         );
         $this->load->view('dashboard',$data);*/
+    }
+
+    public function createGame(){
+         $data = $this->request->getPost();
+        //var_dump($data);
+        //return;
+        if($this->validate('game')) {
+            $eventId = $this->service->create($data);
+            $this->service->storeEventImages($eventId, $this->request->getFiles());
+            return redirect()->to(base_url('Dashboard/Event'))->with('success', 'Evento creado');
+        } else {
+            return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
     }
 
     protected function getData() {
