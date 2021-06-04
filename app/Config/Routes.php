@@ -45,6 +45,11 @@ $routes->group('admin', function($routes) {
     $routes->get('/events/edit/(:num)', 'Admin\Events::edit/$1');
     $routes->put('/events/(:num)', 'Admin\Events::updated/$1');
     $routes->delete('/events/delete/(:num)', 'Admin\Events::delete/$1');
+
+    $routes->group('videogames', function($routes) {
+        $routes->get('/', 'Admin\Videogames::index');
+        $routes->get('(:num)', 'Admin\Videogames::show/$1');
+    });
 });
 
 $routes->get('/events/(:num)', 'Events::show/$1');
