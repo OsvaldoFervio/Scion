@@ -21,4 +21,10 @@ class VideogameService
     {
         return $this->model->find($id);
     }
+
+    public function create($data)
+    {
+        $this->model->save($data);
+        return $this->model->insertID;
+    }
 }

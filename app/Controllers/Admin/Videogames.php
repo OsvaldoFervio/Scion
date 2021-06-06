@@ -30,7 +30,18 @@ class Videogames extends BaseController {
         return json_encode($data);
     }
 
-    public function new() {
+    public function new()
+    {
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/game_form');
+        echo view('Admin/footer');
+    }
 
+    public function create()
+    {
+        $data = $this->request->getPost();
+        $this->service->create($data);
+        return redirect()->to(base_url('admin/videogames/new'))->with('success', 'Videojuego creado');
     }
 }

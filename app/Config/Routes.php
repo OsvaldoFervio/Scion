@@ -48,6 +48,8 @@ $routes->group('admin', function($routes) {
 
     $routes->group('videogames', function($routes) {
         $routes->get('/', 'Admin\Videogames::index');
+        $routes->get('/new', 'Admin\Videogames::new');
+        $routes->get('/create', 'Admin\Videogames::create');
         $routes->get('(:num)', 'Admin\Videogames::show/$1');
     });
 });

@@ -17,6 +17,9 @@
                                     <div class="col-md-6">
                                         <h3>Juegos<small> Listado</small></h3>
                                     </div>
+                                    <div class="col-md-6 d-flex justify-content-end">
+                                        <a href="<?= base_url('admin/videogames/new')?>" class="btn btn-primary">Nuevo</a>
+                                    </div>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
