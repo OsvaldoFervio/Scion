@@ -14,7 +14,7 @@ class VideogameService
 
     public function getAll()
     {
-        return $this->model->where('active', 1)->findAll();
+        return $this->model->findAll();
     }
 
     public function getById($id)

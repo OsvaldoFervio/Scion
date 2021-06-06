@@ -18,12 +18,19 @@ class Videogames extends BaseController {
 
         $data = $this->service->getAll();
 
-        return json_encode($data);
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/games', ['videogames' => $data]);
+        echo view('Admin/footer');
     }
 
     public function show($id)
     {
         $data = $this->service->getById($id);
         return json_encode($data);
+    }
+
+    public function new() {
+
     }
 }
