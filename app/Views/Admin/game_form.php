@@ -26,6 +26,15 @@
                                         <label for="name">Nombre</label>
                                         <input class="form-control form-control-lg p-2" name="name" id="name" required>
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="name">Plataformas</label>
+                                        <select class="form-control" name="platform_id[]" id="platform_id" multiple>
+                                            <option selected disabled>Seleccionar</option>
+                                            <?php foreach($platforms as $platform) : ?>
+                                                <option value="<?= $platform->id?>"><?= $platform->name?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">

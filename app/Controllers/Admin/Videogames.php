@@ -32,9 +32,12 @@ class Videogames extends BaseController {
 
     public function new()
     {
+        $platformModel = model('PlatformModel');
+        $data = $platformModel->findAll();
+
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/game_form');
+        echo view('Admin/game_form', ['platforms' => $data]);
         echo view('Admin/footer');
     }
 
