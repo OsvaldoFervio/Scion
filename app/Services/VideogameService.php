@@ -34,6 +34,16 @@ class VideogameService
         return $id;
     }
 
+    public function getPlatforms($id) {
+        $columns = 'videogame_platforms.id, platforms.id as platform_id, platforms.name';
+        $builder = $this->platformModel->builder();
+        $query = $builder->select($columns)
+                        ->join('platforms', 'platforms.id = videogame_platforms.platform_id')
+                        ->where('videogame_id', $id)
+                        ->get();
+        return $query->getResult();
+    }
+
     protected function buildVideogamePlatformsData($platforms, $videogame_id): array
     {
         return array_map(function($item) use ($videogame_id) {
