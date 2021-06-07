@@ -7,7 +7,7 @@
                             <h1><?=$videogame->name?></h1>
                         </div>
                         <div class="col-md-4 text-right mt-3">
-                            <a class="btn btn-primary mr-4" href="#">Editar</a>
+                            <a class="btn btn-primary mr-4" href="<?=base_url('admin/videogames/edit/'.$videogame->id)?>">Editar</a>
                         </div>
                     </div>
                     <div class="row">
@@ -20,7 +20,9 @@
                                     <h4>Plataformas</h4>
                                     <ul class="list-group mr-4">
                                     <?php foreach($platforms as $platform) : ?>
+                                        <?php if($platform->id): ?>
                                         <li class="list-group-item"><?= $platform->name?></li>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                     </ul>
                                 </div>

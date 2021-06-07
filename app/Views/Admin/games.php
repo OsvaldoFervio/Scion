@@ -54,7 +54,7 @@
                                                             <td><?= $videogame->created_at ?></td>
                                                             <td>
                                                                 <span class="count_top"><a href="<?= base_url('admin/videogames/show/'.$videogame->id)?>"><i class="fa fa-eye"></i>Ver</a></span>
-                                                                <span class="count_top"><a href="#"><i class="fa fa-edit"></i>Editar</a></span>
+                                                                <span class="count_top"><a href="<?= base_url('admin/videogames/edit/'.$videogame->id)?>"><i class="fa fa-edit"></i>Editar</a></span>
                                                                 <form>
                                                                     <button type="submit"><i class="fa fa-close"></i>Eliminar</a>
                                                                 </form>

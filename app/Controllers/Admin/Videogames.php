@@ -51,4 +51,21 @@ class Videogames extends BaseController {
         $this->service->create($data);
         return redirect()->to(base_url('admin/videogames/new'))->with('success', 'Videojuego creado');
     }
+
+    public function edit($id)
+    {
+        $data = $this->service->getById($id);
+        $platforms = $this->service->getPlatforms($id);
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/game_edit', ['videogame' => $data, 'platforms' => $platforms]);
+        echo view('Admin/footer');
+    }
+
+    public function update($id)
+    {
+        $data = $this->request->getPost();
+        $this->service->update($id, $data);
+        return redirect()->to(base_url('admin/videogames/edit/'.$id))->with('success', 'Juego actualizado');
+    }
 }

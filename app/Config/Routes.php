@@ -49,8 +49,10 @@ $routes->group('admin', function($routes) {
     $routes->group('videogames', function($routes) {
         $routes->get('/', 'Admin\Videogames::index');
         $routes->get('/new', 'Admin\Videogames::new');
-        $routes->get('/create', 'Admin\Videogames::create');
+        $routes->post('/create', 'Admin\Videogames::create');
         $routes->get('(:num)', 'Admin\Videogames::show/$1');
+        $routes->get('/edit/(:num)', 'Admin\Videogames::edit/$1');
+        $routes->put('/update/(:num)', 'Admin\Videogames::update/$1');
     });
 });
 
