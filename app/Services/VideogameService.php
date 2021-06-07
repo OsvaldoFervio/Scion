@@ -63,6 +63,11 @@ class VideogameService
         }
     }
 
+    public function delete($id)
+    {
+        $this->model->delete($id);
+    }
+
     protected function buildVideogamePlatformsData($platforms, $videogame_id): array
     {
         return array_map(function($item) use ($videogame_id) {

@@ -1,5 +1,17 @@
             <div class="right_col" role="main" style="min-height: 941px;">
                 <div>
+                <?php if(session()->get('success')) : ?>
+                    <div class="alert alert-success"><?= session()->get('success')?></div>
+                <?php endif ?>
+                <?php if (session()->get('errors')) : ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach (session()->get('errors') as $error) : ?>
+                                <li><?= esc($error) ?></li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                <?php endif ?>
                     <div class="row" style="display: inline-block;">
                         <div class="col-md-12 col-sm-12">
                             <div class="tile_count">
@@ -55,7 +67,9 @@
                                                             <td>
                                                                 <span class="count_top"><a href="<?= base_url('admin/videogames/show/'.$videogame->id)?>"><i class="fa fa-eye"></i>Ver</a></span>
                                                                 <span class="count_top"><a href="<?= base_url('admin/videogames/edit/'.$videogame->id)?>"><i class="fa fa-edit"></i>Editar</a></span>
-                                                                <form>
+                                                                <form action="<?=base_url('admin/videogames/delete/'.$videogame->id)?>" method="POST">
+                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                    <?= csrf_field() ?>
                                                                     <button type="submit"><i class="fa fa-close"></i>Eliminar</a>
                                                                 </form>
                                                             </td>

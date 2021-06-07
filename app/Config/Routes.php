@@ -53,6 +53,7 @@ $routes->group('admin', function($routes) {
         $routes->get('(:num)', 'Admin\Videogames::show/$1');
         $routes->get('/edit/(:num)', 'Admin\Videogames::edit/$1');
         $routes->put('/update/(:num)', 'Admin\Videogames::update/$1');
+        $routes->delete('/delete/(:num)', 'Admin\Videogames::delete/$1');
     });
 });
 

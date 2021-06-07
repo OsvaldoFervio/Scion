@@ -68,4 +68,10 @@ class Videogames extends BaseController {
         $this->service->update($id, $data);
         return redirect()->to(base_url('admin/videogames/edit/'.$id))->with('success', 'Juego actualizado');
     }
+
+    public function delete($id)
+    {
+        $this->service->delete($id);
+        return redirect()->to(base_url('admin/videogames'))->with('success', 'Videojuego eliminado');
+    }
 }

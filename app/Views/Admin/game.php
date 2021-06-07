@@ -7,7 +7,14 @@
                             <h1><?=$videogame->name?></h1>
                         </div>
                         <div class="col-md-4 text-right mt-3">
-                            <a class="btn btn-primary mr-4" href="<?=base_url('admin/videogames/edit/'.$videogame->id)?>">Editar</a>
+                            <div class="btn-group">
+                                <a class="btn btn-primary mr-2" href="<?=base_url('admin/videogames/edit/'.$videogame->id)?>">Editar</a>
+                                <form action="<?=base_url('admin/videogames/delete/'.$videogame->id)?>" method="POST" class="mr-4">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <?= csrf_field() ?>
+                                    <input class="btn btn-danger" type="submit" value="Eliminar">
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
