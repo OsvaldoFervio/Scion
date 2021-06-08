@@ -48,14 +48,17 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <h3>Imágenes</h3>
-                                    <div class="form-group col-md-12">
-                                        <label id="images">Selecciona un archivo</label>
-                                        <input class="form-control" type="file" name="images[]" id="images" multiple accept="image/jpeg,image/png,image/jpg">
-                                    </div>
+                                    <h3>Imagen</h3>
                                 </div>
                                 <div class="row">
-                                    <input type="submit" class="btn btn-primary" value="Guardar">
+                                    <div class="form-group col-md-6">
+                                        <label id="images">Selecciona un archivo</label>
+                                        <input class="form-control" type="file" name="image" id="image" multiple accept="image/jpeg,image/png,image/jpg">
+                                        <input type="submit" class="btn btn-primary mt-4"value="Guardar">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="<?= $videogame->image_url?>" alt="<?=$videogame->name?>" class="w-100">
+                                    </div>
                                 </div>
                             </form>
                         </div>

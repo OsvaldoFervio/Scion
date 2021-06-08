@@ -41,8 +41,10 @@ class VideogameService
     protected function storeImage($id, $image) {
         helper('storage');
         $folder = 'videogame/'.$id;
-        $imagePath = store_image($image, $folder);
-        $this->model->save(['id' => $id, 'image_url' => base_url($imagePath)]);
+        if($image->isValid()) {
+            $imagePath = store_image($image, $folder);
+            $this->model->save(['id' => $id, 'image_url' => base_url($imagePath)]);
+        }
     }
 
     public function getPlatforms($id) {
@@ -55,9 +57,10 @@ class VideogameService
         return $query->getResult();
     }
 
-    public function update($id, $data) {
+    public function update($id, $data, $image) {
         $data['id'] = $id;
         $this->model->save($data);
+        $this->storeImage($id, $image);
         $platforms_ids = $data['platform_id'];
         $this->updatePlatforms($id, $platforms_ids);
     }

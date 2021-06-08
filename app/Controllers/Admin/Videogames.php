@@ -66,7 +66,8 @@ class Videogames extends BaseController {
     public function update($id)
     {
         $data = $this->request->getPost();
-        $this->service->update($id, $data);
+        $image = $this->request->getFile('image');
+        $this->service->update($id, $data, $image);
         return redirect()->to(base_url('admin/videogames/edit/'.$id))->with('success', 'Juego actualizado');
     }
 
