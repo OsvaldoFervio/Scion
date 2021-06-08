@@ -8,6 +8,7 @@ class VideogameService
     protected $model = null;
     protected $videogamePlatformModel = null;
     protected $platformModel = null;
+    protected $storeService = null;
 
     public function __construct()
     {
@@ -26,14 +27,22 @@ class VideogameService
         return $this->model->find($id);
     }
 
-    public function create($data)
+    public function create($data, $image)
     {
         $this->model->save($data);
         $id = $this->model->insertID;
+        $this->storeImage($id, $image);
         $platform_ids = $data['platform_id'];
         $platformsData = $this->buildVideogamePlatformsData($platform_ids, $id);
         $this->videogamePlatformModel->insertBatch($platformsData);
         return $id;
+    }
+
+    protected function storeImage($id, $image) {
+        helper('storage');
+        $folder = 'videogame/'.$id;
+        $imagePath = store_image($image, $folder);
+        $this->model->save(['id' => $id, 'image_url' => base_url($imagePath)]);
     }
 
     public function getPlatforms($id) {

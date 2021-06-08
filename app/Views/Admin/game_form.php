@@ -46,7 +46,7 @@
                                     <h3>Imágenes</h3>
                                     <div class="form-group col-md-12">
                                         <label id="images">Selecciona un archivo</label>
-                                        <input class="form-control" type="file" name="images[]" id="images" multiple accept="image/jpeg,image/png,image/jpg">
+                                        <input class="form-control" type="file" name="image" id="image" multiple accept="image/jpeg,image/png,image/jpg">
                                     </div>
                                 </div>
                                 <div class="row">

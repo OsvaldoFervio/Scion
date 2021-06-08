@@ -48,7 +48,8 @@ class Videogames extends BaseController {
     public function create()
     {
         $data = $this->request->getPost();
-        $this->service->create($data);
+        $image = $this->request->getFile('image');
+        $this->service->create($data, $image);
         return redirect()->to(base_url('admin/videogames/new'))->with('success', 'Videojuego creado');
     }
 
