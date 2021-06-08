@@ -17,7 +17,7 @@
                             <div class="tile_count">
                                 <div class="tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Juegos</span>
-                                    <div class="count">250</div>
+                                    <div class="count"><?=$total?></div>
                                 </div>
                             </div>
                         </div>

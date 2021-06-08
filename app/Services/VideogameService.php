@@ -89,4 +89,9 @@ class VideogameService
             ];
         }, $platforms);
     }
+
+    public function getCount()
+    {
+        return $this->model->countAllResults();
+    }
 }

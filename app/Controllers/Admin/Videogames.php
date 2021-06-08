@@ -17,10 +17,11 @@ class Videogames extends BaseController {
     {
 
         $data = $this->service->getAll();
+        $total = $this->service->getCount();
 
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/games', ['videogames' => $data]);
+        echo view('Admin/games', ['videogames' => $data, 'total' => $total]);
         echo view('Admin/footer');
     }
 
