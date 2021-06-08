@@ -35,10 +35,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h3>Imágenes</h3>
-                                <div class="form-group col-md-12">
-                                    <label id="images">Selecciona un archivo</label>
-                                    <input class="form-control" type="file" name="images[]" id="images" multiple accept="image/jpeg,image/png,image/jpg">
+                                <h3>Imagen</h3>
+                                <div class="col-md-12">
+                                    <img src="<?=$videogame->image_url?>" alt="<?=$videogame->name?>" class="w-50">
                                 </div>
                             </div>
                         </div>
