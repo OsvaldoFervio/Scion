@@ -57,7 +57,11 @@
                                         <input type="submit" class="btn btn-primary mt-4"value="Guardar">
                                     </div>
                                     <div class="col-md-6">
-                                        <img src="<?= $videogame->image_url?>" alt="<?=$videogame->name?>" class="w-100">
+                                        <?php if(! empty($videogame->image_url)) : ?>
+                                        <img src="<?=$videogame->image_url?>" alt="<?=$videogame->name?>" class="w-100">
+                                        <?php else : ?>
+                                        <p>No se ha agregado una imagen</p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </form>

@@ -37,7 +37,11 @@
                             <div class="row">
                                 <h3>Imagen</h3>
                                 <div class="col-md-12">
+                                    <?php if(! empty($videogame->image_url)) : ?>
                                     <img src="<?=$videogame->image_url?>" alt="<?=$videogame->name?>" class="w-50">
+                                    <?php else : ?>
+                                    <p>No se ha agregado una imagen</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
