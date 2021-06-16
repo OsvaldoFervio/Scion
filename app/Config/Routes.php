@@ -58,6 +58,7 @@ $routes->group('admin', function($routes) {
 });
 
 $routes->get('/events/(:num)', 'Events::show/$1');
+$routes->post('/teams', 'Teams::create');
 
 /*
  * --------------------------------------------------------------------

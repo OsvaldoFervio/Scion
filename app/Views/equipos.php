@@ -20,7 +20,8 @@
 			<div class="section-content">
 				<div class="container">
 					<div class="row">
-						<form method="post" enctype="multipart/form-data" id="contact-form" action="crearequipo">
+						<form method="post" enctype="multipart/form-data" id="contact-form" action="<?=base_url('teams')?>">
+						<?= csrf_field() ?>
 							<div class="col-lg-12 ml-lg-auto mr-lg-auto">
 
 								<h2><i class="booked-icon ion-person-stalker"></i> &nbsp; CREAR EQUIPO</h2>
@@ -52,7 +53,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="nequipo" type="text" id="nequipo" placeholder="">
+														<input class="text-input form-control" name="name" type="text" id="name" placeholder="">
 													</div>
 												</div>
 
@@ -76,7 +77,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="discord" type="text" id="discord" placeholder="">
+														<input class="text-input form-control" name="discord_url" type="text" id="discord" placeholder="">
 													</div>
 												</div>
 
@@ -88,7 +89,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="whatsapp" type="text" id="whatsapp" placeholder="">
+														<input class="text-input form-control" name="whatsapp_number" type="text" id="whatsapp" placeholder="">
 													</div>
 												</div>
 
@@ -100,7 +101,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="correo" type="email" id="correo" placeholder="">
+														<input class="text-input form-control" name="email" type="email" id="email" placeholder="">
 													</div>
 												</div>
 
@@ -112,7 +113,11 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<select class="text-input form-control" name="pais" type="text" id="pais" style="height: auto; width: 180px;">
+														<select class="text-input form-control" name="country_id" type="text" id="country_id" style="height: auto; width: 180px;">
+														<option value="0" selected disabled>Selecciona un país</option>
+														<?php foreach($countries as $country) : ?>
+														<option value="<?=$country->id?>"><?=$country->name?></option>
+														<?php endforeach; ?>
 														</select>
 													</div>
 												</div>
