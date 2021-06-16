@@ -5,6 +5,7 @@ namespace Config;
 use App\Services\AuthService;
 use CodeIgniter\Config\BaseService;
 use App\Services\EventService;
+use App\Services\TeamService;
 use App\Services\VideogameService;
 
 /**
@@ -59,5 +60,15 @@ class Services extends BaseService
         }
 
         return static::getSharedInstance('videogame');
+    }
+
+    public static function team($getShared = false)
+    {
+        if(! $getShared)
+        {
+            return new TeamService();
+        }
+
+        return static::getSharedInstance('team');
     }
 }
