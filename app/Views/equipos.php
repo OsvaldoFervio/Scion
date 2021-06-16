@@ -65,8 +65,10 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="nlider" type="text" id="nlider" placeholder="">
+														<input class="text-input form-control" type="text" id="username" placeholder="Username...">
+														<input type="hidden" name="manager_id" type="text" id="manager_id">
 													</div>
+													<div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list"></div>
 												</div>
 
 												<div class="col-md-4">
@@ -240,4 +242,8 @@
 		<!-- Search Form / End -->
 
 	</div><!-- .site-wrapper -->
+	<script>
+		var BASE_URL = "<?=base_url('api/users')?>"
+	</script>
+	<script src="<?=base_url('js/teams.js')?>"></script>
 </body>
