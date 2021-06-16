@@ -21,7 +21,7 @@ function onProcessResult() {
     if(this.readyState === 4
         && this.status === 200){
         const users = JSON.parse(this.responseText);
-        addUsers(users);
+        addManager(users, clickHandleManager)
     }
 }
 
@@ -39,20 +39,36 @@ function handleKeypress() {
         clearResults()
 }
 
-function addUsers(users) {
+function clickHandleManager(event) {
+    const managerInput = document.getElementById('manager_id');
+
+    usernameInput.value = event.target.innerText;
+    managerInput.value = event.target.dataset.id;
+}
+
+function addUsers(users, clickFunction) {
     clearResults()
     for(let user of users) {
-        createListItem(user);
+        createListItem(user, clickFunction);
     }
 }
 
-function createListItem(user) {
+function addManager(users, clickFunction) {
+    addUsers(users, clickFunction);
+}
+
+function createListItem(user, clickFunction) {
     console.log(user);
     const container = document.createElement('div');
     const element = document.createElement('p');
 
     element.innerText = user.username;
+    element.dataset.id = user.id
+
     element.classList.add('text-success', 'my-3');
+    element.style.cursor = 'pointer';
+
+    container.onclick = clickFunction
     container.appendChild(element);
     usersList.appendChild(container);
 }
