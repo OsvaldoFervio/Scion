@@ -1,9 +1,16 @@
 const usersList = document.getElementById('users-list');
 const usernameInput = document.getElementById('username');
 
-usernameInput.onkeypress = handleKeypress;
+const usersListP = document.getElementById('users-list-p');
+const usernamePInput = document.getElementById('username-p');
 
 const request = new XMLHttpRequest();
+
+// Set event
+usernameInput.onkeypress = handleKeypress;
+usernamePInput.onkeypress = handleKeypress;
+
+// Set callback for process result
 request.onreadystatechange = onProcessResult;
 
 const users = [
@@ -20,23 +27,25 @@ const users = [
 function onProcessResult() {
     if(this.readyState === 4
         && this.status === 200){
-        const users = JSON.parse(this.responseText);
-        addManager(users, clickHandleManager)
+        const response = JSON.parse(this.responseText);
+        if(response.searchType === 'manager') {
+            addManager(response.data, clickHandleManager)
+        } else {
+            addParticipant(response.data, () => console.log('Hello World'))
+        }
     }
 }
 
-function fetchUsersByUsername(value) {
-    const url = `${BASE_URL}?search=${value}`;
+function fetchUsersByUsername(value, type) {
+    const url = `${BASE_URL}?search=${value}&type=${type}`;
     request.open('GET', url);
     request.send();
 }
 
-function handleKeypress() {
-    const value = usernameInput.value;
-    if(value)
-        fetchUsersByUsername(value);
-    else
-        clearResults()
+function handleKeypress(event) {
+    const type = event.target.dataset.usernameType;
+    const value = event.target.value;
+    fetchUsersByUsername(value, type);
 }
 
 function clickHandleManager(event) {
@@ -46,18 +55,23 @@ function clickHandleManager(event) {
     managerInput.value = event.target.dataset.id;
 }
 
-function addUsers(users, clickFunction) {
-    clearResults()
+function addUsers(users, type, clickFunction) {
+    const container = type === 'manager' ? usersList : usersListP;
+    clearResults(container);
     for(let user of users) {
-        createListItem(user, clickFunction);
+        createListItem(user, container, clickFunction);
     }
 }
 
 function addManager(users, clickFunction) {
-    addUsers(users, clickFunction);
+    addUsers(users, 'manager', clickFunction);
 }
 
-function createListItem(user, clickFunction) {
+function addParticipant(users, clickFunction) {
+    addUsers(users, 'participant', clickFunction);
+}
+
+function createListItem(user, usersList, clickFunction) {
     console.log(user);
     const container = document.createElement('div');
     const element = document.createElement('p');
@@ -73,7 +87,9 @@ function createListItem(user, clickFunction) {
     usersList.appendChild(container);
 }
 
-function clearResults() {
-    usersList.classList.remove('d-none');
-    usersList.innerHTML = '';
+function clearResults(container) {
+    if(container) {
+        container.classList.remove('d-none');
+        container.innerHTML = '';
+    }
 }

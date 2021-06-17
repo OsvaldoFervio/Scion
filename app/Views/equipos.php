@@ -65,7 +65,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" type="text" id="username" placeholder="Username...">
+														<input class="text-input form-control" type="text" id="username" placeholder="Username..." data-username-type="manager">
 														<input type="hidden" name="manager_id" type="text" id="manager_id">
 													</div>
 													<div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list"></div>
@@ -139,6 +139,12 @@
 								<div class="row">
 									<div class="col-lg-8 offset-md-1">
 										<div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
+											<div class="row">
+												<div class="col-md-6">
+													<input class="form-control" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
+													<div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list-p"></div>
+												</div>
+											</div>
 											<div class="row">
 
 												<div class="col-md-2">

@@ -12,8 +12,9 @@ class ApiController extends ResourceController
     public function index()
     {
         $search = $this->request->getGet('search');
-        $results = $this->model->select('id, username')
+        $type = $this->request->getGet('type');
+        $results = $this->model->select('id, username, first_name, last_name')
             /*->where('role_id', 2)*/->like('username', $search)->findAll();
-        return $this->respond($results);
+        return $this->respond(['searchType' => $type, 'data' => $results]);
     }
 }
