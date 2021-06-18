@@ -140,86 +140,20 @@
 									<div class="col-lg-8 offset-md-1">
 										<div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
 											<div class="row">
-												<div class="col-md-6">
-													<input class="form-control" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
+												<div class="col-md-12">
+													<div class="row">
+														<input class="form-control col-md-6" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
+														<span class="col-md-6 vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
+													</div>
 													<div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list-p"></div>
 												</div>
 											</div>
-											<div class="row">
-
-												<div class="col-md-2">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="id_part1" type="number" placeholder="ID" style="width: 100px; text-align: center;" />
-													</div>
+											<div class="mt-2 mb-4" id="participants-lits"></div>
+											<div class="form-group form-group--lg form-nickname">
+												<div class="custom-control custom-checkbox">
+													<input type="checkbox" class="custom-control-input" id="rememberme">
+													<label class="custom-control-label" for="rememberme">He leído y acepto los</label> <a href="">Terminos y condiciones</a>
 												</div>
-												<div class="col-md-9">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="part1" type="text" id="part1" placeholder="Participante N° 1">
-													</div>
-												</div>
-
-												<div class="col-md-2">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="id_part2" type="number" placeholder="ID" style="width: 100px; text-align: center;" />
-													</div>
-												</div>
-												<div class="col-md-9">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="part2" type="text" id="part2" placeholder="Participante N° 2">
-													</div>
-												</div>
-
-												<div class="col-md-2">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="id_part3" type="number" placeholder="ID" style="width: 100px; text-align: center;" />
-													</div>
-												</div>
-												<div class="col-md-9">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="part3" type="text" id="part3" placeholder="Participante N° 3">
-													</div>
-												</div>
-
-												<div class="col-md-2">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="id_part4" type="number" placeholder="ID" style="width: 100px; text-align: center;" />
-													</div>
-												</div>
-												<div class="col-md-9">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="part4" type="text" id="part4" placeholder="Participante N° 4">
-													</div>
-												</div>
-
-												<div class="col-md-2">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="id_part5" type="number" placeholder="ID" style="width: 100px; text-align: center;" />
-													</div>
-												</div>
-												<div class="col-md-9">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="part5" type="text" id="part5" placeholder="Participante N° 5">
-													</div>
-												</div>
-
-												<div class="col-md-2">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="id_part6" type="number" placeholder="ID" style="text-align: center;" />
-													</div>
-												</div>
-												<div class="col-md-9">
-													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="part6" type="text" id="part6" placeholder="Participante N° 6">
-													</div>
-												</div>
-
-												<div class="form-group form-group--lg form-nickname">
-													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" id="rememberme">
-														<label class="custom-control-label" for="rememberme">He leído y acepto los</label> <a href="">Terminos y condiciones</a>
-													</div>
-												</div>
-
 											</div>
 											<div class="form-submit ">
 												<input name="updateuser" type="submit" id="updateuser" class="btn btn-lg btn-primary" value="Crear Equipo">
