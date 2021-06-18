@@ -49,8 +49,11 @@ function fetchUsersByUsername(value, type) {
 
 function handleKeypress(event) {
     const type = event.target.dataset.usernameType;
-    const value = event.target.value;
-    fetchUsersByUsername(value, type);
+    const count = participantsList.children.length
+    if(type === 'manager' || count < 6) {
+        const value = event.target.value;
+        fetchUsersByUsername(value, type);
+    }
 }
 
 function clickHandleManager(event) {
@@ -61,10 +64,13 @@ function clickHandleManager(event) {
 }
 
 function clickHandlerParticipant(event) {
-    const username = event.target.innerText;
-    const dataset = event.target.dataset;
-    const { id, firstName, lastName } = dataset
-    createParticipantItem({id, username, firstName, lastName})
+    const count = participantsList.children.length;
+    if(count < 6) {
+        const username = event.target.innerText;
+        const dataset = event.target.dataset;
+        const { id, firstName, lastName } = dataset
+        createParticipantItem({id, username, firstName, lastName})
+    }
 }
 
 function addUsers(users, type, clickFunction) {
