@@ -156,7 +156,7 @@
 												</div>
 											</div>
 											<div class="form-submit ">
-												<input name="updateuser" type="submit" id="updateuser" class="btn btn-lg btn-primary" value="Crear Equipo">
+												<input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Crear Equipo" disabled>
 											</div>
 
 										</div>

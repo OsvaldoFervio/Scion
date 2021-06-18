@@ -127,14 +127,14 @@ function createParticipantItem(user) {
     usernameEle.style.background = 'rgba(0, 0, 0, 0.5)';
     nameEle.style.background = 'rgba(0, 0, 0, 0.5)';
 
-    const count = participantsList.children.length;
+    const count = participantsList.children.length + 1;
 
-    inputId.id = `participant-${count + 1}`;
+    inputId.id = `participant-${count}`;
     inputId.name = 'user_id[]';
     inputId.type = 'hidden';
     inputId.value = user.id;
 
-    numberElement.innerText = count + 1;
+    numberElement.innerText = count;
     usernameEle.innerText = user.username;
     nameEle.innerText = `${user.firstName} ${user.lastName}`;
 
@@ -147,6 +147,7 @@ function createParticipantItem(user) {
     container.appendChild(divElement);
 
     participantsList.appendChild(container);
+    checkNumberParticipants(count);
 }
 
 function createDeleteButton() {
@@ -160,6 +161,7 @@ function createDeleteButton() {
 
     button.onclick = (event) => {
         event.target.parentElement.parentElement.parentElement.parentElement.remove();
+        checkNumberParticipants()
     }
 
     return button;
@@ -175,4 +177,9 @@ function clearResults(container) {
 function handleMouseLeave(event) {
     event.target.innerHTML = '';
     event.target.classList.add('d-none');
+}
+
+function checkNumberParticipants(){
+    const count = participantsList.children.length;
+    document.getElementById('btnCreate').disabled = count < 4;
 }
