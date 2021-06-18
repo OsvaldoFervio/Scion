@@ -12,6 +12,9 @@ const request = new XMLHttpRequest();
 usernameInput.onkeypress = handleKeypress;
 usernamePInput.onkeypress = handleKeypress;
 
+usersList.onmouseleave = handleMouseLeave;
+usersListP.onmouseleave = handleMouseLeave;
+
 // Set callback for process result
 request.onreadystatechange = onProcessResult;
 
@@ -161,4 +164,9 @@ function clearResults(container) {
         container.classList.remove('d-none');
         container.innerHTML = '';
     }
+}
+
+function handleMouseLeave(event) {
+    event.target.innerHTML = '';
+    event.target.classList.add('d-none');
 }
