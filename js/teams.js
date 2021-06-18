@@ -106,6 +106,7 @@ function createParticipantItem(user) {
     const numberElement = document.createElement('span');
     const usernameEle = document.createElement('div');
     const nameEle = document.createElement('div');
+    const deleteButton = createDeleteButton();
 
     container.classList.add('row');
     divElement.classList.add('col-md-12');
@@ -131,11 +132,28 @@ function createParticipantItem(user) {
     wrapperElems.appendChild(numberElement);
     wrapperElems.appendChild(usernameEle);
     wrapperElems.appendChild(nameEle);
+    wrapperElems.appendChild(deleteButton);
     divElement.appendChild(wrapperElems);
     container.appendChild(inputId);
     container.appendChild(divElement);
 
     participantsList.appendChild(container);
+}
+
+function createDeleteButton() {
+    const button = document.createElement('a');
+    const icon = document.createElement('i');
+
+    button.classList.add('border-0', 'vertical-center');
+    icon.classList.add('booked-icon', 'ion-close-circled', 'border-0', 'text-white');
+
+    button.appendChild(icon);
+
+    button.onclick = (event) => {
+        event.target.parentElement.parentElement.parentElement.parentElement.remove();
+    }
+
+    return button;
 }
 
 function clearResults(container) {
