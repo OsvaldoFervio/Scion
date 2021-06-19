@@ -76,7 +76,7 @@ class AddTeams extends Migration
 		$teamMemberFields = [
 			'id' => [
 				'type' => 'INT',
-				'auto_increment' => null
+				'auto_increment' => true
 			],
 			'team_id' => [
 				'type' => 'INT'
