@@ -15,8 +15,13 @@ class Teams extends BaseController
 
     public function create()
     {
-        $data = $this->request->getPost();
-        //echo json_encode($data);
-        $this->service->create($data);
+        if($this->validate('team')) {
+            $data = $this->request->getPost();
+            //echo json_encode($data);
+            $this->service->create($data);
+            return redirect()->to(base_url('Home/equipos'))->with('success', 'Nuevo equipo creado');
+        }
+        $errors = $this->validator->getErrors();
+        return redirect()->back()->with('errors', $errors);
     }
 }

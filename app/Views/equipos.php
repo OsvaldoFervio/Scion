@@ -19,6 +19,20 @@
 
 			<div class="section-content">
 				<div class="container">
+					<?php if(session('success')) : ?>
+						<div class="alert alert-success">
+							<?= session()->get('success') ?>
+						</div>
+					<?php endif ?>
+					<?php if(session('errors')) : ?>
+					<div class="alert alert-danger">
+						<ul class="m-0">
+						<?php foreach(session()->get('errors') as $error) : ?>
+							<li><?= esc($error) ?></li>
+						<?php endforeach ?>
+						</ul>
+					</div>
+					<?php endif ?>
 					<div class="row">
 						<form method="post" enctype="multipart/form-data" id="contact-form" action="<?=base_url('teams')?>">
 						<?= csrf_field() ?>
@@ -53,7 +67,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="name" type="text" id="name" placeholder="">
+														<input class="text-input form-control" name="name" type="text" id="name" required>
 													</div>
 												</div>
 
@@ -65,7 +79,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" type="text" id="username" placeholder="Username..." data-username-type="manager">
+														<input class="text-input form-control" type="text" id="username" placeholder="Username..." required data-username-type="manager">
 														<input type="hidden" name="manager_id" type="text" id="manager_id">
 													</div>
 													<div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list"></div>
@@ -79,7 +93,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="discord_url" type="text" id="discord" placeholder="">
+														<input class="text-input form-control" name="discord_url" type="text" id="discord">
 													</div>
 												</div>
 
@@ -91,7 +105,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="whatsapp_number" type="text" id="whatsapp" placeholder="">
+														<input class="text-input form-control" name="whatsapp_number" type="text" id="whatsapp" required>
 													</div>
 												</div>
 
@@ -103,7 +117,7 @@
 
 												<div class="col-md-8">
 													<div class="form-group form-group--lg form-password">
-														<input class="text-input form-control" name="email" type="email" id="email" placeholder="">
+														<input class="text-input form-control" name="email" type="email" id="email" required>
 													</div>
 												</div>
 
