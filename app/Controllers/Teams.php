@@ -14,9 +14,11 @@ class Teams extends BaseController
     }
 
     public function index() {
+        $userId = session()->get('user_id');
+        $teams = $this->service->getAll($userId);
         echo view('include_files/header');
         echo view('include_files/navbar');
-        echo view('team_list', ['teams' => []]);
+        echo view('team_list', ['teams' => $teams]);
     }
 
     public function new() {

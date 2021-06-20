@@ -26,6 +26,12 @@ class TeamService
         $this->createMembers($teamId, $managerId, $participants);
     }
 
+    public function getAll($userId = null) {
+        if($userId)
+            return $this->model->where(['user_id' => $userId])->findAll();
+        return $this->model->findAll();
+    }
+
     private function createMembers($teamId, $managerId, $participants)
     {
         $managerData = [
