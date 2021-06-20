@@ -165,11 +165,11 @@
 											<div class="mt-2 mb-4" id="participants-lits"></div>
 											<div class="form-group form-group--lg form-nickname">
 												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="rememberme">
-													<label class="custom-control-label" for="rememberme">He leído y acepto los</label> <a href="">Terminos y condiciones</a>
+													<input type="checkbox" class="custom-control-input" id="terms" required>
+													<label class="custom-control-label" for="terms">He leído y acepto los</label> <a href="">Terminos y condiciones</a>
 												</div>
 											</div>
-											<div class="form-submit ">
+											<div class="form-submit mt-2">
 												<input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Crear Equipo" disabled>
 											</div>
 
