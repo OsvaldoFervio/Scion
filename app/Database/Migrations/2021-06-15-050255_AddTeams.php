@@ -30,6 +30,9 @@ class AddTeams extends Migration
 				'type' => 'INT',
 				'auto_increment' => true,
 			],
+			'user_id' => [
+				'type' => 'INT'
+			],
 			'country_id' => [
 				'type' => 'INT'
 			],
@@ -92,6 +95,7 @@ class AddTeams extends Migration
 		// Teams Table
 		$this->forge->addField(array_merge($fields, $baseFields));
 		$this->forge->addPrimaryKey('id');
+		$this->forge->addForeignKey('user_id', 'users', 'id');
 		$this->forge->addForeignKey('country_id', 'countries', 'id');
 		$this->forge->createTable('teams', true);
 
