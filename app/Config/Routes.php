@@ -58,7 +58,11 @@ $routes->group('admin', function($routes) {
 });
 
 $routes->get('/events/(:num)', 'Events::show/$1');
-$routes->post('/teams', 'Teams::create');
+$routes->group('teams', function($routes) {
+    $routes->get('/', 'Teams::index');
+    $routes->get('/teams/new', 'Teams::new');
+    $routes->post('/teams', 'Teams::create');
+});
 $routes->get('/api/users', 'Api\ApiController::index');
 
 /*

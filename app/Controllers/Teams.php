@@ -13,6 +13,22 @@ class Teams extends BaseController
         $this->service = service('team');
     }
 
+    public function index() {
+        echo view('include_files/header');
+        echo view('include_files/navbar');
+        echo view('team_list', ['teams' => []]);
+    }
+
+    public function new() {
+        $modelCountry = model('CountryModel');
+		$countries = $modelCountry->findAll();
+
+		echo view('include_files/header');
+		echo view('include_files/navbar');
+		echo view('equipos', ['countries' => $countries]);
+		echo view('include_files/footer');
+    }
+
     public function create()
     {
         if($this->validate('team')) {
