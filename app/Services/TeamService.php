@@ -15,7 +15,8 @@ class TeamService
 
     public function create($data, $image)
     {
-        $teamData = $this->buildTeamData($data);
+        $userId = session()->get('user_id');
+        $teamData = $this->buildTeamData($data, $userId);
         $this->model->save($teamData);
         $teamId = $this->model->insertID;
         $this->storeImage($teamId, $image);
@@ -47,9 +48,10 @@ class TeamService
         }
     }
 
-    private function buildTeamData($data)
+    private function buildTeamData($data, $userId)
     {
         return [
+            'user_id' => $userId,
             'country_id' => $data['country_id'],
             'name' => $data['name'],
             'discord_url' => $data['discord_url'],
