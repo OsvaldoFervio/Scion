@@ -27,8 +27,14 @@ class TeamService
     }
 
     public function getAll($userId = null) {
-        if($userId)
-            return $this->model->where(['user_id' => $userId])->findAll();
+        if($userId) {
+            $query = $this->model->distinct()->select('teams.*')
+                ->where(['teams.user_id' => $userId])
+                ->orWhere('team_members.user_id', $userId)
+            ->join('team_members', 'team_members.team_id = teams.id')
+            ->orderBy('teams.created_at', 'DESC');
+            return $query->get()->getResult();
+        }
         return $this->model->findAll();
     }
 
