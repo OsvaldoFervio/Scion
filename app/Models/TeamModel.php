@@ -11,6 +11,7 @@ class TeamModel extends Model
     protected $returnType = '\App\Entities\Team';
 
     protected $allowedFields = [
+        'user_id',
         'country_id',
         'name',
         'image_url',

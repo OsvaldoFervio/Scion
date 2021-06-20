@@ -8,6 +8,7 @@ class Team extends Entity
 {
     protected $attributes = [
         'id' => null,
+        'user_id' => null,
         'country_id' => null,
         'name' => null,
         'image_url' => null,

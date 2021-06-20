@@ -36,7 +36,7 @@ class Teams extends BaseController
             $image = $this->request->getFile('images');
             //echo json_encode($data);
             $this->service->create($data, $image);
-            return redirect()->to(base_url('Home/equipos'))->with('success', 'Nuevo equipo creado');
+            return redirect()->to(base_url('teams'))->with('success', 'Nuevo equipo creado');
         }
         $errors = $this->validator->getErrors();
         return redirect()->back()->with('errors', $errors);
