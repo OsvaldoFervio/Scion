@@ -13,12 +13,12 @@ class TeamService
         $this->teamMemberModel = model('TeamMemberModel');
     }
 
-    public function create($data)
+    public function create($data, $image)
     {
         $teamData = $this->buildTeamData($data);
         $this->model->save($teamData);
         $teamId = $this->model->insertID;
-        echo var_dump($teamId);
+        $this->storeImage($teamId, $image);
 
         $managerId = $data['manager_id'];
         $participants = $data['user_id']; // array
@@ -36,6 +36,15 @@ class TeamService
         ];
         $data = array_merge($managerData, $this->buildParticipantsData($teamId, $participants));
         $this->teamMemberModel->insertBatch($data);
+    }
+
+    private function storeImage($id, $image) {
+        helper('storage');
+        $folder = 'teams/'.$id;
+        if($image->isValid()) {
+            $image_path = store_image($image, $folder);
+            $this->model->save(['id' => $id, 'image_url' => base_url($image_path)]);
+        }
     }
 
     private function buildTeamData($data)

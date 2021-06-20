@@ -13,7 +13,7 @@ if(! function_exists('store_image'))
             if(! $filename)
                 $filename = $image->getRandomName();
             $image->move(ROOTPATH.$uploadsPath, $filename);
-            $imagePath = $urlPath.$filename.'/';
+            $imagePath = $urlPath.$filename;
         }
         return $imagePath;
     }
