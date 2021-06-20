@@ -6,6 +6,9 @@ const usernamePInput = document.getElementById('username-p');
 
 const participantsList = document.getElementById('participants-lits');
 
+const imageInput = document.getElementById('image-input');
+const teamImageElem = document.getElementById('image');
+
 const request = new XMLHttpRequest();
 
 // Set event
@@ -14,6 +17,8 @@ usernamePInput.onkeypress = handleKeypress;
 
 usersList.onmouseleave = handleMouseLeave;
 usersListP.onmouseleave = handleMouseLeave;
+
+imageInput.onchange = handleSetImage
 
 // Set callback for process result
 request.onreadystatechange = onProcessResult;
@@ -182,4 +187,12 @@ function handleMouseLeave(event) {
 function checkNumberParticipants(){
     const count = participantsList.children.length;
     document.getElementById('btnCreate').disabled = count < 4;
+}
+
+function handleSetImage(event) {
+    const [file] = imageInput.files
+    if(file) {
+        teamImageElem.classList.remove('d-none');
+        teamImageElem.src = URL.createObjectURL(file);
+    }
 }

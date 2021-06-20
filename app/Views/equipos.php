@@ -43,9 +43,11 @@
 								<div class="row">
 									<div class="vertical-center ">
 										<div class="col-lg-12">
-											<figure class="room__img">
-												<h4>Agregar logo aquí</h4>
+											<h4>Agregar logo aquí</h4>
+											<figure class="text-center">
+												<img id="image" alt="Team Image" class="d-none" width="150" height="150">
 											</figure>
+											<input type="file" name="images" id="image-input" accept="image/jpeg,image/png,image/jpg">
 											<hr class="divider">
 										</div>
 									</div>
