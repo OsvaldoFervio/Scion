@@ -62,6 +62,7 @@ $routes->group('teams', function($routes) {
     $routes->get('/', 'Teams::index');
     $routes->get('/teams/new', 'Teams::new');
     $routes->post('/teams/create', 'Teams::create');
+    $routes->get('(:num)', 'Teams::show/$1');
 });
 $routes->get('/api/users', 'Api\ApiController::index');
 

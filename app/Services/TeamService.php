@@ -38,6 +38,10 @@ class TeamService
         return $this->model->findAll();
     }
 
+    public function getById($id) {
+        return $this->model->find($id);
+    }
+
     private function createMembers($teamId, $managerId, $participants)
     {
         $managerData = [

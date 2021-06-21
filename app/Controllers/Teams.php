@@ -21,6 +21,11 @@ class Teams extends BaseController
         echo view('team_list', ['teams' => $teams]);
     }
 
+    public function show($id) {
+        $team = $this->service->getById($id);
+        echo view('team', ['team' => $team]);
+    }
+
     public function new() {
         $modelCountry = model('CountryModel');
 		$countries = $modelCountry->findAll();

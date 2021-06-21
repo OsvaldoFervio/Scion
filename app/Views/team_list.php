@@ -21,7 +21,7 @@
                                         <hr class="divider">
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="#" class="h3"><?=$team->name?></a>
+                                        <a href="<?=base_url('teams/'.$team->id)?>" class="h3"><?=$team->name?></a>
                                     </div>
                                     <div class="col-md-3">
                                         <!--<div class="btn-group" role="group">
