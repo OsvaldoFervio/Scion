@@ -9,8 +9,12 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <img src="<?=$team->image_url?>">
+                                <div class="col-md-4 vertical-center border-0">
+                                    <?php if(! empty($team->image_url)): ?>
+                                        <img src="<?=$team->image_url?>" alt="<?=$team->name?>">
+                                    <?php else: ?>
+                                        <img src="<?= base_url('images/logo.png') ?>" alt="Escapium">
+                                    <?php endif?>
                                 </div>
                                 <div class="col-md-8">
                                     <h2><?=$team->name?></h2>

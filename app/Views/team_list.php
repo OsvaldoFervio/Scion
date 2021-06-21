@@ -17,7 +17,11 @@
                             <?php foreach($teams as $team): ?>
                                 <div class="row">
                                     <div class="col-md-3">
+                                    <?php if(! empty($team->image_url)): ?>
                                         <img src="<?=$team->image_url?>" alt="<?=$team->name?>">
+                                    <?php else: ?>
+                                        <img src="<?= base_url('images/logo.png') ?>" alt="Escapium">
+                                    <?php endif?>
                                         <hr class="divider">
                                     </div>
                                     <div class="col-md-6">
