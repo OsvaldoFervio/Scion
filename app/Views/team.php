@@ -1,3 +1,5 @@
+<?php define('MEMBER_TYPE_MANAGER', 1) ?>
+<?php define('MEMBER_TYPE_PARTICIPANT', 2) ?>
 <?= $this->include('include_files/header') ?>
 <?= $this->include('include_files/navbar') ?>
 <body>
@@ -7,7 +9,7 @@
 			<div class="section-content p-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-4 vertical-center border-0">
                                     <?php if(! empty($team->image_url)): ?>
@@ -25,8 +27,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <h4 class="text-center">Equipo</h4>
+                        <div class="col-md-3">
+                            <?php foreach($members as $index => $member): ?>
+                            <?php if($member->type == MEMBER_TYPE_MANAGER): ?>
+                                <h4>Manager</h4>
+                                <div class="lead">
+                                    <?=$member->username?>
+                                </div>
+                                <div class="mt-4">
+                                    <h4>Participantes</h4>
+                                </div>
+                            <?php elseif($member->type == MEMBER_TYPE_PARTICIPANT): ?>
+                                <div class="lead">
+                                    <?=$index?>.
+                                    <?=$member->username?>
+                                </div>
+                            <?php endif ?>
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>

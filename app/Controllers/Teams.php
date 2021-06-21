@@ -23,7 +23,8 @@ class Teams extends BaseController
 
     public function show($id) {
         $team = $this->service->getById($id);
-        echo view('team', ['team' => $team]);
+        $teamMembers = $this->service->getTeamMembers($id);
+        echo view('team', ['team' => $team, 'members' => $teamMembers]);
     }
 
     public function new() {

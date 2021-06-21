@@ -42,6 +42,13 @@ class TeamService
         return $this->model->find($id);
     }
 
+    public function getTeamMembers($teamId){
+        $query = $this->teamMemberModel->select('users.id, users.username, member_types.id as type')->where(['team_id' => $teamId])
+        ->join('users', 'users.id = team_members.user_id')
+        ->join('member_types', 'member_types.id = team_members.member_type_id');
+        return $query->get()->getResult();
+    }
+
     private function createMembers($teamId, $managerId, $participants)
     {
         $managerData = [
