@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use CodeIgniter\Exceptions\PageNotFoundException;
+
 class TeamService
 {
     protected $model = null;
@@ -53,7 +55,10 @@ class TeamService
     }
 
     public function getById($id) {
-        return $this->model->find($id);
+        $result = $this->model->find($id);
+        if(! $result)
+            throw PageNotFoundException::forPageNotFound('Esta página no existe');
+        return $result;
     }
 
     public function delete($id)
