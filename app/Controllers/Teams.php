@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Config\Services;
 
 class Teams extends BaseController
 {
@@ -27,6 +28,16 @@ class Teams extends BaseController
         echo view('team', ['team' => $team, 'members' => $teamMembers]);
     }
 
+    public function edit($id)
+    {
+        $team = $this->service->getById($id);
+        $modelCountry = model('CountryModel');
+		$countries = $modelCountry->findAll();
+        $teamMembers = $this->service->getTeamMembersByType($id);
+        echo view('team_form_update', [
+            'team' => $team, 'countries' => $countries, 'members' => $teamMembers]);
+    }
+
     public function new() {
         $modelCountry = model('CountryModel');
 		$countries = $modelCountry->findAll();
@@ -47,6 +58,19 @@ class Teams extends BaseController
             return redirect()->to(base_url('teams'))->with('success', 'Nuevo equipo creado');
         }
         $errors = $this->validator->getErrors();
+        return redirect()->back()->with('errors', $errors);
+    }
+
+    public function update($id)
+    {
+        $data = $this->request->getPost();
+        $validation = Services::validation();
+        if($validation->run($data, 'team_update')) {
+            $image = $this->request->getFile('images');
+            $this->service->update($id, $data, $image);
+            return redirect()->to(base_url('teams/'.$id))->with('success', 'Datos actualizados');
+        }
+        $errors = $validation->getErrors();
         return redirect()->back()->with('errors', $errors);
     }
 }

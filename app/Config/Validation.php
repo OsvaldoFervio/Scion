@@ -62,6 +62,15 @@ class Validation
         'user_id' => 'required'
     ];
 
+    public $team_update = [
+        'name' => 'required',
+        'manager_id' => 'required',
+        'whatsapp_number' => 'required',
+        'email' => 'required|valid_email',
+        'country_id' => 'required',
+        'user_id' => 'required'
+    ];
+
     public $signup_errors = [
         'first_name' => [
             'required' => 'Escribe un nombre',

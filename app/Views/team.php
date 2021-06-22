@@ -8,6 +8,11 @@
 		<main class="site-content">
 			<div class="section-content p-5">
                 <div class="container">
+                    <?php if(session('success')) : ?>
+						<div class="alert alert-success">
+							<?= session()->get('success') ?>
+						</div>
+					<?php endif ?>
                     <div class="row">
                         <div class="col-md-9">
                             <div class="row">
@@ -19,7 +24,15 @@
                                     <?php endif?>
                                 </div>
                                 <div class="col-md-8">
-                                    <h2><?=$team->name?></h2>
+                                    <div class="d-flex justify-content-between">
+                                        <h2><?=$team->name?></h2>
+                                        <div class="d-inline-flex actions">
+                                            <a href="<?=base_url('teams/edit/'.$team->id)?>" class="btn btn-warning mr-1">Editar</a>
+                                            <form>
+                                                <button type="submit" class="btn bg-danger text-white rounded">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     <a href="<?=$team->discord_url?>" class="h4">Discord</a>
                                     <a href="https://wa.me/<?=$team->whatsapp_number?>" class="d-block h4"><i class="booked-icon ion-android-call"></i><span class="mx-2"><?=$team->whatsapp_number?></span></a>
                                     <a href="mailto: <?=$team->email?>" class="h3"><i class="booked-icon ion-android-mail"></i><span class="mx-2 h4"><?=$team->email?></span></a>

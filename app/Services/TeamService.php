@@ -26,6 +26,15 @@ class TeamService
         $this->createMembers($teamId, $managerId, $participants);
     }
 
+    public function update($id, $data, $image)
+    {
+        $teamData = $this->buildTeamData($data);
+        $teamData['id'] = $id;
+        $this->model->save($teamData);
+
+        $this->storeImage($id, $image);
+    }
+
     public function getAll($userId = null) {
         if($userId) {
             $query = $this->model->distinct()->select('teams.*')
@@ -33,6 +42,7 @@ class TeamService
                 ->orWhere('team_members.user_id', $userId)
             ->join('team_members', 'team_members.team_id = teams.id')
             ->orderBy('teams.created_at', 'DESC');
+            //log_message('error', 'Query: '. $query->getCompiledSelect());
             return $query->get()->getResult();
         }
         return $this->model->findAll();
@@ -43,10 +53,19 @@ class TeamService
     }
 
     public function getTeamMembers($teamId){
-        $query = $this->teamMemberModel->select('users.id, users.username, member_types.id as type')->where(['team_id' => $teamId])
+        $query = $this->teamMemberModel->select('users.id, users.username, users.first_name, users.last_name, member_types.id as type')->where(['team_id' => $teamId])
         ->join('users', 'users.id = team_members.user_id')
         ->join('member_types', 'member_types.id = team_members.member_type_id');
         return $query->get()->getResult();
+    }
+
+    public function getTeamMembersByType($teamId){
+        $results = $this->getTeamMembers($teamId);
+        $manager = $results[0];
+        $participants = array_filter($results, function($item) {
+            return $item->type == 2;
+        });
+        return ['manager' => $manager, 'participants' => $participants];
     }
 
     private function createMembers($teamId, $managerId, $participants)
@@ -71,16 +90,17 @@ class TeamService
         }
     }
 
-    private function buildTeamData($data, $userId)
+    private function buildTeamData($data, $userId = null)
     {
-        return [
-            'user_id' => $userId,
-            'country_id' => $data['country_id'],
-            'name' => $data['name'],
-            'discord_url' => $data['discord_url'],
-            'whatsapp_number' => $data['whatsapp_number'],
-            'email' => $data['email']
-        ];
+        $array = [];
+        if($userId)
+            $array['user_id'] = $userId;
+        $array['country_id'] = $data['country_id'];
+        $array['name'] = $data['name'];
+        $array['discord_url'] = $data['discord_url'];
+        $array['whatsapp_number'] = $data['whatsapp_number'];
+        $array['email'] = $data['email'];
+        return $array;
     }
 
     private function buildParticipantsData($teamId, $participants)
