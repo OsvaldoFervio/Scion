@@ -8,7 +8,7 @@ class TeamMemberModel extends Model
 {
     protected $table = 'team_members';
     protected $primaryKey = 'id';
-    protected $returnType = 'App\Entity\TeamMember';
+    protected $returnType = 'App\Entities\TeamMember';
     protected $allowedFields = [
         'team_id',
         'user_id',

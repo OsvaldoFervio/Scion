@@ -23,6 +23,8 @@ imageInput.onchange = handleSetImage
 // Set callback for process result
 request.onreadystatechange = onProcessResult;
 
+setupParticipantList()
+
 const users = [
     {
         id: 1,
@@ -172,6 +174,11 @@ function createDeleteButton() {
     return button;
 }
 
+function handleDeleteClick(event) {
+    event.target.parentElement.parentElement.parentElement.parentElement.remove();
+    checkNumberParticipants()
+}
+
 function clearResults(container) {
     if(container) {
         container.classList.remove('d-none');
@@ -194,5 +201,13 @@ function handleSetImage(event) {
     if(file) {
         teamImageElem.classList.remove('d-none');
         teamImageElem.src = URL.createObjectURL(file);
+    }
+}
+
+function setupParticipantList() {
+    const count = participantsList.children.length;
+    for(let i = 0; i < count; i++){
+        const row = participantsList.children[i];
+        row.querySelector('a').onclick = handleDeleteClick;
     }
 }

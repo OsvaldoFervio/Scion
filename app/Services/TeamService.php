@@ -33,6 +33,9 @@ class TeamService
         $this->model->save($teamData);
 
         $this->storeImage($id, $image);
+        $managerId = $data['manager_id'];
+        $participants = $data['user_id'];
+        $this->updateTeamMembers($id, $managerId, $participants);
     }
 
     public function getAll($userId = null) {
@@ -53,7 +56,8 @@ class TeamService
     }
 
     public function getTeamMembers($teamId){
-        $query = $this->teamMemberModel->select('users.id, users.username, users.first_name, users.last_name, member_types.id as type')->where(['team_id' => $teamId])
+        $query = $this->teamMemberModel->select('users.id, users.username, users.first_name, users.last_name, member_types.id as type')
+        ->where(['team_id' => $teamId])->where('team_members.deleted_at is NULL')
         ->join('users', 'users.id = team_members.user_id')
         ->join('member_types', 'member_types.id = team_members.member_type_id');
         return $query->get()->getResult();
@@ -79,6 +83,56 @@ class TeamService
         ];
         $data = array_merge($managerData, $this->buildParticipantsData($teamId, $participants));
         $this->teamMemberModel->insertBatch($data);
+    }
+
+    private function updateTeamMembers($teamId, $managerId, $participants)
+    {
+        $currentMembers = $this->teamMemberModel->where(['team_id' => $teamId])->findAll();
+        $participantIds = array_merge(array($managerId), $participants);
+        $this->updateCurrentMembers($currentMembers, $participantIds);
+        $this->updateNewMembers($teamId, count($currentMembers), $participantIds);
+        $this->deleteMembers($currentMembers, $participantIds);
+    }
+
+    private function updateCurrentMembers($currentMembers, $participantIds)
+    {
+        $result = $this->sliceUpdateMembers($currentMembers, $participantIds);
+        $this->updateMembers($result['members'], $result['ids']);
+    }
+
+    private function updateMembers($members, $ids)
+    {
+        $membersData = $this->buildUpdateParticipantData($members, $ids);
+        $this->teamMemberModel->updateBatch($membersData, 'id');
+    }
+
+    private function sliceUpdateMembers($currentMembers, $participantIds)
+    {
+        $totalMembers = count($currentMembers);
+        $totalParticipantIds = count($participantIds);
+        $sliceLength = $totalMembers <= $totalParticipantIds ? $totalMembers : $totalParticipantIds;
+        $members = array_slice($currentMembers, 0, $sliceLength);
+        $ids = array_slice($participantIds, 0, $sliceLength);
+        return ['members' => $members, 'ids' => $ids];
+    }
+
+    private function updateNewMembers($teamId, $totalMembers, $participantIds)
+    {
+        $newMembers = array_slice($participantIds, $totalMembers);
+        if(! empty($newMembers)) {
+            $newMembersData = $this->buildParticipantsData($teamId, $newMembers);
+            $this->teamMemberModel->insertBatch($newMembersData);
+        }
+    }
+
+    private function deleteMembers($currentMembers, $participantsIds)
+    {
+        $countDeleteMembers = count($participantsIds) - count($currentMembers);
+        if($countDeleteMembers < 0){
+            $members = array_slice($currentMembers, $countDeleteMembers);
+            foreach($members as $member)
+                $this->teamMemberModel->delete($member->id);
+        }
     }
 
     private function storeImage($id, $image) {
@@ -112,5 +166,17 @@ class TeamService
                 'member_type_id' => 2
             ];
         }, $participants);
+    }
+
+    private function buildUpdateParticipantData($currenData, $newData)
+    {
+        return array_map(function($item, $index) use ($newData) {
+            return [
+                'id' => $item->id,
+                'team_id' => $item->team_id,
+                'user_id' => $newData[$index],
+                'member_type_id' => $item->member_type_id
+            ];
+        }, $currenData, array_keys($newData));
     }
 }

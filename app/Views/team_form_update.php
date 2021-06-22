@@ -176,7 +176,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-submit mt-2">
-                                                <input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Crear Equipo">
+                                                <input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Guardar cambios">
                                             </div>
                                         </div>
                                     </div>
@@ -188,4 +188,8 @@
             </div>
         </main>
     </div>
+    <script>
+		var BASE_URL = "<?=base_url('api/users')?>"
+	</script>
+	<script src="<?=base_url('js/teams.js')?>"></script>
 </body>
