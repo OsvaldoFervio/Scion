@@ -42,8 +42,9 @@ class TeamService
         if($userId) {
             $query = $this->model->distinct()->select('teams.*')
                 ->where(['teams.user_id' => $userId])
+                ->where('teams.deleted_at is NULL')
                 ->orWhere('team_members.user_id', $userId)
-            ->join('team_members', 'team_members.team_id = teams.id')
+            ->join('team_members', 'team_members.team_id = teams.id and teams.deleted_at is NULL')
             ->orderBy('teams.created_at', 'DESC');
             //log_message('error', 'Query: '. $query->getCompiledSelect());
             return $query->get()->getResult();
@@ -53,6 +54,11 @@ class TeamService
 
     public function getById($id) {
         return $this->model->find($id);
+    }
+
+    public function delete($id)
+    {
+        $this->model->delete($id);
     }
 
     public function getTeamMembers($teamId){

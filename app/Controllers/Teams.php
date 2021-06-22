@@ -73,4 +73,10 @@ class Teams extends BaseController
         $errors = $validation->getErrors();
         return redirect()->back()->with('errors', $errors);
     }
+
+    public function delete($id)
+    {
+        $this->service->delete($id);
+        return redirect()->to(base_url('teams'))->with('success', 'Equipo eliminado');
+    }
 }

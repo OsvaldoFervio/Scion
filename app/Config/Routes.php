@@ -65,6 +65,7 @@ $routes->group('teams', function($routes) {
     $routes->get('(:num)', 'Teams::show/$1');
     $routes->get('/edit/(:num)', 'Teams::edit/$1');
     $routes->put('/update/(:num)', 'Teams::update/$1');
+    $routes->delete('/delete/(:num)', 'Teams::delete/$1');
 });
 $routes->get('/api/users', 'Api\ApiController::index');
 

@@ -28,7 +28,9 @@
                                         <h2><?=$team->name?></h2>
                                         <div class="d-inline-flex actions">
                                             <a href="<?=base_url('teams/edit/'.$team->id)?>" class="btn btn-warning mr-1">Editar</a>
-                                            <form>
+                                            <form action="<?=base_url('teams/delete/'.$team->id)?>" method="POST">
+                                                <input name="_method" value="DELETE" hidden>
+                                                <?= csrf_field() ?>
                                                 <button type="submit" class="btn bg-danger text-white rounded">Eliminar</button>
                                             </form>
                                         </div>

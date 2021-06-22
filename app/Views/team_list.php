@@ -3,6 +3,11 @@
         <main class="site-content">
             <div class="section-content p-5">
                 <div class="container">
+                    <?php if(session('success')) : ?>
+						<div class="alert alert-success">
+							<?= session()->get('success') ?>
+						</div>
+					<?php endif ?>
                     <div class="row">
                         <h2>Tus equipos</h2>
                         <a href="<?=base_url('teams/new')?>" class="btn btn-primary btn-sm mx-4">
