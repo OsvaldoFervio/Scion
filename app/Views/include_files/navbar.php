@@ -24,7 +24,11 @@
       <li><a href="<?= base_url('Home/nosotros') ?>">¿Quienes somos?</a></li>
       <li><a href="<?= base_url('Home/planes') ?>">Planes</a> </li>
       <li><a href="<?= base_url('Home/eventos') ?>">Eventos</a></li>
-      <li><a href="<?= base_url('Home/equipos') ?>">Equipo</a></li>
+      <?php if(session()->get('user_id')): ?>
+        <li><a href="<?= base_url('teams') ?>">Equipo</a></li>
+      <?php else: ?>
+        <li><a href="<?= base_url('Home/equipos') ?>">Equipo</a></li>
+      <?php endif?>
       <li><a href="<?= base_url('Home/tabposicion') ?>">Tabla Posiciones</a></li>
     </ul>
   </nav>
