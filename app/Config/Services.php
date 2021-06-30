@@ -5,6 +5,7 @@ namespace Config;
 use App\Services\AuthService;
 use CodeIgniter\Config\BaseService;
 use App\Services\EventService;
+use App\Services\PermissionService;
 use App\Services\TeamService;
 use App\Services\VideogameService;
 
@@ -50,6 +51,16 @@ class Services extends BaseService
             return new AuthService();
         }
         return static::getSharedInstance('auth');
+    }
+
+    public static function permissions($getShared = false)
+    {
+        if(! $getShared)
+        {
+            return new PermissionService();
+        }
+
+        return static::getSharedInstance('permissions');
     }
 
     public static function videogame($getShared = false)
