@@ -63,8 +63,9 @@
 
                                                 <div class="col-md-8">
                                                     <div class="form-group form-group--lg form-password">
-                                                        <input class="text-input form-control" type="text" id="username" placeholder="Username..." value="<?=$members['manager']->username?>" required data-username-type="manager">
-                                                        <input type="hidden" name="manager_id" type="text" id="manager_id" value="<?=$members['manager']->id?>">
+                                                        <input class="text-input form-control" type="text" id="username" placeholder="Username..." value="<?=$members['manager']->username ?? ''?>" required data-username-type="manager">
+                                                        <input type="hidden" name="manager_id" type="text" id="manager_id" value="<?=$members['manager']->id ?? ''?>">
+                                                        <?php //?? = https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op ?>
                                                     </div>
                                                     <div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list"></div>
                                                 </div>

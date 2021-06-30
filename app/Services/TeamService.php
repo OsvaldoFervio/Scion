@@ -76,10 +76,14 @@ class TeamService
 
     public function getTeamMembersByType($teamId){
         $results = $this->getTeamMembers($teamId);
-        $manager = $results[0];
-        $participants = array_filter($results, function($item) {
-            return $item->type == 2;
-        });
+        $manager = null;
+        $participants = [];
+        if(count($results) > 0) {
+            $manager = $results[0];
+            $participants = array_filter($results, function($item) {
+                return $item->type == 2;
+            });
+        }
         return ['manager' => $manager, 'participants' => $participants];
     }
 
