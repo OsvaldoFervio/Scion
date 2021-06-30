@@ -6,8 +6,8 @@ if(! function_exists('store_image'))
     {
         $uploadFolder = 'uploads';
         $uploadsPath = 'public/'.$uploadFolder.'/'.$folder.'/';
-        // $urlPath = 'public/'.$folder.'/';
-        $urlPath = $uploadFolder.'/'.$folder.'/';
+        $urlPath = 'public/'.$folder.'/';
+        //$urlPath = $uploadFolder.'/'.$folder.'/';
         $imagePath = null;
         if($image->isValid() && ! $image->hasMoved()) {
             if(! $filename)
