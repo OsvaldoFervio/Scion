@@ -46,7 +46,7 @@ class TeamService
                 ->where(['teams.user_id' => $userId])
                 ->where('teams.deleted_at is NULL')
                 ->orWhere('team_members.user_id', $userId)
-            ->join('team_members', 'team_members.team_id = teams.id and teams.deleted_at is NULL')
+            ->join('team_members', 'team_members.team_id = teams.id and teams.deleted_at is NULL', 'left')
             ->orderBy('teams.created_at', 'DESC');
             //log_message('error', 'Query: '. $query->getCompiledSelect());
             return $query->get()->getResult();
