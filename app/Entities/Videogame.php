@@ -12,6 +12,7 @@ class Videogame extends Entity
         'id' => null,
         'name' => null,
         'description' => null,
+        'image_url' => null,
         'active' => null,
     ];
 }

@@ -1,22 +1,24 @@
 <?php
 
-
 namespace App\Models;
-
 
 use CodeIgniter\Model;
 
-class VideogameModel extends Model
+class TeamModel extends Model
 {
-    protected $table = 'videogames';
+    protected $table = 'teams';
     protected $primaryKey = 'id';
-    protected $returnType = '\App\Entities\Videogame';
+    protected $returnType = '\App\Entities\Team';
 
     protected $allowedFields = [
+        'user_id',
+        'country_id',
         'name',
-        'description',
         'image_url',
-        'active',
+        'discord_url',
+        'whatsapp_number',
+        'email',
+        'active'
     ];
 
     protected $useTimestamps = true;

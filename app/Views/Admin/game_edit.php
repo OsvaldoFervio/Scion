@@ -15,23 +15,28 @@
                         </div>
                     <?php endif ?>
                     <div class="row">
-                        <h1>Registrar Videojuego</h1>
+                        <h1>Editar Videojuego</h1>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="<?= base_url('admin/videogames/create') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('admin/videogames/update/'.$videogame->id) ?>" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="_method" value="PUT">
                                 <?= csrf_field() ?>
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="name">Nombre</label>
-                                        <input class="form-control form-control-lg p-2" name="name" id="name" required>
+                                        <input class="form-control form-control-lg p-2" name="name" id="name" value="<?=$videogame->name?>" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="name">Plataformas</label>
                                         <select class="form-control" name="platform_id[]" id="platform_id" multiple>
                                             <option selected disabled>Seleccionar</option>
                                             <?php foreach($platforms as $platform) : ?>
-                                                <option value="<?= $platform->id?>"><?= $platform->name?></option>
+                                                <?php if($platform->id) : ?>
+                                                <option value="<?= $platform->platform_id?>" selected><?= $platform->name?></option>
+                                                <?php else : ?>
+                                                <option value="<?= $platform->platform_id?>"><?= $platform->name?></option>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -39,18 +44,25 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="name">Description</label>
-                                        <input class="form-control form-control-lg p-2" name="description" id="description">
+                                        <input class="form-control form-control-lg p-2" name="description" id="description" value="<?=$videogame->description?>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <h3>Imágenes</h3>
-                                    <div class="form-group col-md-12">
+                                    <h3>Imagen</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
                                         <label id="images">Selecciona un archivo</label>
                                         <input class="form-control" type="file" name="image" id="image" multiple accept="image/jpeg,image/png,image/jpg">
+                                        <input type="submit" class="btn btn-primary mt-4"value="Guardar">
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <input type="submit" class="btn btn-primary" value="Crear">
+                                    <div class="col-md-6">
+                                        <?php if(! empty($videogame->image_url)) : ?>
+                                        <img src="<?=$videogame->image_url?>" alt="<?=$videogame->name?>" class="w-100">
+                                        <?php else : ?>
+                                        <p>No se ha agregado una imagen</p>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </form>
                         </div>
