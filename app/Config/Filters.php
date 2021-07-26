@@ -73,6 +73,7 @@ class Filters extends BaseConfig
 				'teams',
 				'teams/*',
 				'Dashboard/*',
+				'api/*'
             ]
 		],
 		'admin' => [
