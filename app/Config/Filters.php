@@ -85,7 +85,6 @@ class Filters extends BaseConfig
 		],
 		'permissions' => [
 			'before' => [
-				'teams/*',
 				'teams/edit/*',
 				'teams/update/*',
 				'teams/delete/*'

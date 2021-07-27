@@ -1,5 +1,6 @@
 <?php define('MEMBER_TYPE_MANAGER', 1) ?>
 <?php define('MEMBER_TYPE_PARTICIPANT', 2) ?>
+<?php helper('permission') ?>
 <?= $this->include('include_files/header') ?>
 <?= $this->include('include_files/navbar') ?>
 <body>
@@ -26,6 +27,7 @@
                                 <div class="col-md-8">
                                     <div class="d-flex justify-content-between">
                                         <h2><?=$team->name?></h2>
+                                        <?php if(can_update_team($team->id)): ?>
                                         <div class="d-inline-flex actions">
                                             <a href="<?=base_url('teams/edit/'.$team->id)?>" class="btn btn-warning mr-1">Editar</a>
                                             <form action="<?=base_url('teams/delete/'.$team->id)?>" method="POST">
@@ -34,6 +36,7 @@
                                                 <button type="submit" class="btn bg-danger text-white rounded">Eliminar</button>
                                             </form>
                                         </div>
+                                        <?php endif ?>
                                     </div>
                                     <a href="<?=$team->discord_url?>" class="h4">Discord</a>
                                     <a href="https://wa.me/<?=$team->whatsapp_number?>" class="d-block h4"><i class="booked-icon ion-android-call"></i><span class="mx-2"><?=$team->whatsapp_number?></span></a>
