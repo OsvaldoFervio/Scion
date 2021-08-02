@@ -1,3 +1,5 @@
+<?php helper('permission'); ?>
+
 <body>
     <div class="site-wrapper">
         <main class="site-content">
@@ -10,9 +12,11 @@
 					<?php endif ?>
                     <div class="row">
                         <h2>Tus equipos</h2>
+                        <?php if(can_create_team()): ?>
                         <a href="<?=base_url('teams/new')?>" class="btn btn-primary btn-sm mx-4">
                             <i class="booked-icon ion-plus m-auto"></i>
                         </a>
+                        <?php endif ?>
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-10">

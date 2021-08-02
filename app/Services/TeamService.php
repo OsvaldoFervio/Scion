@@ -64,6 +64,7 @@ class TeamService
     public function delete($id)
     {
         $this->model->delete($id);
+        $this->teamMemberModel->where('team_id', $id)->where('deleted_at is null')->delete();
     }
 
     public function getTeamMembers($teamId){

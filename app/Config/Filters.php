@@ -9,6 +9,7 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use App\Filters\AuthFilter;
 use App\Filters\PermissionsFilter;
+use App\Filters\TeamActionsFilter;
 
 class Filters extends BaseConfig
 {
@@ -24,7 +25,8 @@ class Filters extends BaseConfig
 		'honeypot' => Honeypot::class,
         'auth' => AuthFilter::class,
 		'admin' => AdminFilter::class,
-		'permissions' => PermissionsFilter::class
+		'permissions' => PermissionsFilter::class,
+		'team-actions' => TeamActionsFilter::class,
 	];
 
 	/**
@@ -71,6 +73,7 @@ class Filters extends BaseConfig
 				'teams',
 				'teams/*',
 				'Dashboard/*',
+				'api/*'
             ]
 		],
 		'admin' => [
@@ -82,11 +85,16 @@ class Filters extends BaseConfig
 		],
 		'permissions' => [
 			'before' => [
-				'teams/*',
 				'teams/edit/*',
 				'teams/update/*',
 				'teams/delete/*'
 			]
-		]
+		],
+		'team-actions' => [
+			'before' => [
+				'teams/new',
+				'teams/create'
+			]
+		],
     ];
 }
