@@ -30,8 +30,11 @@ class TeamService
 
     public function update($id, $data, $image)
     {
+
         $teamData = $this->buildTeamData($data);
         $teamData['id'] = $id;
+        // var_dump($teamData);
+        // return;
         $this->model->save($teamData);
 
         $this->storeImage($id, $image);
@@ -41,7 +44,8 @@ class TeamService
     }
 
     public function getAll($userId = null) {
-        if($userId) {
+
+        if($userId && $userId != 1) {
             $query = $this->model->distinct()->select('teams.*')
                 ->where(['teams.user_id' => $userId])
                 ->where('teams.deleted_at is NULL')
@@ -50,6 +54,12 @@ class TeamService
             ->orderBy('teams.created_at', 'DESC');
             //log_message('error', 'Query: '. $query->getCompiledSelect());
             return $query->get()->getResult();
+        }
+        else if($userId== 1){
+            $query = $this->model->distinct()->select('teams.*')                
+                ->where('teams.deleted_at is NULL')               
+            ->join('team_members', 'team_members.team_id = teams.id and teams.deleted_at is NULL', 'left')
+            ->orderBy('teams.created_at', 'DESC');
         }
         return $this->model->findAll();
     }
@@ -119,6 +129,10 @@ class TeamService
     private function updateMembers($members, $ids)
     {
         $membersData = $this->buildUpdateParticipantData($members, $ids);
+        // echo $membersData;
+        // var_dump($membersData);
+        // return;
+
         $this->teamMemberModel->updateBatch($membersData, 'id');
     }
 

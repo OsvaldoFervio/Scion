@@ -13,6 +13,8 @@ class Dashboard extends BaseController
     public function __construct()
     {
         $this->service = service('event');
+        $this->serviceTeam = service('team');
+        
     }
     
     //TABLERO 1
@@ -57,6 +59,19 @@ class Dashboard extends BaseController
 
     }
 
+    public function equipos(){     
+        
+        $team = model('TeamModel');  
+        $teams = $team->findAll();
+
+        
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/equipos', ['teams' => $teams] );
+        echo view('Admin/footer');
+
+    }
+
     public function getTotals( $user )
     {
         
@@ -76,17 +91,11 @@ class Dashboard extends BaseController
         $modelEvent = model('EventModel');
 
         $data['events'] = $modelEvent->where('id <', $id)->orderBy('created_at', 'desc')->paginate();
-        
         $data['event'] = $this->service->getById($id);
-        $data['eventDetails'] = $this->service->getDetailsByEventId($id);
+        $data['eventDetails'] = $this->service->getDetailsByEventId($id);       
         $data['eventAwards'] = $this->service->getAwardsByEventId($id);
         $data['eventStages'] = $this->service->getStagesByEventId($id);       
-
-
-       // echo view('eventos', $data);
-
-        // var_dump($data);
-        // return;
+        
         echo view('Admin/head');
         echo view('Admin/leftnav');
         echo view('Admin/evento', $data );
@@ -250,5 +259,74 @@ class Dashboard extends BaseController
         ];
 
         return $data;
+    }
+
+     public function Team(){             
+        //$this->service = service('team');
+
+        $modelCountry = model('CountryModel');
+        $countries = $modelCountry->findAll();
+        
+        echo view('Admin/head');
+        echo view('Admin/leftnav');        
+        echo view('Admin/team_form', ['countries' => $countries]);
+         
+        echo view('Admin/footer');        
+
+        
+        
+    }
+    public function showTeam($id)
+    {
+        //$this->service = service('team');
+
+        $team = $this->serviceTeam->getById($id);
+        $teamMembers = $this->serviceTeam->getTeamMembers($id);
+
+         echo view('Admin/head');
+        echo view('Admin/leftnav');        
+        echo view('Admin/team', ['team' => $team, 'members' => $teamMembers]);
+         
+        echo view('Admin/footer');  
+        
+    }
+
+    public function editTeam($id)
+    {
+     
+
+        $team = $this->serviceTeam->getById($id);
+        $modelCountry = model('CountryModel');
+        $countries = $modelCountry->findAll();
+        $teamMembers = $this->serviceTeam->getTeamMembersByType($id);
+        echo view('Admin/head');
+        echo view('Admin/leftnav');        
+         echo view('Admin/team_form_update', [
+            'team' => $team, 'countries' => $countries, 'members' => $teamMembers]);
+        echo view('Admin/footer');  
+       
+    }
+
+    public function updateTeam($id)
+    {
+        $this->serv = service('team');
+
+        $data = $this->request->getPost();
+        $validation = Services::validation();
+        if($validation->run($data, 'team_update')) {
+            $image = $this->request->getFile('images');
+            // var_dump($data);
+            // return;
+            $this->serv->update($id, $data, $image);
+            return redirect()->to(base_url('Dashboard/showTeam/'.$id))->with('success', 'Datos actualizados');
+        }
+        $errors = $validation->getErrors();
+        return redirect()->back()->with('errors', $errors);
+    }
+
+     public function deleteTeam($id)
+    {
+        $this->serviceTeam->delete($id);
+        return redirect()->to(base_url('Dashboard/equipos'))->with('success', 'Equipo eliminado');
     }
 }

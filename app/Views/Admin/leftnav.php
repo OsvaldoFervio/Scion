@@ -38,6 +38,7 @@
                                         <li><a href="<?= base_url('Dashboard/') ?>">Tablero Users</a></li>
                                         <li><a href="<?= base_url('Dashboard/eventos') ?>">Tablero Events</a></li>
                                         <li><a href="<?= base_url('Dashboard/pagos') ?>">Tablero Payments</a></li>
+                                        <li><a href="<?= base_url('Dashboard/equipos') ?>">Tablero Equipos</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Catálogos <span class="fa fa-chevron-down"></span></a>
@@ -49,6 +50,7 @@
                                 <li><a><i class="fa fa-desktop"></i> Registros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="<?= base_url('Dashboard/Event') ?>">Eventos</a></li>
+                                        <li><a href="<?= base_url('Dashboard/Team') ?>">Equipos</a></li>
                                         <li><a href="#">Patrocinadores </a></li>                                      
                                     </ul>
                                 </li>                              
