@@ -6,38 +6,42 @@ namespace App\Controllers;
 use App\Entities\User;
 use Config\Services;
 
+use App\Controllers\Php\PHPMailer;
+
 class Register extends BaseController
 {
-    public function index() {
+	public function index()
+	{
 
-        $model = model('GenderModel');
-        $data = [
-            'genders' => $model->findAll()
-        ];
-        echo view('include_files/header');
-        echo view('include_files/navbar');
-        echo view('registro', $data);
-        echo view('include_files/footer');
-    }
+		$model = model('GenderModel');
+		$data = [
+			'genders' => $model->findAll()
+		];
+		echo view('include_files/header');
+		echo view('include_files/navbar');
+		echo view('registro', $data);
+		echo view('include_files/footer');
+	}
 
-    public function create() {
-        if($this->validate('signup')) {
-            $data = $this->request->getPost();
-            $user = new User();
-            $user->fill($data);
-            $userModel = model('App\Models\UserModel', false);
-            //$userModel->save($user);
-            //$this->response->redirect('/');
+	public function create()
+	{
+		if ($this->validate('signup')) {
+			$data = $this->request->getPost();
+			$user = new User();
+			$user->fill($data);
+			$userModel = model('App\Models\UserModel', false);
+			//$userModel->save($user);
+			//$this->response->redirect('/');
 
-            $this->setCita($user);
+			$this->setCita($user);
+		} else {
+			return redirect()->back()->with('errors', $this->validator->getErrors());
+		}
+	}
 
-        } else {
-            return redirect()->back()->with('errors', $this->validator->getErrors());
-        }
-    }
+	public function setCita($user)
+	{
 
-    public function setCita($user){
-   	
 		//$Email  = $this->input->post('email');
 
 		/*if($this->form_validation->run()==FALSE)
@@ -45,39 +49,40 @@ class Register extends BaseController
 			$this->output->set_status_header(400);	
 		}
         else
-        {*/			
+        {*/
 
-			/*$datos= array(
+		/*$datos= array(
 						'status'  => true,
 						);
 			$paciente = array(
 						'email'  => $Email
 						);*/
 
-			// var_dump($datos);
-			// var_dump($paciente);
+		// var_dump($datos);
+		// var_dump($paciente);
 
 		//insertar en la base de datos		
-        $validation = Services::validation();
-        //$this->sendmailConfirmation($datos);
-        //if($validation->run($user, 'team_update')) {
-            //$image = $this->request->getFile('images');
-            var_dump($user);
-            $this->sendmailConfirmation($user);
-            return;
-            //$this->serv->update($id, $data, $image);
-            //return redirect()->to(base_url('Dashboard/showTeam/'.$id))->with('success', 'Datos actualizados');
-        //}
-        //$errors = $validation->getErrors();
-        //return redirect()->back()->with('errors', $errors);		
+		$validation = Services::validation();
+		//$this->sendmailConfirmation($datos);
+		//if($validation->run($user, 'team_update')) {
+		//$image = $this->request->getFile('images');
+		var_dump($user);
+		$this->sendmailConfirmation($user);
+		return;
+		//$this->serv->update($id, $data, $image);
+		//return redirect()->to(base_url('Dashboard/showTeam/'.$id))->with('success', 'Datos actualizados');
 		//}
-    }
+		//$errors = $validation->getErrors();
+		//return redirect()->back()->with('errors', $errors);		
+		//}
+	}
 
-    public function sendmailConfirmation($datos){
+	public function sendmailConfirmation($datos)
+	{
 
-		require("class.phpmailer.php");
-		require("class.smtp.php");
-		$mail = new $this->PHPMailer();
+		//require("class.phpmailer.php");
+		//require("class.smtp.php");
+		$mail = new PHPMailer();
 		$mail->IsSMTP(); // enable SMTP
 		$mail->CharSet = 'UTF-8';
 		$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
@@ -89,7 +94,7 @@ class Register extends BaseController
 		$mail->Username = "contacto@ocsys.mx";
 		$mail->Password = "Oc2020$1";
 		$mail->SetFrom("contacto@ocsys.mx");
-		$mail->Subject = "Confirmación Cita";		 
+		$mail->Subject = "Confirmación Cita";
 
 		$nombre = $datos['first_name'];
 		$email =  $datos['email'];
@@ -107,14 +112,14 @@ class Register extends BaseController
 		$dia = date('Y-m-d', strtotime($fecha));
 		$hora =date('H:i', strtotime($fecha));*/
 
-		$mail->AddAddress($email); 
+		$mail->AddAddress($email);
 
 		//CARGA LAS DIRECCIONES DE LOS DOCTORES
 		// $destinatarios = $this->getmails();
 
 		// foreach ($destinatarios as $file ) {
 		// 	$mail->AddAddress($file->email);
-			
+
 		// }
 		$mensajeHtml = nl2br($mensaje);
 		$body = '<table  style="max-width: 700px; padding: 10px; margin:0 auto; border-collapse: collapse; background-color: #FFFFFF">
@@ -124,14 +129,14 @@ class Register extends BaseController
 				           		<div style="width: 100%; text-align: center">
 				             		<img style="padding: 1%;" src="https://ocsys.mx/images/Logo.png" width="50%">
 				           		</div><br>
-				            	<h1 style="color: #000000; margin: 0 0 7px; text-align: center">'.$nombre.', Tu cita se programó correctamente</h1>
+				            	<h1 style="color: #000000; margin: 0 0 7px; text-align: center">' . $nombre . ', Tu cita se programó correctamente</h1>
 				              		<p>
 						            	Los datos proporcionados son los siguientes:<br> 
-						            	<b>Nombre:</b> '.$nombre.'<br> 
-						            	<b>Email:</b> '.$email.'<br> 
-						            	<b>Teléfono:</b> '.$telefono.'<br> 
-						            	<b>Fecha:</b> '.$dia.'<br> 
-						            	<b>Hora:</b> '.$hora.'<br> 
+						            	<b>Nombre:</b> ' . $nombre . '<br> 
+						            	<b>Email:</b> ' . $email . '<br> 
+						            	<b>Teléfono:</b> ' . $telefono . '<br> 
+						            	<b>Fecha:</b> ' . $dia . '<br> 
+						            	<b>Hora:</b> ' . $hora . '<br> 
 				              		</p>
 			      			</div>
 				    	</td>
@@ -170,30 +175,29 @@ class Register extends BaseController
 					    </td>
 				  	</tr>				  
 				</table>';
-	
+
 		$mail->Body =  $body;
 
-		$mail->AltBody = "{$mensaje} \n\n "; 
+		$mail->AltBody = "{$mensaje} \n\n ";
 
-		 if(!$mail->Send()) {		 	
-		 	echo json_encode("Mailer Error: " . $mail->ErrorInfo);	
-		 	return false;
-		 } else {
-		 	
+		if (!$mail->Send()) {
+			echo json_encode("Mailer Error: " . $mail->ErrorInfo);
+			return false;
+		} else {
+
 			echo json_encode("Message sent!");
-		 	return true;
-		 }
+			return true;
+		}
 
-	
+
 		$destinatarios = $this->getmails();
 		$mail->AddAddress("fervio.system@gmail.com"); // Esta es la dirección a donde enviamos los datos del formulario
-		foreach ($destinatarios as $file ) {
+		foreach ($destinatarios as $file) {
 			$mail->AddAddress($file->email);
 			echo $file->email;
 		}
-		
-		var_dump($destinatarios);
-		return ;
 
+		var_dump($destinatarios);
+		return;
 	}
 }
