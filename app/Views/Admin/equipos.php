@@ -6,20 +6,25 @@
                         <div class="col-md-12 col-sm-12 ">
                             <div class="tile_count">                                
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Usuarios</span>
-                                    <div class="count"><?= $totals['users'] ?></div>
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Equipos</span>
+                                    <div class="count">250</div>
                                     <span class="count_bottom"><i class="green">1% </i> Última semana</span>
                                 </div>                            
-                                <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
-                                    <div class="count green"><?= $totals['active'] ?></div>
+                                <div class="col-md-2 col-sm-4  tile_stats_count">
+                                    <span class="count_top"><i class="fa fa-user"></i> Total mujeres</span>
+                                    <div class="count green">23</div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>9.2% </i> General</span>
                                 </div>
-                                <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Bloqueados</span>
-                                    <div class="count red"><?= $totals['block'] ?></div>
+                                <div class="col-md-2 col-sm-4  tile_stats_count">
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Hombres</span>
+                                    <div class="count">227</div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>90.8% </i> General</span>
-                                </div>                               
+                                </div>
+                                <div class="col-md-2 col-sm-4  tile_stats_count">
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
+                                    <div class="count">229</div>
+                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>5% </i> Última semana</span>
+                                </div>
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Suscripciones</span>
                                     <div class="count">$15,250</div>
@@ -33,7 +38,7 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <div class="col-md-6">
-                                        <h3>Usuarios<small> Directorio</small></h3>
+                                        <h3>Equipos<small> Listado</small></h3>
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="nav navbar-right panel_toolbox">
@@ -64,31 +69,30 @@
                                               <tr>                        
                                                 <th>Id</th>
                                                 <th>Nombre</th>
-                                                <th>Apellidos</th>
                                                 <th>Fecha</th>
-                                                <th>Usuario</th>
-                                                <th>Email</th>                        
+                                                <th>País</th>
+                                                <th>Whatsapp</th>
                                                 <th>Activo</th>
+                                               
                                                 <th>Acciones</th>
+
                                               </tr>
                                             </thead>
                                             <tbody>
-                                              <?php foreach ($users as $item) : ?>
+                                              <?php foreach ($teams as $item) : ?>
 
                                               <tr>
                                                 <td><?= $item->id ?></td>
-                                                <td><?= $item->first_name?></td>
-                                                <td><?= $item->last_name?></td>
-                                                <td><?= $item->birthdate ?></td>
-                                                <td><?= $item->username ?></td>
-                                                <td><?= $item->email ?></td>
-                                                    <?php if($item->active) :?>                                                    
-                                                    <td>Activo</td>
-                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/bloquear/'.$item->id)?>"><i class="fa fa-close"></i>Bloquear</a> </span></td>
-                                                    <?php else:  ?>
-                                                    <td>Bloqueado</td>
-                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/activar/'.$item->id)?>"><i class="fa fa-edit"></i>Activar</a> </span></td>
-                                                <?php endif ?>
+                                                <td><?= $item->name?></td>
+                                                <td><?= $item->created_at?></td>
+                                                <td><?= $item->country_id ?></td>
+                                                <td><?= $item->whatsapp_number ?></td>
+                                                <td><?= $item->active ?></td>
+                                                
+                                                <td>
+                                                    <span class="count_top"><a href="<?=base_url('Dashboard/showTeam/'.$item->id)?>"><i class="fa fa-eye"></i>Ver</a> </span><br>
+                                                    <span class="count_top"><a href="<?=base_url('Dashboard/EditTeam/'.$item->id)?>"><i class="fa fa-edit"></i>Editar</a> </span><br>
+                                                    <span class="count_top"><a href="<?=base_url('Dashboard/equipo/'.$item->id)?>"><i class="fa fa-close"></i>Eliminar</a> </span><br></td>
                                               </tr>
                                               <?php endforeach; ?> 
                                               

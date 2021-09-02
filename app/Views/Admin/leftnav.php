@@ -8,7 +8,7 @@
  <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-tree"></i> <span>Scion Admin!</span></a>
+                        <a href="" class="site_title"><i class="fa fa-tree"></i> <span>Scion Admin!</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -16,7 +16,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="http://ampf.ocsys.mx/images/dashboard/img.jpg  " alt="..." class="img-circle profile_img">
+                            <img src="<?= base_url('images/logo@2x.png') ?>" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Bienvenido,</span>
@@ -35,22 +35,23 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard">Tablero 1</a></li>
-                                        <li><a href="index2.html">Tablero 2</a></li>
-                                        <li><a href="index3.html">Tablero 3</a></li>
+                                        <li><a href="<?= base_url('Dashboard/') ?>">Tablero Users</a></li>
+                                        <li><a href="<?= base_url('Dashboard/eventos') ?>">Tablero Events</a></li>
+                                        <li><a href="<?= base_url('Dashboard/pagos') ?>">Tablero Payments</a></li>
+                                        <li><a href="<?= base_url('Dashboard/equipos') ?>">Tablero Equipos</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Catálogos <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard/perfil">Usuarios</a></li>
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard/curriculum">Videojuegos</a></li>
-                                        <li><a href="http://ampf.ocsys.mx/Dashboard/registro">Plataformas</a></li>                                        
+                                        <li><a href="<?= base_url('admin/videogames')?>">Videojuegos</a></li>
+                                        <li><a href="#">Plataformas</a></li>                                        
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-desktop"></i> Registros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="<?= base_url('Dashboard/Event') ?>">Eventos</a></li>
-                                        <li><a href="media_gallery.html">Patrocinadores </a></li>                                      
+                                        <li><a href="<?= base_url('Dashboard/Team') ?>">Equipos</a></li>
+                                        <li><a href="#">Patrocinadores </a></li>                                      
                                     </ul>
                                 </li>                              
                             </ul>
@@ -71,7 +72,7 @@
                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
                             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="" href="login.html" data-original-title="Logout">
+                        <a data-toggle="tooltip" data-placement="top" title="" href="<?= base_url('logout') ?>" data-original-title="Logout">
                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                         </a>
                     </div>

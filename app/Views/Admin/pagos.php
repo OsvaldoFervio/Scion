@@ -6,22 +6,22 @@
                         <div class="col-md-12 col-sm-12 ">
                             <div class="tile_count">                                
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Usuarios</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Pagos</span>
                                     <div class="count"><?= $totals['users'] ?></div>
                                     <span class="count_bottom"><i class="green">1% </i> Última semana</span>
                                 </div>                            
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Validados</span>
                                     <div class="count green"><?= $totals['active'] ?></div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>9.2% </i> General</span>
                                 </div>
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Bloqueados</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Por Validar</span>
                                     <div class="count red"><?= $totals['block'] ?></div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>90.8% </i> General</span>
                                 </div>                               
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Suscripciones</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Ganancia</span>
                                     <div class="count">$15,250</div>
                                     <span class="count_bottom"><i class="green"><i class="fa fa-money"></i> USD</i> </span>
                                 </div>
@@ -33,7 +33,7 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <div class="col-md-6">
-                                        <h3>Usuarios<small> Directorio</small></h3>
+                                        <h3>Pagos<small> Listado</small></h3>
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="nav navbar-right panel_toolbox">
@@ -65,10 +65,11 @@
                                                 <th>Id</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
-                                                <th>Fecha</th>
+                                                <th>Fecha Pago</th>
                                                 <th>Usuario</th>
                                                 <th>Email</th>                        
-                                                <th>Activo</th>
+                                                <th>Evento</th>
+                                                <th>Pago</th>
                                                 <th>Acciones</th>
                                               </tr>
                                             </thead>
@@ -82,12 +83,13 @@
                                                 <td><?= $item->birthdate ?></td>
                                                 <td><?= $item->username ?></td>
                                                 <td><?= $item->email ?></td>
+                                                <td>Evento Random</td>
                                                     <?php if($item->active) :?>                                                    
-                                                    <td>Activo</td>
-                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/bloquear/'.$item->id)?>"><i class="fa fa-close"></i>Bloquear</a> </span></td>
+                                                    <td>Pagado</td>
+                                                    <td><span class="count_top"><a href=""><i class="fa fa-money"></i>Pagado</a> </span></td>
                                                     <?php else:  ?>
-                                                    <td>Bloqueado</td>
-                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/activar/'.$item->id)?>"><i class="fa fa-edit"></i>Activar</a> </span></td>
+                                                    <td>Por Validar</td>
+                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/activar/'.$item->id)?>"><i class="fa fa-edit"></i>Validar Pago</a> </span></td>
                                                 <?php endif ?>
                                               </tr>
                                               <?php endforeach; ?> 
