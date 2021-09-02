@@ -75,9 +75,9 @@ class Register extends BaseController
 
     public function sendmailConfirmation($datos){
 
-		require("Helpers/class.phpmailer.php");
-		require("Helpers/class.smtp.php");
-		$mail = new PHPMailer();
+		require("class.phpmailer.php");
+		require("class.smtp.php");
+		$mail = new $this->PHPMailer();
 		$mail->IsSMTP(); // enable SMTP
 		$mail->CharSet = 'UTF-8';
 		$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
