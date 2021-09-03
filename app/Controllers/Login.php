@@ -26,7 +26,8 @@ class Login extends BaseController
             'password' => $this->request->getPost('password')
         ];
         $userModel = new UserModel;
-        $result = $userModel->where('email', $data['email'])->first();
+        $array = ['email' => $data['email'], 'active' => 1];
+        $result = $userModel->where($array)->first();
         if ($result) {
             if (check_password($data['password'], $result->password)) {
                 $session = session();
@@ -40,7 +41,8 @@ class Login extends BaseController
                 if ($result->role_id == 2)
                     return redirect()->redirect('Home/');
             }
-        }
+        }        
+
         return redirect()->back()->with('error', 'Datos incorrectos');
     }
 

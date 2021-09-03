@@ -8,7 +8,6 @@ class Register extends BaseController
 {
 	public function index()
 	{
-
 		$model = model('GenderModel');
 		$data = [
 			'genders' => $model->findAll()
@@ -22,9 +21,9 @@ class Register extends BaseController
 	public function create()
 	{
 		if ($this->validate('signup')) {
-			$data = $this->request->getPost();
+			$data = $this->request->getPost();			
 			$user = new User();
-			$user->fill($data);
+			$user->fill($data);			
 			$userModel = model('App\Models\UserModel', false);
 			$userModel->save($user);
 			$this->setEmail($user);
