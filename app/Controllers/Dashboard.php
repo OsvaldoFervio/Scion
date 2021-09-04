@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
@@ -14,71 +15,64 @@ class Dashboard extends BaseController
     {
         $this->service = service('event');
         $this->serviceTeam = service('team');
-        
     }
-    
+
     //TABLERO 1
-    public function index(){     
-        
-        $user = model('UserModel');  
+    public function index()
+    {
+        $user = model('UserModel');
         $users = $user->findAll();
         $totals = $this->getTotals($user);
-        
+
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/index', ['users' => $users, 'totals' =>$totals] );
+        echo view('Admin/index', ['users' => $users, 'totals' => $totals]);
         echo view('Admin/footer');
-
     }
 
-        //TABLERO 2
-    public function eventos(){     
-        
-        $event = model('EventModel');  
+    //TABLERO 2
+    public function eventos()
+    {
+        $event = model('EventModel');
         $events = $event->findAll();
 
-                             
+
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/eventos', ['events' => $events] );
+        echo view('Admin/eventos', ['events' => $events]);
         echo view('Admin/footer');
-
     }
 
-        //TABLERO 3
-    public function pagos(){     
-        
-        $user = model('UserModel');  
+    //TABLERO 3
+    public function pagos()
+    {
+        $user = model('UserModel');
         $users = $user->findAll();
         $totals = $this->getTotals($user);
-                             
+
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/pagos', ['users' => $users, 'totals' =>$totals] );
+        echo view('Admin/pagos', ['users' => $users, 'totals' => $totals]);
         echo view('Admin/footer');
-
     }
 
-    public function equipos(){     
-        
-        $team = model('TeamModel');  
+    public function equipos()
+    {
+        $team = model('TeamModel');
         $teams = $team->findAll();
 
-        
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/equipos', ['teams' => $teams] );
+        echo view('Admin/equipos', ['teams' => $teams]);
         echo view('Admin/footer');
-
     }
 
-    public function getTotals( $user )
+    public function getTotals($user)
     {
-        
         $active = 3;
 
-        $data = array('users' => $user->CountAll(),'active' =>$active, 'block' =>'' );  
-        $data['block']=$data['users'] - $data['active'];
+        $data = array('users' => $user->CountAll(), 'active' => $active, 'block' => '');
+        $data['block'] = $data['users'] - $data['active'];
         return $data;
     }
 
@@ -87,76 +81,76 @@ class Dashboard extends BaseController
 
     public function evento($id)
     {
-
         $modelEvent = model('EventModel');
 
         $data['events'] = $modelEvent->where('id <', $id)->orderBy('created_at', 'desc')->paginate();
         $data['event'] = $this->service->getById($id);
-        $data['eventDetails'] = $this->service->getDetailsByEventId($id);       
+        $data['eventDetails'] = $this->service->getDetailsByEventId($id);
         $data['eventAwards'] = $this->service->getAwardsByEventId($id);
-        $data['eventStages'] = $this->service->getStagesByEventId($id);       
-        
+        $data['eventStages'] = $this->service->getStagesByEventId($id);
+
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/evento', $data );
+        echo view('Admin/evento', $data);
         echo view('Admin/footer');
-
     }
 
     //Country
-    public function Country(){
-
+    public function Country()
+    {
     }
 
-    public function createCountry(){
-
+    public function createCountry()
+    {
     }
-    
+
 
     //Platform
-    public function Platform(){
-
+    public function Platform()
+    {
     }
 
-    public function createPlatform(){
-
+    public function createPlatform()
+    {
     }
 
     //Gaming
-    public function Gaming(){
-
+    public function Gaming()
+    {
     }
 
-    
+
 
     //Award
-    public function Award(){
-
+    public function Award()
+    {
     }
 
-    public function createAward(){
-
+    public function createAward()
+    {
     }
 
 
     //Events
-    public function Event(){     
+    public function Event()
+    {
         //$vista = $this->template('auth/login, $data'); 
-         $data = $this->getData();
-        
+        $data = $this->getData();
+
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/event_form',$data);
+        echo view('Admin/event_form', $data);
         echo view('Admin/footer');
 
         // echo view('Dashboard/index',array('data'=>$data ,'totales'=>$totales),TRUE);
     }
 
-    public function createEvent() {
+    public function createEvent()
+    {
         $data = $this->request->getPost();
         //var_dump($data);
         //return;
-        if($this->validate('event')) {
+        if ($this->validate('event')) {
             $eventId = $this->service->create($data);
             $this->service->storeEventImages($eventId, $this->request->getFiles());
             return redirect()->to(base_url('Dashboard/Event'))->with('success', 'Evento creado');
@@ -165,7 +159,8 @@ class Dashboard extends BaseController
         }
     }
 
-    public function EditEvent($id){     
+    public function EditEvent($id)
+    {
 
         $data = $this->getData();
         $event = $this->service->getById($id);
@@ -181,19 +176,15 @@ class Dashboard extends BaseController
 
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/event_edit',$data);
+        echo view('Admin/event_edit', $data);
         echo view('Admin/footer');
-
-
-
-        // echo view('Dashboard/index',array('data'=>$data ,'totales'=>$totales),TRUE);
     }
 
     public function update($id)
     {
         $data = $this->request->getPost();
         $validation = Services::validation();
-        if($validation->run($data, 'event')) {
+        if ($validation->run($data, 'event')) {
             $this->service->update($id, $data);
             $this->service->storeEventImages($id, $this->request->getFiles());
             return redirect()->to(base_url('Dashboard/eventos/'))->with('success', 'Evento actualizado');
@@ -203,7 +194,8 @@ class Dashboard extends BaseController
     }
 
 
-    public function getTemplate($view){
+    public function getTemplate($view)
+    {
         /*$data = array(
             'head' => $this->load->view('layout/head','',TRUE), 
             'leftnav' => $this->load->view('layout/leftnav','',TRUE),
@@ -214,11 +206,12 @@ class Dashboard extends BaseController
         $this->load->view('dashboard',$data);*/
     }
 
-    public function createGame(){
-         $data = $this->request->getPost();
+    public function createGame()
+    {
+        $data = $this->request->getPost();
         //var_dump($data);
         //return;
-        if($this->validate('game')) {
+        if ($this->validate('game')) {
             $eventId = $this->service->create($data);
             $this->service->storeEventImages($eventId, $this->request->getFiles());
             return redirect()->to(base_url('Dashboard/Event'))->with('success', 'Evento creado');
@@ -227,7 +220,8 @@ class Dashboard extends BaseController
         }
     }
 
-    protected function getData() {
+    protected function getData()
+    {
         $modelEventType = model('EventTypeModel');
         $modelCategory = model('CategoryModel');
         $modelDifficulty = model('DifficultyModel');
@@ -261,50 +255,41 @@ class Dashboard extends BaseController
         return $data;
     }
 
-     public function Team(){             
-        //$this->service = service('team');
-
+    public function Team()
+    {
         $modelCountry = model('CountryModel');
         $countries = $modelCountry->findAll();
-        
-        echo view('Admin/head');
-        echo view('Admin/leftnav');        
-        echo view('Admin/team_form', ['countries' => $countries]);
-         
-        echo view('Admin/footer');        
 
-        
-        
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/team_form', ['countries' => $countries]);
+
+        echo view('Admin/footer');
     }
+
     public function showTeam($id)
     {
-        //$this->service = service('team');
-
         $team = $this->serviceTeam->getById($id);
         $teamMembers = $this->serviceTeam->getTeamMembers($id);
 
-         echo view('Admin/head');
-        echo view('Admin/leftnav');        
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
         echo view('Admin/team', ['team' => $team, 'members' => $teamMembers]);
-         
-        echo view('Admin/footer');  
-        
+
+        echo view('Admin/footer');
     }
 
     public function editTeam($id)
     {
-     
-
         $team = $this->serviceTeam->getById($id);
         $modelCountry = model('CountryModel');
         $countries = $modelCountry->findAll();
         $teamMembers = $this->serviceTeam->getTeamMembersByType($id);
         echo view('Admin/head');
-        echo view('Admin/leftnav');        
-         echo view('Admin/team_form_update', [
-            'team' => $team, 'countries' => $countries, 'members' => $teamMembers]);
-        echo view('Admin/footer');  
-       
+        echo view('Admin/leftnav');
+        echo view('Admin/team_form_update', ['team' => $team, 'countries' => $countries, 'members' => $teamMembers]);
+
+        echo view('Admin/footer');
     }
 
     public function updateTeam($id)
@@ -313,18 +298,16 @@ class Dashboard extends BaseController
 
         $data = $this->request->getPost();
         $validation = Services::validation();
-        if($validation->run($data, 'team_update')) {
+        if ($validation->run($data, 'team_update')) {
             $image = $this->request->getFile('images');
-            // var_dump($data);
-            // return;
             $this->serv->update($id, $data, $image);
-            return redirect()->to(base_url('Dashboard/showTeam/'.$id))->with('success', 'Datos actualizados');
+            return redirect()->to(base_url('Dashboard/showTeam/' . $id))->with('success', 'Datos actualizados');
         }
         $errors = $validation->getErrors();
         return redirect()->back()->with('errors', $errors);
     }
 
-     public function deleteTeam($id)
+    public function deleteTeam($id)
     {
         $this->serviceTeam->delete($id);
         return redirect()->to(base_url('Dashboard/equipos'))->with('success', 'Equipo eliminado');

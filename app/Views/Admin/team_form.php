@@ -1,4 +1,3 @@
-
             <!-- page content -->
             <div class="right_col" role="main" style="min-height: 941px;">
                 <div class="container">

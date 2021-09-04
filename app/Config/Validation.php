@@ -53,6 +53,10 @@ class Validation
         'username' => 'required|is_unique[users.username]'
     ];
 
+    public $signup_update = [        
+        'active' => 'required'
+    ];
+
     public $team = [
         'name' => 'required',
         'manager_id' => 'required',

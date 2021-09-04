@@ -153,13 +153,13 @@
                                                 <div class="col-md-12">
                                                     <div class="row px-2">
                                                         <span class="col-md-1 pl-4 border-0 vertical-center text-end"><?=$index?></span>
-                                                        <div class="col-md-2 form-control col-md-2 tex-center text-white" style="background: rgba(0, 0, 0, 0.5);">
+                                                        <div class="col-md-2 form-control col-md-2 tex-center" style="background: rgba(0, 0, 0, 0.5);">
                                                             <?=$member->username?>
                                                         </div>
-                                                        <div class="form-control col-md-6 mx-2 text-white" style="background: rgba(0, 0, 0, 0.5);">
+                                                        <div class="form-control col-md-6 mx-2" style="background: rgba(0, 0, 0, 0.5);">
                                                             <?=$member->first_name?> <?=$member->last_name?>
                                                         </div>
-                                                        <a class="border-0 vertical-center"><i class="booked-icon ion-close-circled border-0 text-white"></i></a>
+                                                        <a class="border-0 vertical-center"><i class="booked-icon ion-close-circled border-0"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
