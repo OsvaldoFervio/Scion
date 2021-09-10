@@ -52,15 +52,15 @@
       <!-- Account -->
       <?php if(! session()->get('user_id')) : ?>
       <li class="nav-secondary__login">
-        <a href="<?= base_url('login') ?>">
+        <a id="lmsesion" href="<?= base_url('login') ?>">
           <i class="icon-key"></i>
-          <span id="lmsesion" class="link-label">Iniciar sesión</span>
+          <span class="link-label">Iniciar sesión</span>
         </a>
       </li>
       <li class="nav-secondary__login">
-        <a href="<?= base_url('signup') ?>">
+        <a id="lmregistro" href="<?= base_url('signup') ?>">
           <i class="icon-user"></i>
-          <span id="lmregistro" class="link-label">Registrate</span>
+          <span class="link-label">Registrate</span>
         </a>
       </li>
       <?php else : ?>

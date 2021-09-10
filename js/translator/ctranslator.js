@@ -10,10 +10,10 @@ function Initialize(cve) {
         GetSomos(cve);
     if(window.location.href.includes('planes'))
         GetPlanes(cve);
-    if(window.location.href.includes('eventos'))
+    if(window.location.href.includes('events'))
         GetEventos(cve);
     if(window.location.href.includes('equipos'))
-        GetEquipo(cve);
+        GetIniEquipo(cve);
     if(window.location.href.includes('tabposicion'))
         GetTPosicion(cve);    
     if(window.location.href.includes('login'))
@@ -68,8 +68,8 @@ $.ajax({
             document.getElementById("lmevento").innerText   = lmevento;
             document.getElementById("lmequipo").innerText   = lmequipo;
             document.getElementById("lmposicion").innerText = lmposicion;
-            document.getElementById("lmsesion").innerText   = lmsesion;
-            document.getElementById("lmregistro").innerText = lmregistro;
+            document.getElementById("lmsesion").innerHTML   = '<i class="icon-key"></i> &nbsp; ' + lmsesion;
+            document.getElementById("lmregistro").innerHTML = '<i class="icon-user"></i> &nbsp; ' + lmregistro;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest.responseText);
@@ -466,52 +466,53 @@ function GetDouble(cve) {
     });
 }
 
-var leventos = [];
 function GetEventos(cve) {
     $.ajax({
         type: "GET",
         cache: false,
-        url: "../language/equipo_" + cve + ".txt",
+        url: "../language/evento_" + cve + ".txt",
         data: "{}",
         contentType: "application/text; charset=utf-8",
         success: function (respuesta, textStatus) {
             console.log(textStatus + "-GetLabels-");
-            var renglon = respuesta.split('\n'); 
+            let leventos = [];
+            let renglon = respuesta.split('\n'); 
             for(var i = 0; i < renglon.length; i++)
             {
-                var element = renglon[i].split(':');
-                lequipo.push(element[1]);
+                let element = renglon[i].split(':');
+                leventos.push(element[1]);
             }
             var x = 0;
-            var lblCrear         = lequipo[x++];
-            var lblLogo          = lequipo[x++];
-            var lblRequeridos    = lequipo[x++];
-            var lblEquipo        = lequipo[x++];
-            var lblManager       = lequipo[x++];
-            var lblDiscord       = lequipo[x++];
-            var lblWhats         = lequipo[x++];
-            var lblCorreo        = lequipo[x++];
-            var lblPais          = lequipo[x++];
-            var lblParticipantes = lequipo[x++];
-            var lblID            = lequipo[x++];
-            var lblParticipante  = lequipo[x++];
-            var lblTernimos      = lequipo[x++];
-            var btnCrear         = lequipo[x++];
+            var lecatalago     = leventos[x++];
+            var leparticipante = leventos[x++];
+            var lenohay        = leventos[x++];
+            var nopremios      = leventos[x++];
+            var bneregistrate  = leventos[x++];
+            var lereglas       = leventos[x++];
+            var lenose         = leventos[x++];
+            var leestructura   = leventos[x++];
+            var ledefinir      = leventos[x++];
+            var leotros        = leventos[x++];
+            var leeditar       = leventos[x++];
+            var leeliminar     = leventos[x++];
            
-            document.getElementById("lblCrear").innerHTML          = '<i class="booked-icon ion-person-stalker"></i> &nbsp; ' + lblCrear;
-            document.getElementById("lblLogo").innerText           = lblLogo;
-            document.getElementById("lblRequeridos").innerText     = lblRequeridos;
-            document.getElementById("lblEquipo").innerText         = lblEquipo;
-            document.getElementById("lblManager").innerText        = lblManager;
-            document.getElementById("lblDiscord").innerText        = lblDiscord;
-            document.getElementById("lblWhats").innerText          = lblWhats;
-            document.getElementById("lblCorreo").innerText         = lblCorreo;
-            document.getElementById("lblPais").innerText           = lblPais;
-            document.getElementById("lblParticipantes").innerHTML  = '<i class="booked-icon ion-person"></i> &nbsp; ' + lblParticipantes;
-            document.getElementById("lblID").placeholder           = lblID;
-            document.getElementById("lblParticipante").placeholder = lblParticipante;
-            document.getElementById("lblTerminos").innerText       = lblTernimos;
-            document.getElementById("btnCrear").value              = btnCrear;
+            document.getElementById("lecatalago").innerText     = lecatalago;
+            document.getElementById("leparticipante").innerText = leparticipante;
+            if(document.getElementById("leeditar"))
+                document.getElementById("lenohay").innerText = lenohay;
+
+            document.getElementById("nopremios").innerText      = nopremios;
+            document.getElementById("bneregistrate").innerText  = bneregistrate;
+            document.getElementById("lereglas").innerText       = lereglas;
+            document.getElementById("lenose").innerText         = lenose;
+            document.getElementById("leestructura").innerText   = leestructura;
+            document.getElementById("ledefinir").innerText      = ledefinir;
+            document.getElementById("leotros").innerText        = leotros;
+            
+            if(document.getElementById("leeditar"))
+                document.getElementById("leeditar").innerText   = leeditar;
+            if(document.getElementById("leeliminar"))
+                document.getElementById("leeliminar").innerText = leeliminar;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest.responseText);
@@ -519,7 +520,39 @@ function GetEventos(cve) {
     });
 }
 
-var lequipo = [];
+function GetIniEquipo(cve) {
+    $.ajax({
+        type: "GET",
+        cache: false,
+        url: "../language/iniequipo_" + cve + ".txt",
+        data: "{}",
+        contentType: "application/text; charset=utf-8",
+        success: function (respuesta, textStatus) {
+            console.log(textStatus + "-GetLabels-");
+            let liniequipo = [];
+            let renglon = respuesta.split('\n'); 
+            for(let i = 0; i < renglon.length; i++)
+            {
+                let element = renglon[i].split(':');
+                liniequipo.push(element[1]);
+            }
+            var x = 0;
+            var lteam1  = liniequipo[x++];
+            var lteam2  = liniequipo[x++];
+            var lteam3  = liniequipo[x++];
+            var lteam4  = liniequipo[x++];
+           
+            document.getElementById("lteam1").innerText = lteam1;
+            document.getElementById("lteam2").innerText = lteam2;
+            document.getElementById("lteam3").innerText = lteam3;
+            document.getElementById("lteam4").innerText = lteam4;
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest.responseText);
+        }
+    });
+}
+
 function GetEquipo(cve) {
     $.ajax({
         type: "GET",
@@ -529,10 +562,11 @@ function GetEquipo(cve) {
         contentType: "application/text; charset=utf-8",
         success: function (respuesta, textStatus) {
             console.log(textStatus + "-GetLabels-");
-            var renglon = respuesta.split('\n'); 
-            for(var i = 0; i < renglon.length; i++)
+            let lequipo = [];
+            let renglon = respuesta.split('\n'); 
+            for(let i = 0; i < renglon.length; i++)
             {
-                var element = renglon[i].split(':');
+                let element = renglon[i].split(':');
                 lequipo.push(element[1]);
             }
             var x = 0;
@@ -572,7 +606,6 @@ function GetEquipo(cve) {
     });
 }
 
-var ltposicion = [];
 function GetTPosicion(cve) {
     $.ajax({
         type: "GET",
@@ -582,27 +615,28 @@ function GetTPosicion(cve) {
         contentType: "application/text; charset=utf-8",
         success: function (respuesta, textStatus) {
             console.log(textStatus + "-GetLabels-");
-            var renglon = respuesta.split('\n'); 
-            for(var i = 0; i < renglon.length; i++)
+            let ltposicion = [];
+            let renglon = respuesta.split('\n'); 
+            for(let i = 0; i < renglon.length; i++)
             {
-                var element = renglon[i].split(':');
-                lequipo.push(element[1]);
+                let element = renglon[i].split(':');
+                ltposicion.push(element[1]);
             }
             var x = 0;
-            var lblCrear         = lequipo[x++];
-            var lblLogo          = lequipo[x++];
-            var lblRequeridos    = lequipo[x++];
-            var lblEquipo        = lequipo[x++];
-            var lblManager       = lequipo[x++];
-            var lblDiscord       = lequipo[x++];
-            var lblWhats         = lequipo[x++];
-            var lblCorreo        = lequipo[x++];
-            var lblPais          = lequipo[x++];
-            var lblParticipantes = lequipo[x++];
-            var lblID            = lequipo[x++];
-            var lblParticipante  = lequipo[x++];
-            var lblTernimos      = lequipo[x++];
-            var btnCrear         = lequipo[x++];
+            var lblCrear         = ltposicion[x++];
+            var lblLogo          = ltposicion[x++];
+            var lblRequeridos    = ltposicion[x++];
+            var lblEquipo        = ltposicion[x++];
+            var lblManager       = ltposicion[x++];
+            var lblDiscord       = ltposicion[x++];
+            var lblWhats         = ltposicion[x++];
+            var lblCorreo        = ltposicion[x++];
+            var lblPais          = ltposicion[x++];
+            var lblParticipantes = ltposicion[x++];
+            var lblID            = ltposicion[x++];
+            var lblParticipante  = ltposicion[x++];
+            var lblTernimos      = ltposicion[x++];
+            var btnCrear         = ltposicion[x++];
            
             document.getElementById("lblCrear").innerHTML          = '<i class="booked-icon ion-person-stalker"></i> &nbsp; ' + lblCrear;
             document.getElementById("lblLogo").innerText           = lblLogo;

@@ -46,12 +46,12 @@
 					<?php if (is_admin()) : ?>
 						<div class="row">
 							<div class="w-100 d-flex justify-content-end">
-								<a href="<?= base_url('admin/events/edit/' . $event->id) ?>" class="btn btn-primary">Editar</a>
+								<a id="leeditar" href="<?= base_url('admin/events/edit/' . $event->id) ?>" class="btn btn-primary">Editar</a>
 								<div class="mx-2">
 									<form action="<?= base_url('admin/events/delete/' . $event->id) ?>" method="post">
 										<input type="hidden" name="_method" value="DELETE">
 										<?= csrf_field() ?>
-										<button type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>
+										<button id="leeliminar" type="submit" class="btn bg-danger text-white rounded-0">ELIMINAR</button>
 									</form>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 						<div class="row">
 							<div class="col-md-3">
 								<div class="room__meta-item-value">
-									<i class="icon-tag"></i> Categoría: <?= $event->category_name ?>
+									<i id="lecatalago" class="icon-tag">Categoría</i>: <?= $event->category_name ?>
 								</div>
 							</div>
 
@@ -99,7 +99,7 @@
 										<div class="room__meta-item-value">
 											<i class="ion-person-stalker"></i> <?= $event->max_participants ?>
 										</div>
-										<div class="room__meta-item-label">Participantes</div>
+										<div id="leparticipante" class="room__meta-item-label">Participantes</div>
 									</div>
 
 									<div class="room__meta-item">
@@ -114,7 +114,7 @@
 								<?php if ($eventDetails) :  ?>
 									<p><?= $eventDetails->description ?></p>
 								<?php else : ?>
-									<p>No hay una descripción</p>
+									<p id="lenohay">No hay una descripción</p>
 								<?php endif ?>
 
 							</div>
@@ -130,14 +130,14 @@
 											</li>
 										<?php endforeach ?>
 									<?php else : ?>
-										<li class="room-details__item">
+										<li id="nopremios" class="room-details__item">
 											NO HAY PREMIOS
 										</li>
 									<?php endif ?>
 								</ul>
 								<!-- Room Details / End -->
 
-								<a href="#" class="btn btn-primary btn-lg">Registrate Ahora!</a>
+								<a id="bneregistrate" href="#" class="btn btn-primary btn-lg">Registrate Ahora</a>
 							</div>
 						</div>
 
@@ -149,7 +149,7 @@
 								<div class="room__meta room__meta--lg">
 									<div class="room__meta-item room__meta-item--rating">
 										<div class="room__meta-item-label">
-											<h3>Reglas</h3>
+											<h3 id="lereglas">Reglas</h3>
 										</div>
 									</div>
 								</div>
@@ -158,14 +158,14 @@
 								<?php if ($eventDetails and $eventDetails->rules) :  ?>
 									<p><?= $eventDetails->rules ?></p>
 								<?php else : ?>
-									<p>No se definieron reglas</p>
+									<p id="lenose">No se definieron reglas</p>
 								<?php endif ?>
 							</div>
 
 							<div class="col-md-4">
 								<!-- Room Details -->
 								<div class="room__meta-item-label">
-									<h3>Estructura</h3>
+									<h3 id="leestructura">Estructura</h3>
 								</div>
 
 								<?php if ($eventStages) : ?>
@@ -176,7 +176,7 @@
 										</div>
 									<?php endforeach ?>
 								<?php else : ?>
-									<div>Por definir</div>
+									<div id="ledefinir">Por definir</div>
 								<?php endif ?>
 								<!-- Room Details / End -->
 							</div>
@@ -189,7 +189,7 @@
 			<!-- Related Rooms -->
 			<div class="section-content">
 				<div class="container">
-					<h2>Otros Eventos</h2>
+					<h2 id="leotros">Otros Eventos</h2>
 					<!-- Rooms Grid - 3 cols -->
 					<div class="row rooms rooms--grid js-rooms-related slick--arrows-top">
 

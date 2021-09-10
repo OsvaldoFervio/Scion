@@ -1,0 +1,4 @@
+lteam1:Crea un equipo y participa en nuestros próximos eventos
+lteam2:¡COMIENZA AHORA!
+lteam3:INICIA SESIÓN
+lteam4:REGISTRATE
