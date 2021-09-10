@@ -1,0 +1,14 @@
+lblTitulo:PASE COLABORADOR PLUS
+lblIncluye:INCLUYE
+lblin1:2 cupos en el torneo(promoción para 2 equipos).
+lblin2:Publicación de presentación de equipos confirmados del evento.
+lblin3:Menciones en las fases del torneo en directo.
+lblin4:Posibilidad de jugar con un miembro sin tag.
+lblin5:Check-In automático.
+lblin6:10% de descuento en 1 entrada de un torneo futuro organizado por Scion Esports Series.
+lblin7:Posibilidad de escoger en qué grupo jugar en cada fase (siempre y cuando clasifique a la siguiente ronda).
+lblin8:Posibilidad de jugar con roster diferente durante las partidas en cada fase (cumpliendo con las reglas y requisitos de cuentas de jugadores en reglamento).
+lblDescripcion:DESCRIPCIÓN
+lbldes1:Pase con más beneficios para el equipo que lo adquiera.
+lbldes2:No entra como equipo patrocinador del torneo.
+lbldes3:Podrá escoger en qué grupo jugar cada fase siempre y cuando no se hayan hecho los grupos, para esto se le pregunta al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también en caso de pasar de ronda tiene derecho a elegir qué día jugar.

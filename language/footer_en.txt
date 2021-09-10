@@ -5,7 +5,7 @@ lblfRegistro:Register
 lblfTorneos:Tournaments and Events
 lblfMas:More
 lblfEquipo:Create your team
-lblfTabla:Positions table
+lblfTabla:Positions Table
 lblfAyuda:Help
 lblfContacto:Contact
 lblfCorreo:contacto@scionesps.com
