@@ -1,2 +1,14 @@
-lblTitulo:BASIC TICKET PRICE, PARTNERS AND SPONSORED TEAMS
-btnComenzar:GET STARTED
+lblTitulo:COLLABORATOR PASS PLUS
+lblIncluye:INCLUDES
+lblin1:2 places in the tournament (promotion for 2 teams).
+lblin2:Publication of the presentation of confirmed teams of the event.
+lblin3:Mentions in the live tournament phases.
+lblin4:Ability to play with a member without tag.
+lblin5:Automatic Check-In.
+lblin6:10% discount on 1 entry to a future tournament hosted by the Scion Esports Series.
+lblin7:Possibility of choosing which group to play in each phase (as long as they qualify for the next round).
+lblin8:Possibility of playing with a different roster during the games in each phase (complying with the rules and requirements of player accounts in regulations).
+lblDescripcion:DESCRIPTION
+lbldes1:Pass with more benefits for the team that acquires it.
+lbldes2:Does not enter as the sponsoring team of the tournament.
+lbldes3:You can choose in which group to play each phase as long as the groups have not been made, for this the collaborator is asked in advance so that he can choose before the organization to make the groups, also in case of passing the round he has the right to choose which day to play.

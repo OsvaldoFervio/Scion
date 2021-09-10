@@ -79,7 +79,7 @@
               <!-- Widget: Address -->
               <div class="widget widget--footer widget_nav_menu">
                 <div class="widget__header">
-                  <h4 id="lmcontacto" class="widget__title">Contacto</h4>
+                  <h4 id="lfcontacto" class="widget__title">Contacto</h4>
                 </div>
                 <div class="widget__content">
                   <address>                       
@@ -113,7 +113,7 @@
           <div class="footer-copyright__txt">
             Copyright &copy; 2021 Scion Esports &nbsp;|&nbsp; All Rights Reserved 
           </br>
-            <a id="lmterminos" class="linka">Terminos y Condiciones</a>
+            <a id="lfterminos" class="linka">Terminos y Condiciones</a>
           </div>
         </div>
       </div>

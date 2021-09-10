@@ -3,11 +3,10 @@ lblfInicio:Home
 lblfSesion:Login
 lblfRegistro:Register
 lblfTorneos:Tournaments and Events
+lblfEvento:Event
 lblfMas:More
 lblfEquipo:Create your team
 lblfTabla:Positions Table
 lblfAyuda:Help
 lblfContacto:Contact
-lblfCorreo:contacto@scionesps.com
-lblfTelefono:+52 123 456 7890
 lblfTerminos:Terms and Conditions
