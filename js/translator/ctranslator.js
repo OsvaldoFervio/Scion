@@ -753,4 +753,4 @@ function GetRegistro(cve) {
     });
 }
 
-//Initialize();
+Initialize("en");
