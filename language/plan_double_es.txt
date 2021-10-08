@@ -1,14 +1,17 @@
-lblTitulo:PASE COLABORADOR PLUS
+lblTitulo:DOUBLE SPONSOR TEAMS GOLD
 lblIncluye:INCLUYE
-lblin1:2 cupos en el torneo(promoción para 2 equipos).
-lblin2:Publicación de presentación de equipos confirmados del evento.
-lblin3:Menciones en las fases del torneo en directo.
-lblin4:Posibilidad de jugar con un miembro sin tag.
-lblin5:Check-In automático.
-lblin6:10% de descuento en 1 entrada de un torneo futuro organizado por Scion Esports Series.
-lblin7:Posibilidad de escoger en qué grupo jugar en cada fase (siempre y cuando clasifique a la siguiente ronda).
-lblin8:Posibilidad de jugar con roster diferente durante las partidas en cada fase (cumpliendo con las reglas y requisitos de cuentas de jugadores en reglamento).
+ldi1:2 cupos en el torneo
+ldi2:Publicación de presentación de equipo confirmado del evento.
+ldi3:Publicación de presentación e historia de equipo patrocinador.
+ldi4:Logo de equipo patrocinador dentro de publicaciones del torneo y también en el diseño de la transmisión.
+ldi5:Entrevista especial para equipo patrocinador para social media y livestreaming.
+ldi6:Menciones en las fases del torneo en directo.
+ldi7:Posibilidad de jugar con un miembro sin tag(hasta fase de Knockout).
+ldi8:Check-In automático.
+ldi9:15% de descuento en 1 entrada de un torneo futuro organizado por Scion Esports Series.
+ldi10:Posibilidad de escoger en qué grupo jugar en cada fase (siempre y cuando clasifique a la siguiente ronda).
+ldi11:Posibilidad de jugar con roster diferente durante las partidas en cada fase (cumpliendo con las reglas y requisitos de cuentas de jugadores en reglamento).
 lblDescripcion:DESCRIPCIÓN
-lbldes1:Pase con más beneficios para el equipo que lo adquiera.
-lbldes2:No entra como equipo patrocinador del torneo.
-lbldes3:Podrá escoger en qué grupo jugar cada fase siempre y cuando no se hayan hecho los grupos, para esto se le pregunta al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también en caso de pasar de ronda tiene derecho a elegir qué día jugar.
+ldd1:Pase de patrocinador con más beneficios para los equipos que lo adquieran.
+ldd2:Ya entra como equipos patrocinadores del torneo.
+ldd3:Podrá escoger en qué grupo jugar la fase de clasificación siempre y cuando no se hayan hecho los grupos, para esto se le pregunta al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también en caso de pasar de ronda tiene derecho a elegir qué día jugar.

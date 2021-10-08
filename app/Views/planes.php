@@ -37,10 +37,11 @@
                   <li id="lbd4">No puede jugar con miembros sin tag (sólo en las fases que la organización determine).</li>
                   <li id="lbd5">No puede cambiar roster durante fases, solo uando se le indique en el reglamento y debe respetar todo el reglamento completo.</li>
                 </ul>
-                <?php if (is_user()) : ?>
-                  <?php $productId = 1; ?>
+                <?php if (is_user()) : ?>                 
                   <?php $productPrice = 15; ?>
-                  <?php $currency = "USD"; ?>
+                  <?php $currency = "USD"; ?>                  
+                  <?php $description = "ENTRADA BÁSICA"; ?>
+                  <?php $primaryKey = session()->get('user_id'); ?> 
                   <div id="paypal-buttonP1"></div>
                   <?php include('paypal/paypalCheckoutP1.php'); ?>
                 <?php else : ?>
@@ -74,9 +75,10 @@
                       de ronda tiene derecho a elegir qué día jugar.</li>
                   </ul>
                   <?php if (is_user()) : ?>
-                    <?php $productId = 2; ?>
                     <?php $productPrice = 45; ?>
-                    <?php $currency = "USD"; ?>
+                    <?php $currency = "USD"; ?>                    
+                    <?php $description = "PASE COLABORADOR"; ?>
+                    <?php $primaryKey = session()->get('user_id'); ?> 
                     <div id="paypal-buttonP2"></div>
                     <?php include('paypal/paypalCheckoutP2.php'); ?>
                   <?php else : ?>
@@ -111,9 +113,10 @@
                       de ronda tiene derecho a elegir qué día jugar.</li>
                   </ul>
                   <?php if (is_user()) : ?>
-                    <?php $productId = 3; ?>
                     <?php $productPrice = 80; ?>
                     <?php $currency = "USD"; ?>
+                    <?php $description = "PASE COLABORADOR PLUS"; ?>
+                    <?php $primaryKey = session()->get('user_id'); ?> 
                     <div id="paypal-buttonP3"></div>
                     <?php include('paypal/paypalCheckoutP3.php'); ?>
                   <?php else : ?>
@@ -154,9 +157,10 @@
                     en caso de pasar de ronda tiene derecho a elegir qué día jugar.</li>
                 </ul>
                 <?php if (is_user()) : ?>                  
-                  <?php $productId = 4; ?>
                   <?php $productPrice = 99; ?>
-                  <?php $currency = "USD"; ?>
+                  <?php $currency = "USD"; ?>                  
+                  <?php $description = "SPONSOR TEAM GOLD"; ?> 
+                  <?php $primaryKey = session()->get('user_id'); ?> 
                   <div id="paypal-buttonP4"></div>
                   <?php include('paypal/paypalCheckoutP4.php'); ?>
                 <?php else : ?>
@@ -193,9 +197,10 @@
                       en caso de pasar de ronda tiene derecho a elegir qué día jugar.</li>
                   </ul>
                   <?php if (is_user()) : ?>                    
-                    <?php $productId = 5; ?>
                     <?php $productPrice = 170; ?>
                     <?php $currency = "USD"; ?>
+                    <?php $description = "DOUBLE SPONSOR TEAMS GOLD"; ?>
+                    <?php $primaryKey = session()->get('user_id'); ?> 
                     <div id="paypal-buttonP5"></div>
                     <?php include('paypal/paypalCheckoutP5.php'); ?>
                   <?php else : ?>

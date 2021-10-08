@@ -68,8 +68,11 @@ $.ajax({
             document.getElementById("lmevento").innerText   = lmevento;
             document.getElementById("lmequipo").innerText   = lmequipo;
             document.getElementById("lmposicion").innerText = lmposicion;
-            document.getElementById("lmsesion").innerHTML   = '<i class="icon-key"></i> &nbsp; ' + lmsesion;
-            document.getElementById("lmregistro").innerHTML = '<i class="icon-user"></i> &nbsp; ' + lmregistro;
+
+            if(document.getElementById("lmsesion"))
+                document.getElementById("lmsesion").innerHTML   = '<i class="icon-key"></i> &nbsp; ' + lmsesion;
+            if(document.getElementById("lmregistro"))
+                document.getElementById("lmregistro").innerHTML = '<i class="icon-user"></i> &nbsp; ' + lmregistro;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest.responseText);
@@ -445,8 +448,8 @@ function GetDouble(cve) {
             document.getElementById("ldouble").innerText    = ltdouble;
             document.getElementById("ldincluye").innerText  = ldincluye;
             document.getElementById("ldi1").innerText       = ldi1;
-            document.getElementById("ldi2").innerText       = ldi1;
-            document.getElementById("ldi3").innerText       = ldi1;
+            document.getElementById("ldi2").innerText       = ldi2;
+            document.getElementById("ldi3").innerText       = ldi3;
             document.getElementById("ldi4").innerText       = ldi4;
             document.getElementById("ldi5").innerText       = ldi5;
             document.getElementById("ldi6").innerText       = ldi6;

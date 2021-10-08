@@ -33,6 +33,14 @@ class Home extends BaseController
 		echo view('include_files/footer');
 	}
 
+	public function payment()
+	{
+		echo view('include_files/header');
+		echo view('include_files/navbar');
+		echo view('paypal/orderDetails');
+		echo view('include_files/footer');
+	}
+
 	public function eventos()
 	{
 		$modelEvent = model('EventModel');

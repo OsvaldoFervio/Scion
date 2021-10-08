@@ -21,14 +21,15 @@
                     amount: {
                         total: '<?php echo $productPrice; ?>',
                         currency: '<?php echo $currency; ?>'
-                    }
+                    },
+                    description: '<?php echo $description; ?>'
                 }]
             });
         },
         onAuthorize: function(data, actions) {
             return actions.payment.execute()
                 .then(function() {
-                    window.location = "<?php echo PayPalBaseUrl ?>orderDetails.php?paymentID=" + data.paymentID + "&payerID=" + data.payerID + "&token=" + data.paymentToken + "&pid=<?php echo $productId; ?>";
+                    window.location = "payment/orderDetails?token=" + data.paymentToken + "&paymentID=" + data.paymentID + "&key=<?php echo $primaryKey; ?>";
                 });
         }
     }, '#paypal-buttonP4');
