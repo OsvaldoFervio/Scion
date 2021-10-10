@@ -1,0 +1,4 @@
+lteam1:Create a team and participate in our next events
+lteam2:START NOW!
+lteam3:LOG IN
+lteam4:SIGN UP

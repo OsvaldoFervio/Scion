@@ -5,4 +5,4 @@ txtPass:Password
 lblRecordarme:Remember me
 btnIniciar:Access
 txtEnviar:What is your email?
-btnEvniar:Submit
+btnEnviar:Submit

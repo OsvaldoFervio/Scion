@@ -1,0 +1,17 @@
+lblTitulo:SPONSOR TEAM GOLD
+lblIncluye:INCLUDES
+lblin1:1 place in the tournament
+lblin1:Post confirmed team presentation of the event.
+lblin2:Sponsor team story and presentation post.
+lblin3:Sponsor team logo within tournament posts and also in broadcast design.
+lblin4:Special interview for sponsor team for social media and livestreaming.
+lblin5:Mentions in the live tournament phases.
+lblin6:Possibility of playing with a member without tag (until Knockout phase).
+lblin7:Automatic Check-In.
+lblin8:15% discount on 1 entry to a future tournament hosted by the Scion Esports Series.
+lblin9:Possibility of choosing which group to play in each phase (as long as they qualify for the next round).
+lblin10:Possibility of playing with a different roster during the games in each phase (complying with the rules and requirements of player accounts in regulations).
+lblDescripcion:DESCRIPTION
+lbldes1:Sponsor pass with more benefits for the teams that acquire it.
+lbldes2:Already entered as sponsoring teams of the tournament.
+lbldes3:You can choose in which group to play the qualifying phase as long as the groups have not been made, for this the collaborator is asked in advance so that he can choose before the organization to make the groups, also in case of passing the round you have the right to choose which day to play.

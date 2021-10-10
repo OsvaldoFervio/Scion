@@ -15,5 +15,3 @@ lblTerminos:He leído y acepto los Terminos y Condiciones
 btnRegistrarse:Resçgistrarse
 lblYaCuenta:Ya tienes una cuenta?
 lblInicia:Inicia Sesión
-
-

@@ -1,0 +1,17 @@
+lblTitulo:SPONSOR TEAM GOLD
+lblIncluye:INCLUYE
+lblin1:1 cupo en el torneo
+lblin1:Publicación de presentación de equipo confirmado del evento.
+lblin2:Publicación de presentación e historia de equipo patrocinador.
+lblin3:Logo de equipo patrocinador dentro de publicaciones del torneo y también en el diseño de la transmisión.
+lblin4:Entrevista especial para equipo patrocinador para social media y livestreaming.
+lblin5:Menciones en las fases del torneo en directo.
+lblin6:Posibilidad de jugar con un miembro sin tag(hasta fase de Knockout).
+lblin7:Check-In automático.
+lblin8:15% de descuento en 1 entrada de un torneo futuro organizado por Scion Esports Series.
+lblin9:Posibilidad de escoger en qué grupo jugar en cada fase (siempre y cuando clasifique a la siguiente ronda).
+lblin10:Posibilidad de jugar con roster diferente durante las partidas en cada fase (cumpliendo con las reglas y requisitos de cuentas de jugadores en reglamento).
+lblDescripcion:DESCRIPCIÓN
+lbldes1:Pase de patrocinador con más beneficios para los equipos que lo adquieran.
+lbldes2:Ya entra como equipos patrocinadores del torneo.
+lbldes3:Podrá escoger en qué grupo jugar la fase de clasificación siempre y cuando no se hayan hecho los grupos, para esto se le pregunta al colaborador con antelación para que pueda elegir antes de la organización hacer los grupos, también en caso de pasar de ronda tiene derecho a elegir qué día jugar.
