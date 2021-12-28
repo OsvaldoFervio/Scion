@@ -68,6 +68,7 @@ $routes->group('teams', function($routes) {
     $routes->delete('/delete/(:num)', 'Teams::delete/$1');
 });
 $routes->get('/api/users', 'Api\ApiController::index');
+$routes->get('/api/users/verify', 'Api\ApiController::verify');
 
 /*
  * --------------------------------------------------------------------

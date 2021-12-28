@@ -18,4 +18,14 @@ class ApiController extends ResourceController
             ->where('users.role_id', 2)->where('team_members.id is null')->like(' users.username', $search)->findAll();
         return $this->respond(['searchType' => $type, 'data' => $results]);
     }
+
+    public function verify()
+    {
+        $queryUsername = $this->request->getGet('q');
+        $result = $this->model->select('id, first_name, last_name, username, email')
+            ->where('username', $queryUsername)->first();
+        if($result)
+            return $this->respond($result);
+        return $this->respond(['error' => 'The server can not find the requested resource'], 404);
+    }
 }
