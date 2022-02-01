@@ -1,8 +1,9 @@
 const usersList = document.getElementById('users-list');
 const usernameInput = document.getElementById('username');
 
-const usersListP = document.getElementById('users-list-p');
 const usernamePInput = document.getElementById('username-p');
+const btnSearch = document.getElementById('btn-search');
+const alertResult = document.getElementById('alert-result');
 
 const participantsList = document.getElementById('participants-lits');
 
@@ -13,28 +14,17 @@ const request = new XMLHttpRequest();
 
 // Set event
 usernameInput.onkeypress = handleKeypress;
-usernamePInput.onkeypress = handleKeypress;
 
 usersList.onmouseleave = handleMouseLeave;
-usersListP.onmouseleave = handleMouseLeave;
 
-imageInput.onchange = handleSetImage
+imageInput.onchange = handleSetImage;
+
+btnSearch.onclick = handleClickSearchUser;
 
 // Set callback for process result
 request.onreadystatechange = onProcessResult;
 
 setupParticipantList()
-
-const users = [
-    {
-        id: 1,
-        username: "elchido",
-    },
-    {
-        id: 2,
-        username: "lala"
-    }
-]
 
 function onProcessResult() {
     if(this.readyState === 4
@@ -52,6 +42,35 @@ function fetchUsersByUsername(value, type) {
     const url = `${BASE_URL}?search=${value}&type=${type}`;
     request.open('GET', url);
     request.send();
+}
+
+function searchVerifyUsername(value) {
+    const url = `${BASE_URL}/verify?q=${value}`
+    request.open('GET', url)
+    request.onreadystatechange = function() {
+        if(this.readyState === 4 && this.status === 200) {
+            const data = JSON.parse(this.responseText)
+            const id = data.id
+            const firstName = data.first_name
+            const lastName = data.last_name
+            const username = data.username
+            createParticipantItem({ id, username, firstName, lastName})
+            clearSearch()
+        } else if(this.readyState === 4 && this.status !== 200) {
+            showAlertResult('El usuario no se encontró')
+        }
+    }
+    request.send()
+}
+
+function handleClickSearchUser() {
+    const username = usernamePInput.value
+    if(verifyUser(username)){
+        showAlertResult(`El usuario ${username} ya ha sido agregado`)
+    } else {
+        hideAlertResult()
+        searchVerifyUsername(username)
+    }
 }
 
 function handleKeypress(event) {
@@ -97,7 +116,6 @@ function addParticipant(users, clickFunction) {
 }
 
 function createListItem(user, usersList, clickFunction) {
-    console.log(user);
     const container = document.createElement('div');
     const element = document.createElement('p');
 
@@ -144,6 +162,8 @@ function createParticipantItem(user) {
     numberElement.innerText = count;
     usernameEle.innerText = user.username;
     nameEle.innerText = `${user.firstName} ${user.lastName}`;
+
+    container.dataset.username = user.username
 
     wrapperElems.appendChild(numberElement);
     wrapperElems.appendChild(usernameEle);
@@ -210,4 +230,22 @@ function setupParticipantList() {
         const row = participantsList.children[i];
         row.querySelector('a').onclick = handleDeleteClick;
     }
+}
+
+function clearSearch() {
+    usernamePInput.value = ''
+}
+
+function showAlertResult(message) {
+    if(message)
+        alertResult.innerText = message
+    alertResult.classList.remove('d-none');
+}
+
+function hideAlertResult() {
+    alertResult.classList.add('d-none');
+}
+
+function verifyUser(username) {
+    return document.querySelector(`div[data-username="${username}"]`) != null
 }
