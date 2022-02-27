@@ -102,6 +102,18 @@
                                         </div>
 
                                         <div class="col-md-4">
+                                            <div class="form-group form-group--lg">
+                                                <label for="game-number-id">Numero Id Juego:</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <div class="form-group form-group--lg">
+                                                <input class="text-input form-control" name="game_number_id" type="text" id="game-number-id" value="<?=$team->game_number_id?>" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
                                             <div class="form-group form-group--lg form-password">
                                                 <label for="pais">País:</label>
                                             </div>
@@ -149,7 +161,9 @@
                                     <div class="mt-2 mb-4" id="participants-lits">
                                         <?php foreach($members['participants'] as $index=>$member): ?>
                                             <div class="row">
+                                                <?php if($member->type): ?>
                                                 <input value="<?=$member->id?>" name="user_id[]" id="participant-<?=$index?>" hidden>
+                                                <?php endif ?>
                                                 <div class="col-md-12">
                                                     <div class="row px-2">
                                                         <span class="col-md-1 pl-4 border-0 vertical-center text-end"><?=$index?></span>
@@ -157,7 +171,11 @@
                                                             <?=$member->username?>
                                                         </div>
                                                         <div class="form-control col-md-6 mx-2" style="background: rgba(0, 0, 0, 0.5);">
-                                                            <?=$member->first_name?> <?=$member->last_name?>
+                                                        <?php if($member->first_name): ?>    
+                                                            <?=$member->first_name ?> <?=$member->last_name?>
+                                                        <?php else: ?>
+                                                            Usuario Pendiente
+                                                        <?php endif ?>
                                                         </div>
                                                         <a class="border-0 vertical-center"><i class="booked-icon ion-close-circled border-0"></i></a>
                                                     </div>
@@ -186,3 +204,4 @@
 		var BASE_URL = "<?=base_url('api/users')?>"
 	</script>
 	<script src="<?=base_url('js/teams.js')?>"></script>
+    <script src="<?=base_url('js/teams-admin.js')?>"></script>

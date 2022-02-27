@@ -93,6 +93,7 @@ class TeamService
 
     public function getTeamMembersByType($teamId){
         $results = $this->getTeamMembers($teamId);
+        $pendingUsers = $this->getTeamPendingUsers($teamId);
         $manager = null;
         $participants = [];
         if(count($results) > 0) {
@@ -101,6 +102,7 @@ class TeamService
                 return $item->type == 2;
             });
         }
+        $participants = array_merge($participants, $pendingUsers);
         return ['manager' => $manager, 'participants' => $participants];
     }
 
