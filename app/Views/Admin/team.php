@@ -40,18 +40,25 @@
                 </div>
                 <div class="col-md-3">
                     <?php foreach($members as $index => $member): ?>
-                    <?php if($member->type == MEMBER_TYPE_MANAGER): ?>
-                        <h5 style="font-weight: 600;">Manager</h5>
-                        <div class="lead" style="font-size: 12pt;">
-                            <?=$member->username?>
-                        </div>
-                        <div class="mt-4">
-                            <h5 style="font-weight: 600;">Participantes</h5>
-                        </div>
-                    <?php elseif($member->type == MEMBER_TYPE_PARTICIPANT): ?>
+                    <?php if(! empty($member->type)): ?>
+                        <?php if($member->type == MEMBER_TYPE_MANAGER): ?>
+                            <h5 style="font-weight: 600;">Manager</h5>
+                            <div class="lead" style="font-size: 12pt;">
+                                <?=$member->username?>
+                            </div>
+                            <div class="mt-4">
+                                <h5 style="font-weight: 600;">Participantes</h5>
+                            </div>
+                        <?php elseif($member->type == MEMBER_TYPE_PARTICIPANT): ?>
+                            <div class="lead" style="font-size: 12pt;">
+                                <?=$index?>.
+                                <?=$member->username?>
+                            </div>
+                        <?php endif ?>
+                    <?php else: ?>
                         <div class="lead" style="font-size: 12pt;">
                             <?=$index?>.
-                            <?=$member->username?>
+                            <?=$member->username?> (Pendiente)
                         </div>
                     <?php endif ?>
                     <?php endforeach ?>

@@ -86,6 +86,11 @@ class TeamService
         return $query->get()->getResult();
     }
 
+    public function getTeamPendingUsers($teamId) {
+        $pendingUserModel = model('PendingUserModel');
+        return $pendingUserModel->where('team_id', $teamId)->findAll();
+    }
+
     public function getTeamMembersByType($teamId){
         $results = $this->getTeamMembers($teamId);
         $manager = null;
