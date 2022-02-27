@@ -15,6 +15,7 @@ class Team extends Entity
         'discord_url' => null,
         'whatsapp_number' => null,
         'email' => null,
+        'game_number_id' => null,
         'active' => null
     ];
 }
