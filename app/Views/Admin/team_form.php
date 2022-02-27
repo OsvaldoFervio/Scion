@@ -173,4 +173,5 @@
         var BASE_URL = "<?=base_url('api/users')?>"
     </script>
     <script src="<?=base_url('js/teams.js')?>"></script>
+    <script src="<?=base_url('js/teams-admin.js')?>"></script>
 </body>
