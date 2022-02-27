@@ -31,6 +31,9 @@
                                     </form>
                                 </div>                                
                             </div>
+                            <?php if($team->game_number_id): ?>
+                                <p>Number Id Juego: <?= $team->game_number_id?></p>
+                            <?php endif ?>
                             <a href="<?=$team->discord_url?>" class="h4" style="font-size: 13pt;">Discord</a>
                             <a href="https://wa.me/<?=$team->whatsapp_number?>" class="d-block h4" style="font-size: 14pt;"><i class="booked-icon ion-android-call"></i><span class="mx-2" style="font-size: 13pt;"><?=$team->whatsapp_number?></span></a>
                             <a href="mailto: <?=$team->email?>" class="h3" style="font-size: 14pt;"><i class="booked-icon ion-android-mail"></i><span class="mx-2 h4" style="font-size: 13pt;"><?=$team->email?></span></a>

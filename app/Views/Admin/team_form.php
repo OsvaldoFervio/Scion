@@ -106,6 +106,18 @@
                                                 </div>
 
                                                 <div class="col-md-4">
+                                                    <div class="form-group form-group--lg">
+                                                        <label for="correo">Número Id Juego:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-8">
+                                                    <div class="form-group form-group--lg">
+                                                        <input type="text" class="text-input form-control" name="game_number_id" id="game-number-id" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
                                                     <div class="form-group form-group--lg form-password">
                                                         <label for="pais">País:</label>
                                                     </div>

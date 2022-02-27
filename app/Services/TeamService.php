@@ -196,6 +196,7 @@ class TeamService
         $array['discord_url'] = $data['discord_url'];
         $array['whatsapp_number'] = $data['whatsapp_number'];
         $array['email'] = $data['email'];
+        $array['game_number_id'] = $data['game_number_id'];
         return $array;
     }
 
