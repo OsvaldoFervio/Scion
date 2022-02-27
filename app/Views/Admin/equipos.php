@@ -2,6 +2,20 @@
             <!-- page content -->
             <div class="right_col" role="main" style="min-height: 941px;">
                 <div class="">
+                    <?php if(session('success')): ?>
+                    <div class="alert alert-success">
+                        Nuevo equipo creado
+                    </div>
+                    <?php endif ?>
+                    <?php if(session('errors')): ?>
+                    <div class="alert alert-danger">
+                        <ul class="m-0">
+                        <?php foreach(session()->get('errors') as $error) : ?>
+                            <li><?= esc($error) ?></li>
+                        <?php endforeach ?>
+                        </ul>
+                    </div>
+                    <?php endif ?>
                     <div class="row" style="display: inline-block;">
                         <div class="col-md-12 col-sm-12 ">
                             <div class="tile_count">                                
@@ -110,4 +124,11 @@
             <!-- /page content -->
         </div>
     </div>
+    <?php if(session('success') or session('errors')): ?>
+    <script>
+        setTimeout(function() {
+            document.getElementsByClassName('alert')[0].remove();
+        }, 2000);
+    </script>
+    <?php endif ?>
 </body>

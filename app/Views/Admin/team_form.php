@@ -16,7 +16,7 @@
                     </div>
                     <?php endif ?>
                     <div class="row">
-                        <form method="post" enctype="multipart/form-data" id="contact-form" action="<?=base_url('teams/create')?>">
+                        <form method="post" enctype="multipart/form-data" id="contact-form" action="<?=base_url('admin/teams/create')?>">
                         <?= csrf_field() ?>
                             <div class="col-lg-12 ml-lg-auto mr-lg-auto">
 

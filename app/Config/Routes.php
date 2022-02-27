@@ -46,6 +46,8 @@ $routes->group('admin', function($routes) {
     $routes->put('/events/(:num)', 'Admin\Events::updated/$1');
     $routes->delete('/events/delete/(:num)', 'Admin\Events::delete/$1');
 
+    $routes->post('/teams/create', 'Admin\Teams::create');
+
     $routes->group('videogames', function($routes) {
         $routes->get('/', 'Admin\Videogames::index');
         $routes->get('/new', 'Admin\Videogames::new');
