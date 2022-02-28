@@ -25,7 +25,9 @@ class TeamService
 
         $managerId = $data['manager_id'];
         $participants = $data['user_id']; // array
-        $pendingUsernames = $data['pending_username'];
+        $pendingUsernames = [];
+        if(array_key_exists('pending_username', $data))
+            $pendingUsernames = $data['pending_username'];
         $this->createMembers($teamId, $managerId, $participants, $pendingUsernames);
     }
 
@@ -198,7 +200,8 @@ class TeamService
         $array['discord_url'] = $data['discord_url'];
         $array['whatsapp_number'] = $data['whatsapp_number'];
         $array['email'] = $data['email'];
-        $array['game_number_id'] = $data['game_number_id'];
+        if(array_key_exists('game_number_id',$data))
+            $array['game_number_id'] = $data['game_number_id'];
         return $array;
     }
 

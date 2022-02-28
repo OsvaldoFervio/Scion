@@ -75,8 +75,7 @@ function handleClickSearchUser() {
 
 function handleKeypress(event) {
     const type = event.target.dataset.usernameType;
-    const count = participantsList.children.length
-    if(type === 'manager' || count < 6) {
+    if(type === 'manager') {
         const value = event.target.value;
         fetchUsersByUsername(value, type);
     }
@@ -165,6 +164,9 @@ function createParticipantItem(user) {
 
     container.dataset.username = user.username
 
+    if(user.id == -1)
+        addGhostUserUsername(container, user.username)
+
     wrapperElems.appendChild(numberElement);
     wrapperElems.appendChild(usernameEle);
     wrapperElems.appendChild(nameEle);
@@ -248,4 +250,12 @@ function hideAlertResult() {
 
 function verifyUser(username) {
     return document.querySelector(`div[data-username="${username}"]`) != null
+}
+
+function addGhostUserUsername(element, username) {
+    const inputUsernameHidden = document.createElement('input')
+    inputUsernameHidden.type = 'hidden'
+    inputUsernameHidden.name = 'pending_username[]'
+    inputUsernameHidden.value = username
+    element.appendChild(inputUsernameHidden)
 }

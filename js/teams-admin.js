@@ -3,7 +3,16 @@ const usersListP = document.getElementById('users-list-p');
 // Set event
 
 usernamePInput.onkeypress = handleKeypress;
-request.onreadystatechange = onProcessResult
+request.onreadystatechange = onProcessResult;
+
+function handleKeypress(event) {
+    const type = event.target.dataset.usernameType;
+    const count = participantsList.children.length
+    if(type === 'manager' || count < 6) {
+        const value = event.target.value;
+        fetchUsersByUsername(value, type);
+    }
+}
 
 function onProcessResult() {
     if(this.readyState === 4
