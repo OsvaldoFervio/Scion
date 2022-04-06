@@ -1,0 +1,10 @@
+lbTitulo:ENTRADA BÁSICA
+lbIncluye:INCLUYE
+lblin1:1 cupo en el torneo
+lblin2:Publicación de presentación de equipo confirmado del evento.
+lblDescripcion:DESCRIPCIÓN
+lbldes1:Es el pase más básico al torneo.
+lbldes2:Sólo asegura su lugar dentro de la competencia.
+lbldes3:No puede elegir en qué grupo o que fecha jugar (está a dispocisión de la organicación).
+lbldes4:No puede jugar con miembros sin tag (sólo en las fases que la organización determine).
+lbldes5:No puede cambiar roster durante fases, solo uando se le indique en el reglamento y debe respetar todo el reglamento completo.

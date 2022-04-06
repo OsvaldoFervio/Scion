@@ -2,11 +2,14 @@
 
 namespace Config;
 
+use App\Filters\AdminFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use App\Filters\AuthFilter;
+use App\Filters\PermissionsFilter;
+use App\Filters\TeamActionsFilter;
 
 class Filters extends BaseConfig
 {
@@ -20,7 +23,10 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
-        'auth' => AuthFilter::class
+        'auth' => AuthFilter::class,
+		'admin' => AdminFilter::class,
+		'permissions' => PermissionsFilter::class,
+		'team-actions' => TeamActionsFilter::class,
 	];
 
 	/**
@@ -64,7 +70,31 @@ class Filters extends BaseConfig
 	    'auth' => [
 	        'before' => [
 	            'admin/*',
+				'teams',
+				'teams/*',
+				'Dashboard/*',
+				'api/*'
             ]
-        ]
+		],
+		'admin' => [
+			'before' => [
+				'admin/*',
+				'Dashboard',
+				'Dashboard/*',
+			]
+		],
+		'permissions' => [
+			'before' => [
+				'teams/edit/*',
+				'teams/update/*',
+				'teams/delete/*'
+			]
+		],
+		'team-actions' => [
+			'before' => [
+				'teams/new',
+				'teams/create'
+			]
+		],
     ];
 }

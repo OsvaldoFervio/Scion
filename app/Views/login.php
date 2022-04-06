@@ -37,7 +37,7 @@
 													<div class="login-remember">
 														<div class="custom-control custom-checkbox">
 															<input type="checkbox" class="custom-control-input" id="rememberme">
-															<label class="custom-control-label" for="rememberme">Recordarme</label>
+															<label id="lblrememberme" class="custom-control-label" for="rememberme">Recordarme</label>
 														</div>
 													</div>
 
@@ -55,7 +55,7 @@
 													<div class="form-group">
 														<input type="text" name="user_login_forgot" class="form-control" value="" size="20" id="user_login_forgot" tabindex="1001" placeholder="¿Cuál es tu email?">
 													</div>
-													<input type="submit" name="user-submit" value="Enviar" class="user-submit btn btn-lg btn-primary" tabindex="1002">
+													<input type="submit" id="user-submit" name="user-submit" value="Enviar" class="user-submit btn btn-lg btn-primary" tabindex="1002">
 												</form>
 											</div>
 										</div>

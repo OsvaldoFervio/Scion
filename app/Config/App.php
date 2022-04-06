@@ -23,7 +23,9 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $baseURL = 'http://localhost/ScionsGit';
+	 public $baseURL = 'http://localhost/Scion/';
+	//public $baseURL = 'http://scions.ocsys.mx/';
+	
 
 	/**
 	 * --------------------------------------------------------------------------

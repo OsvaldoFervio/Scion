@@ -45,9 +45,32 @@ $routes->group('admin', function($routes) {
     $routes->get('/events/edit/(:num)', 'Admin\Events::edit/$1');
     $routes->put('/events/(:num)', 'Admin\Events::updated/$1');
     $routes->delete('/events/delete/(:num)', 'Admin\Events::delete/$1');
+
+    $routes->post('/teams/create', 'Admin\Teams::create');
+
+    $routes->group('videogames', function($routes) {
+        $routes->get('/', 'Admin\Videogames::index');
+        $routes->get('/new', 'Admin\Videogames::new');
+        $routes->post('/create', 'Admin\Videogames::create');
+        $routes->get('(:num)', 'Admin\Videogames::show/$1');
+        $routes->get('/edit/(:num)', 'Admin\Videogames::edit/$1');
+        $routes->put('/update/(:num)', 'Admin\Videogames::update/$1');
+        $routes->delete('/delete/(:num)', 'Admin\Videogames::delete/$1');
+    });
 });
 
 $routes->get('/events/(:num)', 'Events::show/$1');
+$routes->group('teams', function($routes) {
+    $routes->get('/', 'Teams::index');
+    $routes->get('/teams/new', 'Teams::new');
+    $routes->post('/teams/create', 'Teams::create');
+    $routes->get('(:num)', 'Teams::show/$1');
+    $routes->get('/edit/(:num)', 'Teams::edit/$1');
+    $routes->put('/update/(:num)', 'Teams::update/$1');
+    $routes->delete('/delete/(:num)', 'Teams::delete/$1');
+});
+$routes->get('/api/users', 'Api\ApiController::index');
+$routes->get('/api/users/verify', 'Api\ApiController::verify');
 
 /*
  * --------------------------------------------------------------------

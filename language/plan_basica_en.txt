@@ -1,0 +1,10 @@
+lblTitulo:BASIC INPUT
+lbIncluye:INCLUDES
+lblin1:1 place in the tournament
+lblin2:Post confirmed team presentation of the event.
+lblDescripcion:DESCRIPTION
+lbldes1:It is the most basic pass to the tournament.
+lbldes2:It only ensures its place within the competition.
+lbldes3:You cannot choose in which group or which date to play (this is available to the organization).
+lbldes4:You cannot play with untagged members (only in the phases that the organization determines).
+lbldes5:You cannot change roster during phases, only when indicated in the regulations and you must respect all the complete regulations.

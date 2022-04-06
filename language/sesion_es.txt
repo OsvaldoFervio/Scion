@@ -1,8 +1,8 @@
-lblSesion:Inisiar Sesión
+lblSesion:Iniciar Sesión
 lblRecuperar:Recuperar contraseña
 txtUsuario:Email
 txtPass:Contraseña
 lblRecordarme:Recordarme
 btnIniciar:Iniciar
 txtEnviar:¿Cuál es tu email?
-btnEvniar:Enviar
+btnEnviar:Enviar

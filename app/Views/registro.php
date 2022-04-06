@@ -49,6 +49,7 @@
 
 												<div class="col-md-6">
 													<div class="form-group form-group--lg form-password">
+														<input type="hidden" id="active"  name="active" value="0">	
                                                         <input class="text-input form-control" name="first_name" type="text" id="first_name" placeholder="Nombre*" required>
 													</div><!-- .form-password -->
 												</div>
@@ -85,7 +86,7 @@
 
 											<div class="form-group form-group--lg form-nickname">
 												<label for="nickname">Datos de la Cuenta</label>
-												<input class="text-input form-control" name="email" type="email" id="email" placeholder="tucorreo@domain.com*" required>
+												<input class="text-input form-control" name="email" type="email" id="email" placeholder="youemail@domain.com*" required>
                                                 <?php if (session()->get('errors')) : ?>
                                                     <?php if (! empty(session()->get('errors')['email'])) : ?>
                                                     <p class="text-danger"><?= session()->get('errors')['email'] ?></p>

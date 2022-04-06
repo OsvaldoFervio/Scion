@@ -1,6 +1,12 @@
-lblTitulo:Season One
-lblCategoria:Category
-lblParticipantes:Participants
-lblReglas:Rules
-lblEstructura:Structure
-lblOtros:Other Events
+lecatalago:Category
+leparticipante:Participants
+lenohay:There is no description
+nopremios:NO PRIZES
+bneregistrate:REGISTER NOW
+lereglas:Rules
+lenose:No rules were defined
+leestructura:Structure
+ledefinir:To be defined
+leotros:Other Events
+leeditar:Edit
+leeliminar:Delete

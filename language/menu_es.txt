@@ -1,0 +1,8 @@
+lminicio:Inicio
+lmsomos:¿Quienes somos?
+lmplan:Planes
+lmevento:Eventos
+lmequipo:Equipo
+lmposicion:Tabla Posiciones
+lmsesion:INICIAR SESIÓN
+lmregistro:REGISTRATE

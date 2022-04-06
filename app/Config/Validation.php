@@ -53,6 +53,28 @@ class Validation
         'username' => 'required|is_unique[users.username]'
     ];
 
+    public $signup_update = [        
+        'active' => 'required'
+    ];
+
+    public $team = [
+        'name' => 'required',
+        'manager_id' => 'required',
+        'whatsapp_number' => 'required',
+        'email' => 'required|valid_email|is_unique[teams.email]',
+        'country_id' => 'required',
+        'user_id' => 'required'
+    ];
+
+    public $team_update = [
+        'name' => 'required',
+        'manager_id' => 'required',
+        'whatsapp_number' => 'required',
+        'email' => 'required|valid_email',
+        'country_id' => 'required',
+        'user_id' => 'required'
+    ];
+
     public $signup_errors = [
         'first_name' => [
             'required' => 'Escribe un nombre',
@@ -116,6 +138,29 @@ class Validation
         ],
         'currency' => [
             'required' => 'Elige una moneda para el precio',
+        ]
+    ];
+
+    public $team_errors = [
+        'name' => [
+            'required' => 'Escribe un nombre para tu equipo',
+        ],
+        'manager_id' => [
+            'required' => 'Elige un manager para tu equipo'
+        ],
+        'whatsapp_number' => [
+            'required' => 'Escribe un número'
+        ],
+        'email' => [
+            'required' => 'Escribe un correo',
+            'valid_email' => 'Escribe un correo valido',
+            'is_unique' => 'Este correo ya existe',
+        ],
+        'country_id' => [
+            'required' => 'Elige un país para tu equipo'
+        ],
+        'user_id' => [
+            'required' => 'Agrega miembros a tu equipo'
         ]
     ];
 }

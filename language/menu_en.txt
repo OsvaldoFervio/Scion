@@ -1,0 +1,8 @@
+lminicio:Home
+lmsomos:Who are we?
+lmplan:Plans
+lmevento:Events
+lmequipo:Team
+lmposicion:Positions Table
+lmsesion:LOGIN
+lmregistro:REGISTER

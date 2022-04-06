@@ -12,7 +12,7 @@ class AuthFilter implements FilterInterface
     {
         $authService = service('auth');
 
-        if(!$authService->isAdmin()) {
+        if(!$authService->isLoggedIn()) {
             return redirect()->redirect(base_url('login'));
         }
     }

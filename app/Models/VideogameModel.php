@@ -15,6 +15,7 @@ class VideogameModel extends Model
     protected $allowedFields = [
         'name',
         'description',
+        'image_url',
         'active',
     ];
 
