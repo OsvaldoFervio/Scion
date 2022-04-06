@@ -16,7 +16,7 @@
                     </div>
                     <?php endif ?>
                     <div class="row">
-                        <form method="post" enctype="multipart/form-data" id="contact-form" action="<?=base_url('teams/create')?>">
+                        <form method="post" enctype="multipart/form-data" id="contact-form" action="<?=base_url('admin/teams/create')?>">
                         <?= csrf_field() ?>
                             <div class="col-lg-12 ml-lg-auto mr-lg-auto">
 
@@ -106,6 +106,18 @@
                                                 </div>
 
                                                 <div class="col-md-4">
+                                                    <div class="form-group form-group--lg">
+                                                        <label for="correo">Número Id Juego:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-8">
+                                                    <div class="form-group form-group--lg">
+                                                        <input type="text" class="text-input form-control" name="game_number_id" id="game-number-id" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
                                                     <div class="form-group form-group--lg form-password">
                                                         <label for="pais">País:</label>
                                                     </div>
@@ -173,4 +185,5 @@
         var BASE_URL = "<?=base_url('api/users')?>"
     </script>
     <script src="<?=base_url('js/teams.js')?>"></script>
+    <script src="<?=base_url('js/teams-admin.js')?>"></script>
 </body>

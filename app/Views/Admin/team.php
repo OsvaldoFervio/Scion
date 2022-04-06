@@ -31,6 +31,9 @@
                                     </form>
                                 </div>                                
                             </div>
+                            <?php if($team->game_number_id): ?>
+                                <p>Number Id Juego: <?= $team->game_number_id?></p>
+                            <?php endif ?>
                             <a href="<?=$team->discord_url?>" class="h4" style="font-size: 13pt;">Discord</a>
                             <a href="https://wa.me/<?=$team->whatsapp_number?>" class="d-block h4" style="font-size: 14pt;"><i class="booked-icon ion-android-call"></i><span class="mx-2" style="font-size: 13pt;"><?=$team->whatsapp_number?></span></a>
                             <a href="mailto: <?=$team->email?>" class="h3" style="font-size: 14pt;"><i class="booked-icon ion-android-mail"></i><span class="mx-2 h4" style="font-size: 13pt;"><?=$team->email?></span></a>
@@ -40,18 +43,25 @@
                 </div>
                 <div class="col-md-3">
                     <?php foreach($members as $index => $member): ?>
-                    <?php if($member->type == MEMBER_TYPE_MANAGER): ?>
-                        <h5 style="font-weight: 600;">Manager</h5>
-                        <div class="lead" style="font-size: 12pt;">
-                            <?=$member->username?>
-                        </div>
-                        <div class="mt-4">
-                            <h5 style="font-weight: 600;">Participantes</h5>
-                        </div>
-                    <?php elseif($member->type == MEMBER_TYPE_PARTICIPANT): ?>
+                    <?php if(! empty($member->type)): ?>
+                        <?php if($member->type == MEMBER_TYPE_MANAGER): ?>
+                            <h5 style="font-weight: 600;">Manager</h5>
+                            <div class="lead" style="font-size: 12pt;">
+                                <?=$member->username?>
+                            </div>
+                            <div class="mt-4">
+                                <h5 style="font-weight: 600;">Participantes</h5>
+                            </div>
+                        <?php elseif($member->type == MEMBER_TYPE_PARTICIPANT): ?>
+                            <div class="lead" style="font-size: 12pt;">
+                                <?=$index?>.
+                                <?=$member->username?>
+                            </div>
+                        <?php endif ?>
+                    <?php else: ?>
                         <div class="lead" style="font-size: 12pt;">
                             <?=$index?>.
-                            <?=$member->username?>
+                            <?=$member->username?> (Pendiente)
                         </div>
                     <?php endif ?>
                     <?php endforeach ?>

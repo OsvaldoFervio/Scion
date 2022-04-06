@@ -25,7 +25,10 @@ class TeamService
 
         $managerId = $data['manager_id'];
         $participants = $data['user_id']; // array
-        $this->createMembers($teamId, $managerId, $participants);
+        $pendingUsernames = [];
+        if(array_key_exists('pending_username', $data))
+            $pendingUsernames = $data['pending_username'];
+        $this->createMembers($teamId, $managerId, $participants, $pendingUsernames);
     }
 
     public function update($id, $data, $image)
@@ -85,8 +88,14 @@ class TeamService
         return $query->get()->getResult();
     }
 
+    public function getTeamPendingUsers($teamId) {
+        $pendingUserModel = model('PendingUserModel');
+        return $pendingUserModel->where('team_id', $teamId)->findAll();
+    }
+
     public function getTeamMembersByType($teamId){
         $results = $this->getTeamMembers($teamId);
+        $pendingUsers = $this->getTeamPendingUsers($teamId);
         $manager = null;
         $participants = [];
         if(count($results) > 0) {
@@ -95,10 +104,11 @@ class TeamService
                 return $item->type == 2;
             });
         }
+        $participants = array_merge($participants, $pendingUsers);
         return ['manager' => $manager, 'participants' => $participants];
     }
 
-    private function createMembers($teamId, $managerId, $participants)
+    private function createMembers($teamId, $managerId, $participants, $pendingUsernames)
     {
         $managerData = [
             [
@@ -107,8 +117,14 @@ class TeamService
                 'member_type_id' => 1
             ]
         ];
-        $data = array_merge($managerData, $this->buildParticipantsData($teamId, $participants));
+        $participantMembers = array_values(array_filter($participants, function($item) { return $item != -1; }));
+        $data = array_merge($managerData, $this->buildParticipantsData($teamId, $participantMembers));
         $this->teamMemberModel->insertBatch($data);
+        if(count($pendingUsernames) > 0) {
+            $dataPendingUsers = $this->buildGhostUsersData($teamId, $pendingUsernames);
+            $pendingUsersModel = model('PendingUserModel');
+            $pendingUsersModel->insertBatch($dataPendingUsers);
+        }
     }
 
     private function updateTeamMembers($teamId, $managerId, $participants)
@@ -184,6 +200,8 @@ class TeamService
         $array['discord_url'] = $data['discord_url'];
         $array['whatsapp_number'] = $data['whatsapp_number'];
         $array['email'] = $data['email'];
+        if(array_key_exists('game_number_id',$data))
+            $array['game_number_id'] = $data['game_number_id'];
         return $array;
     }
 
@@ -208,5 +226,15 @@ class TeamService
                 'member_type_id' => $item->member_type_id
             ];
         }, $currenData, array_keys($newData));
+    }
+
+    private function buildGhostUsersData($teamId, $pending_usernames)
+    {
+        return array_map(function($item) use ($teamId){
+            return [
+                'team_id' => $teamId,
+                'username' => $item,
+            ];
+        }, $pending_usernames);
     }
 }

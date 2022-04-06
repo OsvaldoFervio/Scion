@@ -271,10 +271,12 @@ class Dashboard extends BaseController
     {
         $team = $this->serviceTeam->getById($id);
         $teamMembers = $this->serviceTeam->getTeamMembers($id);
+        $teamPendingUsers = $this->serviceTeam->getTeamPendingUsers($id);
+        $teamMemberList = array_merge($teamMembers, $teamPendingUsers);
 
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/team', ['team' => $team, 'members' => $teamMembers]);
+        echo view('Admin/team', ['team' => $team, 'members' => $teamMemberList]);
 
         echo view('Admin/footer');
     }

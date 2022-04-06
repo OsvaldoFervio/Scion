@@ -18,6 +18,7 @@ class TeamModel extends Model
         'discord_url',
         'whatsapp_number',
         'email',
+        'game_number_id',
         'active'
     ];
 

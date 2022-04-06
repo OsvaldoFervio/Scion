@@ -155,15 +155,16 @@
 								<h2><i class="booked-icon ion-person"></i> &nbsp; PARTICIPANTES</h2>
 								<hr class="divider-sm">
 								<div class="row">
-									<div class="col-lg-8 offset-md-1">
+									<div class="col-lg-9 offset-md-1">
 										<div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="row">
 														<input class="form-control col-md-6" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
-														<span class="col-md-6 vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
+														<button type="button" class="btn btn-info col-md-2" id="btn-search">Buscar</button>
+														<span class="col-md-4 vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
 													</div>
-													<div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list-p"></div>
+													<div class="text-danger d-none" id="alert-result">No se encontró el usuario</div>
 												</div>
 											</div>
 											<div class="mt-2 mb-4" id="participants-lits"></div>
