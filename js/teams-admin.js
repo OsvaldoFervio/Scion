@@ -37,7 +37,7 @@ function processParticipantResult(response) {
     } else if (!response.exists) {
         createGhostUser(response.username)
     } else {
-        console.log('Usuario no disponible para equipo')
+        showNotAvailableUserAlert()
     }
 }
 
@@ -50,4 +50,11 @@ function createGhostUser(username) {
     const firstName = 'Usuario'
     const lastName = 'Pendiente'
     createParticipantItem({ id, username, firstName, lastName})
+}
+
+function showNotAvailableUserAlert() {
+    document.getElementById('alert-not-available').classList.remove('d-none')
+    setTimeout(() => {
+        document.getElementById('alert-not-available').classList.add('d-none');
+    }, 3000)
 }
