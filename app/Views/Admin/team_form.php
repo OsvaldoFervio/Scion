@@ -153,6 +153,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <input class="form-control col-md-6" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
+                                                        <button type="button" class="btn btn-info" id="btn-add">Agregar</button>
                                                         <span class="col-md-6 vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
                                                     </div>
                                                     <div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list-p"></div>
