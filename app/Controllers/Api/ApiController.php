@@ -13,10 +13,16 @@ class ApiController extends ResourceController
     {
         $search = $this->request->getGet('search');
         $type = $this->request->getGet('type');
+        $user = $this->model->where('username', $search)->first();
         $results = $this->model->select('users.id, users.username, users.first_name, users.last_name')
             ->join('team_members', 'users.id = team_members.user_id and team_members.deleted_at is null', 'left')
             ->where('users.role_id', 2)->where('team_members.id is null')->like(' users.username', $search)->findAll();
-        return $this->respond(['searchType' => $type, 'data' => $results]);
+
+        return $this->respond(
+            ['searchType' => $type,
+            'data' => $results,
+            'username' => $search,
+            'exists' => $user !== null]);
     }
 
     public function verify()

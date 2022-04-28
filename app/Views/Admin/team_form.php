@@ -152,8 +152,10 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <input class="form-control col-md-6" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
-                                                        <span class="col-md-6 vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
+                                                        <input class="form-control col-md-5" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
+                                                        <button type="button" class="btn btn-info col-md-2" id="btn-add">Agregar</button>
+                                                        <span class="vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
+                                                        <p class="text-info font-weight-bold d-none" id="alert-not-available">*Usuario no disponible para equipo</p>
                                                     </div>
                                                     <div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list-p"></div>
                                                 </div>
