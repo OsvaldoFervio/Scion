@@ -2,23 +2,23 @@
             <!-- page content -->
             <div class="right_col" role="main" style="min-height: 941px;">
                 <div class="">
-                    <div class="row" style="display: inline-block;">
+                    <div class="row" style="display: flex;">
                         <div class="col-md-12 col-sm-12 ">
                             <div class="tile_count">                                
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Usuarios</span>
-                                    <div class="count"><?= $totals['users'] ?></div>
-                                    <span class="count_bottom"><i class="green">1% </i> Última semana</span>
+                                    <div class="count"><?= $totals['total'] ?></div>
+                                    <span class="count_bottom"><i class="green">100% </i></span>
                                 </div>                            
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
                                     <div class="count green"><?= $totals['active'] ?></div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>9.2% </i> General</span>
+                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= bcdiv($totals['active'], $totals['total'], 4)*100 ?>% </i></span>
                                 </div>
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Bloqueados</span>
                                     <div class="count red"><?= $totals['block'] ?></div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>90.8% </i> General</span>
+                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i><?= bcdiv($totals['block'], $totals['total'], 4)*100 ?>% </i></span>
                                 </div>                               
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Suscripciones</span>

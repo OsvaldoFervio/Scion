@@ -174,7 +174,7 @@
                                                         <?php if($member->first_name): ?>    
                                                             <?=$member->first_name ?> <?=$member->last_name?>
                                                         <?php else: ?>
-                                                            Usuario Pendiente
+                                                            Ghost User
                                                         <?php endif ?>
                                                         </div>
                                                         <a class="border-0 vertical-center"><i class="booked-icon ion-close-circled border-0"></i></a>

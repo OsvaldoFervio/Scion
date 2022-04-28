@@ -2,28 +2,28 @@
             <!-- page content -->
             <div class="right_col" role="main" style="min-height: 941px;">
                 <div class="">
-                    <div class="row" style="display: inline-block;">
+                    <div class="row" style="display: flex;">
                         <div class="col-md-12 col-sm-12 ">
                             <div class="tile_count">                                
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Usuarios</span>
-                                    <div class="count">250</div>
-                                    <span class="count_bottom"><i class="green">1% </i> Última semana</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Total Eventos</span>
+                                    <div class="count"><?= $totals['total'] ?></div>
+                                    <span class="count_bottom"><i class="green">100% </i></span>
                                 </div>                            
                                 <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total mujeres</span>
-                                    <div class="count green">23</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>9.2% </i> General</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Eventos Activos</span>
+                                    <div class="count green"><?= $totals['active'] ?></div>
+                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= bcdiv($totals['active'], $totals['total'], 4)*100 ?>% </i></span>
                                 </div>
                                 <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Hombres</span>
-                                    <div class="count">227</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>90.8% </i> General</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Eventos Inactivos</span>
+                                    <div class="count"><?= $totals['block'] ?></div>
+                                    <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= bcdiv($totals['block'], $totals['total'], 4)*100 ?>% </i> </span>
                                 </div>
                                 <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Total Activos</span>
-                                    <div class="count">229</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>5% </i> Última semana</span>
+                                    <span class="count_top"><i class="fa fa-user"></i> Eventos Expirados</span>
+                                    <div class="count"><?= $totals['expired'] ?></div>
+                                    <span class="count_bottom"><i class="blue"><i class="fa fa-sort-asc"></i><?= bcdiv($totals['expired'], $totals['total'], 4)*100 ?>% </i> Última semana</span>
                                 </div>
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Suscripciones</span>

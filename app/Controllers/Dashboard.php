@@ -23,7 +23,7 @@ class Dashboard extends BaseController
         $user = model('UserModel');
         $users = $user->findAll();
         $totals = $this->getTotals($user);
-
+       
         echo view('Admin/head');
         echo view('Admin/leftnav');
         echo view('Admin/index', ['users' => $users, 'totals' => $totals]);
@@ -34,12 +34,12 @@ class Dashboard extends BaseController
     public function eventos()
     {
         $event = model('EventModel');
-        $events = $event->findAll();
-
+        $events = $event->findAll();       
+        $totals = $this->getEventTotals($event);
 
         echo view('Admin/head');
         echo view('Admin/leftnav');
-        echo view('Admin/eventos', ['events' => $events]);
+        echo view('Admin/eventos', ['events' => $events, 'totals' => $totals]);
         echo view('Admin/footer');
     }
 
@@ -69,13 +69,24 @@ class Dashboard extends BaseController
 
     public function getTotals($user)
     {
-        $active = 3;
-
-        $data = array('users' => $user->CountAll(), 'active' => $active, 'block' => '');
-        $data['block'] = $data['users'] - $data['active'];
+        $data = array('total' => $user->CountAll(), 'active' => $user->where('active',1)->countAllResults(), 'block' => '');
+        $data['block'] = $data['total'] - $data['active'];
         return $data;
     }
 
+     public function getEventTotals($event)
+    {
+        $date = date('Y-m-d');
+        var_dump($date);
+        $data = array('total' =>   $event->where('deleted_at',null)->countAllResults(), 
+                      'active' =>  $event->where('deleted_at',null)->where('active',1)->countAllResults(),
+                      'block' =>   $event->where('active',0)->countAllResults(),
+                      'expired' => $event->where('date <',$date)->countAllResults()
+                  );
+        return $data;
+    }
+
+    
 
 
 

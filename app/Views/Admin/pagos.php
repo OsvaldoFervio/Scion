@@ -7,7 +7,7 @@
                             <div class="tile_count">                                
                                 <div class="col-md-3 col-sm-4  tile_stats_count">
                                     <span class="count_top"><i class="fa fa-user"></i> Total Pagos</span>
-                                    <div class="count"><?= $totals['users'] ?></div>
+                                    <div class="count"><?= $totals['total'] ?></div>
                                     <span class="count_bottom"><i class="green">1% </i> Última semana</span>
                                 </div>                            
                                 <div class="col-md-3 col-sm-4  tile_stats_count">

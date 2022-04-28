@@ -47,8 +47,8 @@ function verifyParticipantUser(username) {
 
 function createGhostUser(username) {
     const id = -1
-    const firstName = 'Usuario'
-    const lastName = 'Pendiente'
+    const firstName = 'Ghost'
+    const lastName = 'User'
     createParticipantItem({ id, username, firstName, lastName})
 }
 

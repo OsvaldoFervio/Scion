@@ -61,7 +61,7 @@
                     <?php else: ?>
                         <div class="lead" style="font-size: 12pt;">
                             <?=$index?>.
-                            <?=$member->username?> (Pendiente)
+                            <?=$member->username?> (Ghost)
                         </div>
                     <?php endif ?>
                     <?php endforeach ?>
