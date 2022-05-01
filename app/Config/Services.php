@@ -8,6 +8,7 @@ use App\Services\EventService;
 use App\Services\PermissionService;
 use App\Services\TeamService;
 use App\Services\VideogameService;
+use App\Services\UserService;
 
 /**
  * Services Configuration file.
@@ -81,5 +82,15 @@ class Services extends BaseService
         }
 
         return static::getSharedInstance('team');
+    }
+
+    public static function user($getShared = false)
+    {
+        if(! $getShared)
+        {
+            return new UserService();
+        }
+
+        return static::getSharedInstance('user');
     }
 }

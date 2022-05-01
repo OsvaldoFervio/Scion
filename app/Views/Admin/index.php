@@ -84,10 +84,10 @@
                                                 <td><?= $item->email ?></td>
                                                     <?php if($item->active) :?>                                                    
                                                     <td>Activo</td>
-                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/bloquear/'.$item->id)?>"><i class="fa fa-close"></i>Bloquear</a> </span></td>
+                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/blockUser/'.$item->id)?>"><i class="fa fa-close"></i>Bloquear</a> </span></td>
                                                     <?php else:  ?>
                                                     <td>Bloqueado</td>
-                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/activar/'.$item->id)?>"><i class="fa fa-edit"></i>Activar</a> </span></td>
+                                                    <td><span class="count_top"><a href="<?=base_url('Dashboard/activateUser/'.$item->id)?>"><i class="fa fa-edit"></i>Activar</a> </span></td>
                                                 <?php endif ?>
                                               </tr>
                                               <?php endforeach; ?> 

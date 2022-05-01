@@ -15,6 +15,8 @@ class Dashboard extends BaseController
     {
         $this->service = service('event');
         $this->serviceTeam = service('team');
+        $this->serviceUser = service('user');
+
     }
 
     //TABLERO 1
@@ -194,6 +196,8 @@ class Dashboard extends BaseController
     public function update($id)
     {
         $data = $this->request->getPost();
+        var_dump($data);
+        return;
         $validation = Services::validation();
         if ($validation->run($data, 'event')) {
             $this->service->update($id, $data);
@@ -278,6 +282,7 @@ class Dashboard extends BaseController
         echo view('Admin/footer');
     }
 
+
     public function showTeam($id)
     {
         $team = $this->serviceTeam->getById($id);
@@ -290,6 +295,18 @@ class Dashboard extends BaseController
         echo view('Admin/team', ['team' => $team, 'members' => $teamMemberList]);
 
         echo view('Admin/footer');
+    }
+
+    public function activateUser($idUser)
+    {
+        $team = $this->serviceUser->activate($idUser);
+        return redirect()->to(base_url('Dashboard/'))->with('success', 'Usuario activado');
+    }
+
+    public function blockUser($idUser)
+    {
+        $team = $this->serviceUser->block($idUser);
+        return redirect()->to(base_url('Dashboard/'))->with('success', 'Usuario bloqueado');
     }
 
     public function editTeam($id)
@@ -325,4 +342,6 @@ class Dashboard extends BaseController
         $this->serviceTeam->delete($id);
         return redirect()->to(base_url('Dashboard/equipos'))->with('success', 'Equipo eliminado');
     }
+
+
 }
