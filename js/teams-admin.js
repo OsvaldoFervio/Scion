@@ -1,6 +1,9 @@
 const usersListP = document.getElementById('users-list-p');
 const btnAdd = document.getElementById('btn-add');
 const usernameParticipantInput = document.getElementById('username-p')
+const gameUserIdInput = document.getElementById('gameUserId-p')
+
+
 
 // Set event
 btnAdd.onclick = btnAddClick
@@ -8,11 +11,12 @@ request.onreadystatechange = onProcessResult;
 
 function btnAddClick() {
     const username = usernameParticipantInput.value
+    const gameUserId = gameUserIdInput.value
     const type = usernameParticipantInput.dataset.usernameType;
     const count = participantsList.children.length;
     const exists = verifyParticipantUser(username)
     if(!exists && count < 6) {
-        fetchUsersByUsername(username, type)
+        fetchUsersByUsername(username, type, gameUserId)
     }
 }
 
@@ -33,9 +37,10 @@ function processParticipantResult(response) {
     const exists = response.exists
     if(response.data.length > 0 && exists) {
         const {id, username, first_name, last_name} = response.data[0]
-        createParticipantItem({id, username, firstName: first_name, lastName: last_name})
+        const gameUserId = response.gameUserId;
+        createParticipantItem({id, username, firstName: first_name, lastName: last_name, gameUserId: gameUserId})
     } else if (!response.exists) {
-        createGhostUser(response.username)
+        createGhostUser(response.username, response.gameUserId)
     } else {
         showNotAvailableUserAlert()
     }
@@ -45,11 +50,11 @@ function verifyParticipantUser(username) {
     return document.querySelector(`[data-username='${username}']`) != null
 }
 
-function createGhostUser(username) {
+function createGhostUser(username, gameUserId) {
     const id = -1
     const firstName = 'Ghost'
     const lastName = 'User'
-    createParticipantItem({ id, username, firstName, lastName})
+    createParticipantItem({ id, username, firstName, lastName, gameUserId})
 }
 
 function showNotAvailableUserAlert() {

@@ -218,12 +218,13 @@ class TeamService
 
     private function buildUpdateParticipantData($currenData, $newData)
     {
-        return array_map(function($item, $index) use ($newData) {
+        return array_map(function($item, $index) use ($newData) {            
             return [
                 'id' => $item->id,
                 'team_id' => $item->team_id,
                 'user_id' => $newData[$index],
-                'member_type_id' => $item->member_type_id
+                'member_type_id' => $item->member_type_id,
+                'game_user_id' => $item->gameUserId,
             ];
         }, $currenData, array_keys($newData));
     }
@@ -234,6 +235,7 @@ class TeamService
             return [
                 'team_id' => $teamId,
                 'username' => $item,
+                'gameUserId' => $item->gameUserId,
             ];
         }, $pending_usernames);
     }

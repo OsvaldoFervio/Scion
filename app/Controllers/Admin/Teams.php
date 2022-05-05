@@ -21,6 +21,7 @@ class Teams extends BaseController
 	public function create() {
 		if($this->validate('team')) {
             $data = $this->request->getPost();
+            
             $image = $this->request->getFile('images');
             $this->service->create($data, $image);
             return redirect()->to(base_url('Dashboard/equipos'))->with('success', 'Nuevo equipo creado');

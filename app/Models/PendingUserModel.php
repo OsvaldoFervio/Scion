@@ -13,6 +13,7 @@ class PendingUserModel extends Model
     protected $allowedFields = [
         'team_id',
         'username',
+        'game_user_id',
     ];
 
     protected $useTimestamps = true;

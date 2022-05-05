@@ -38,8 +38,8 @@ function onProcessResult() {
     }
 }
 
-function fetchUsersByUsername(value, type) {
-    const url = `${BASE_URL}?search=${value}&type=${type}`;
+function fetchUsersByUsername(value, type, gameUserId) {
+    const url = `${BASE_URL}?search=${value}&type=${type}&user-game-id=${gameUserId}`;
     request.open('GET', url);
     request.send();
 }
@@ -132,13 +132,18 @@ function createListItem(user, usersList, clickFunction) {
 }
 
 function createParticipantItem(user) {
+    
+    console.log(user);
+
     const container = document.createElement('div');
     const inputId = document.createElement('input');
+    const inputGameUserId = document.createElement('input');
     const wrapperElems = document.createElement('div');
     const divElement = document.createElement('div');
     const numberElement = document.createElement('span');
     const usernameEle = document.createElement('div');
     const nameEle = document.createElement('div');
+    const gameidEle = document.createElement('div');
     const deleteButton = createDeleteButton();
 
     container.classList.add('row');
@@ -146,10 +151,12 @@ function createParticipantItem(user) {
     wrapperElems.classList.add('row', 'px-2');
     numberElement.classList.add('col-md-1', 'pl-4', 'border-0', 'vertical-center', 'text-end');
     usernameEle.classList.add('form-control', 'col-md-2', 'tex-center', 'text-white');
-    nameEle.classList.add('form-control', 'col-md-6', 'mx-2', 'text-white');
+    nameEle.classList.add('form-control', 'col-md-5', 'mx-2', 'text-white');
+    gameidEle.classList.add('form-control', 'col-md-3', 'mx-2', 'text-white');
 
     usernameEle.style.background = 'rgba(0, 0, 0, 0.5)';
     nameEle.style.background = 'rgba(0, 0, 0, 0.5)';
+    gameidEle.style.background = 'rgba(0, 0, 0, 0.5)';
 
     const count = participantsList.children.length + 1;
 
@@ -158,11 +165,21 @@ function createParticipantItem(user) {
     inputId.type = 'hidden';
     inputId.value = user.id;
 
+    inputGameUserId.id = `participant-gameuser-${count}`;
+    inputGameUserId.name = 'game_user_id[]';
+    inputGameUserId.type = 'hidden';
+    inputGameUserId.value = user.gameUserId;
+
+
+
     numberElement.innerText = count;
     usernameEle.innerText = user.username;
     nameEle.innerText = `${user.firstName} ${user.lastName}`;
+    gameidEle.innerText = user.gameUserId;
 
     container.dataset.username = user.username
+
+
 
     if(user.id == -1)
         addGhostUserUsername(container, user.username)
@@ -170,9 +187,11 @@ function createParticipantItem(user) {
     wrapperElems.appendChild(numberElement);
     wrapperElems.appendChild(usernameEle);
     wrapperElems.appendChild(nameEle);
+    wrapperElems.appendChild(gameidEle);
     wrapperElems.appendChild(deleteButton);
     divElement.appendChild(wrapperElems);
     container.appendChild(inputId);
+    container.appendChild(inputGameUserId);
     container.appendChild(divElement);
 
     participantsList.appendChild(container);

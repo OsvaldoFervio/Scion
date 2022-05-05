@@ -12,7 +12,8 @@ class TeamMemberModel extends Model
     protected $allowedFields = [
         'team_id',
         'user_id',
-        'member_type_id'
+        'member_type_id',
+        'game_user_id',
     ];
 
     protected $useSoftDeletes = true;

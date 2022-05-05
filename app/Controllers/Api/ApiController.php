@@ -13,6 +13,7 @@ class ApiController extends ResourceController
     {
         $search = $this->request->getGet('search');
         $type = $this->request->getGet('type');
+        $gameUserId = $this->request->getGet('user-game-id');
         $user = $this->model->where('username', $search)->first();
         $results = $this->model->select('users.id, users.username, users.first_name, users.last_name')
             ->join('team_members', 'users.id = team_members.user_id and team_members.deleted_at is null', 'left')
@@ -22,7 +23,8 @@ class ApiController extends ResourceController
             ['searchType' => $type,
             'data' => $results,
             'username' => $search,
-            'exists' => $user !== null]);
+            'exists' => $user !== null,
+            'gameUserId' => $gameUserId]);
     }
 
     public function verify()

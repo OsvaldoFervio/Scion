@@ -153,6 +153,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <input class="form-control col-md-5" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
+                                                        <input class="form-control col-md-4" type="text" id="gameUserId-p" placeholder="Id User game...">
                                                         <button type="button" class="btn btn-info col-md-2" id="btn-add">Agregar</button>
                                                         <span class="vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
                                                         <p class="text-info font-weight-bold d-none" id="alert-not-available">*Usuario no disponible para equipo</p>
