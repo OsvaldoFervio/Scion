@@ -21,12 +21,11 @@ class Teams extends BaseController
 	public function create() {
 		if($this->validate('team')) {
             $data = $this->request->getPost();
-            
             $image = $this->request->getFile('images');
-            $this->service->create($data, $image);
-            return redirect()->to(base_url('Dashboard/equipos'))->with('success', 'Nuevo equipo creado');
+            $teamId = $this->service->create($data, $image);
+            return redirect()->to(base_url('Dashboard/TeamParticipants/'.$teamId))->with('success', 'Nuevo equipo creado');
         }
         $errors = $this->validator->getErrors();
-        return redirect()->back()->with('errors', $errors);
+        return redirect()->to(base_url('Dashboard/Team'))->with('errors', $errors);
 	}
 }

@@ -139,42 +139,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <br><br>
-                            <p>&nbsp;&nbsp;</p>
-
-                            <div class="col-lg-12 ml-lg-auto mr-lg-auto">
-                                <h2><i class="booked-icon ion-person"></i> &nbsp; PARTICIPANTES</h2>
-                                <hr class="divider-sm">
-                                <div class="row">
-                                    <div class="col-lg-8 offset-md-1">
-                                        <div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <input class="form-control col-md-5" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
-                                                        <input class="form-control col-md-4" type="text" id="gameUserId-p" placeholder="Id User game...">
-                                                        <button type="button" class="btn btn-info col-md-2" id="btn-add">Agregar</button>
-                                                        <span class="vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
-                                                        <p class="text-info font-weight-bold d-none" id="alert-not-available">*Usuario no disponible para equipo</p>
-                                                    </div>
-                                                    <div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list-p"></div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2 mb-4" id="participants-lits"></div>
-                                            <div class="form-group form-group--lg form-nickname">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="terms" required>
-                                                    <label class="custom-control-label" for="terms">He leído y acepto los</label> <a href="">Terminos y condiciones</a>
-                                                </div>
-                                            </div>
-                                            <div class="form-submit mt-2">
-                                                <input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Crear Equipo" disabled>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-lg-12 d-flex form-submit justify-content-end mt-2">
+                                <input type="submit" class="btn btn-lg btn-primary mr-4" value="Crear Equipo">
                             </div>
                         </form>
                     </div>
@@ -188,5 +154,5 @@
         var BASE_URL = "<?=base_url('api/users')?>"
     </script>
     <script src="<?=base_url('js/teams.js')?>"></script>
-    <script src="<?=base_url('js/teams-admin.js')?>"></script>
+    <!--<script src="<?=base_url('js/teams-admin.js')?>"></script>-->
 </body>

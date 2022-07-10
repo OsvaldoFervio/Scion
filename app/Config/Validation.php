@@ -63,7 +63,6 @@ class Validation
         'whatsapp_number' => 'required',
         'email' => 'required|valid_email|is_unique[teams.email]',
         'country_id' => 'required',
-        'user_id' => 'required'
     ];
 
     public $team_update = [

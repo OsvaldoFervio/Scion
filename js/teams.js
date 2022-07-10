@@ -2,7 +2,6 @@ const usersList = document.getElementById('users-list');
 const usernameInput = document.getElementById('username');
 
 const usernamePInput = document.getElementById('username-p');
-const btnSearch = document.getElementById('btn-search');
 const alertResult = document.getElementById('alert-result');
 
 const participantsList = document.getElementById('participants-lits');
@@ -10,21 +9,12 @@ const participantsList = document.getElementById('participants-lits');
 const imageInput = document.getElementById('image-input');
 const teamImageElem = document.getElementById('image');
 
-const request = new XMLHttpRequest();
-
 // Set event
 usernameInput.onkeypress = handleKeypress;
 
 usersList.onmouseleave = handleMouseLeave;
 
 imageInput.onchange = handleSetImage;
-
-btnSearch.onclick = handleClickSearchUser;
-
-// Set callback for process result
-request.onreadystatechange = onProcessResult;
-
-setupParticipantList()
 
 function onProcessResult() {
     if(this.readyState === 4
@@ -39,8 +29,11 @@ function onProcessResult() {
 }
 
 function fetchUsersByUsername(value, type, gameUserId) {
+    const request = new XMLHttpRequest();
     const url = `${BASE_URL}?search=${value}&type=${type}&user-game-id=${gameUserId}`;
     request.open('GET', url);
+    // Set callback for process result
+    request.onreadystatechange = onProcessResult;
     request.send();
 }
 
@@ -61,16 +54,6 @@ function searchVerifyUsername(value) {
         }
     }
     request.send()
-}
-
-function handleClickSearchUser() {
-    const username = usernamePInput.value
-    if(verifyUser(username)){
-        showAlertResult(`El usuario ${username} ya ha sido agregado`)
-    } else {
-        hideAlertResult()
-        searchVerifyUsername(username)
-    }
 }
 
 function handleKeypress(event) {
@@ -131,90 +114,6 @@ function createListItem(user, usersList, clickFunction) {
     usersList.appendChild(container);
 }
 
-function createParticipantItem(user) {
-    
-    console.log(user);
-
-    const container = document.createElement('div');
-    const inputId = document.createElement('input');
-    const inputGameUserId = document.createElement('input');
-    const wrapperElems = document.createElement('div');
-    const divElement = document.createElement('div');
-    const numberElement = document.createElement('span');
-    const usernameEle = document.createElement('div');
-    const nameEle = document.createElement('div');
-    const gameidEle = document.createElement('div');
-    const deleteButton = createDeleteButton();
-
-    container.classList.add('row');
-    divElement.classList.add('col-md-12');
-    wrapperElems.classList.add('row', 'px-2');
-    numberElement.classList.add('col-md-1', 'pl-4', 'border-0', 'vertical-center', 'text-end');
-    usernameEle.classList.add('form-control', 'col-md-2', 'tex-center', 'text-white');
-    nameEle.classList.add('form-control', 'col-md-5', 'mx-2', 'text-white');
-    gameidEle.classList.add('form-control', 'col-md-3', 'mx-2', 'text-white');
-
-    usernameEle.style.background = 'rgba(0, 0, 0, 0.5)';
-    nameEle.style.background = 'rgba(0, 0, 0, 0.5)';
-    gameidEle.style.background = 'rgba(0, 0, 0, 0.5)';
-
-    const count = participantsList.children.length + 1;
-
-    inputId.id = `participant-${count}`;
-    inputId.name = 'user_id[]';
-    inputId.type = 'hidden';
-    inputId.value = user.id;
-
-    inputGameUserId.id = `participant-gameuser-${count}`;
-    inputGameUserId.name = 'game_user_id[]';
-    inputGameUserId.type = 'hidden';
-    inputGameUserId.value = user.gameUserId;
-
-
-
-    numberElement.innerText = count;
-    usernameEle.innerText = user.username;
-    nameEle.innerText = `${user.firstName} ${user.lastName}`;
-    gameidEle.innerText = user.gameUserId;
-
-    container.dataset.username = user.username
-
-
-
-    if(user.id == -1)
-        addGhostUserUsername(container, user.username)
-
-    wrapperElems.appendChild(numberElement);
-    wrapperElems.appendChild(usernameEle);
-    wrapperElems.appendChild(nameEle);
-    wrapperElems.appendChild(gameidEle);
-    wrapperElems.appendChild(deleteButton);
-    divElement.appendChild(wrapperElems);
-    container.appendChild(inputId);
-    container.appendChild(inputGameUserId);
-    container.appendChild(divElement);
-
-    participantsList.appendChild(container);
-    checkNumberParticipants(count);
-}
-
-function createDeleteButton() {
-    const button = document.createElement('a');
-    const icon = document.createElement('i');
-
-    button.classList.add('border-0', 'vertical-center');
-    icon.classList.add('booked-icon', 'ion-close-circled', 'border-0', 'text-white');
-
-    button.appendChild(icon);
-
-    button.onclick = (event) => {
-        event.target.parentElement.parentElement.parentElement.parentElement.remove();
-        checkNumberParticipants()
-    }
-
-    return button;
-}
-
 function handleDeleteClick(event) {
     event.target.parentElement.parentElement.parentElement.parentElement.remove();
     checkNumberParticipants()
@@ -232,24 +131,11 @@ function handleMouseLeave(event) {
     event.target.classList.add('d-none');
 }
 
-function checkNumberParticipants(){
-    const count = participantsList.children.length;
-    document.getElementById('btnCreate').disabled = count < 4;
-}
-
 function handleSetImage(event) {
     const [file] = imageInput.files
     if(file) {
         teamImageElem.classList.remove('d-none');
         teamImageElem.src = URL.createObjectURL(file);
-    }
-}
-
-function setupParticipantList() {
-    const count = participantsList.children.length;
-    for(let i = 0; i < count; i++){
-        const row = participantsList.children[i];
-        row.querySelector('a').onclick = handleDeleteClick;
     }
 }
 
@@ -269,12 +155,4 @@ function hideAlertResult() {
 
 function verifyUser(username) {
     return document.querySelector(`div[data-username="${username}"]`) != null
-}
-
-function addGhostUserUsername(element, username) {
-    const inputUsernameHidden = document.createElement('input')
-    inputUsernameHidden.type = 'hidden'
-    inputUsernameHidden.name = 'pending_username[]'
-    inputUsernameHidden.value = username
-    element.appendChild(inputUsernameHidden)
 }

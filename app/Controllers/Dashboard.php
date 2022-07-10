@@ -343,5 +343,13 @@ class Dashboard extends BaseController
         return redirect()->to(base_url('Dashboard/equipos'))->with('success', 'Equipo eliminado');
     }
 
-
+    public function TeamParticipants($teamId)
+    {
+        $team = $this->serviceTeam->getById($teamId);
+        $data = ['id' => $teamId, 'team' => $team];
+        echo view('Admin/head');
+        echo view('Admin/leftnav');
+        echo view('Admin/team_participants', $data);
+        echo view('Admin/footer');
+    }
 }

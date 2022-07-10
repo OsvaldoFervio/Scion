@@ -46,7 +46,10 @@ $routes->group('admin', function($routes) {
     $routes->put('/events/(:num)', 'Admin\Events::updated/$1');
     $routes->delete('/events/delete/(:num)', 'Admin\Events::delete/$1');
 
-    $routes->post('/teams/create', 'Admin\Teams::create');
+    $routes->group('teams', static function($routes) {
+        $routes->post('create', 'Admin\Teams::create');
+        $routes->post('(:num)/participants', 'Admin\Participants::join/$1');
+    });
 
     $routes->group('videogames', function($routes) {
         $routes->get('/', 'Admin\Videogames::index');
@@ -62,7 +65,7 @@ $routes->group('admin', function($routes) {
 $routes->get('/events/(:num)', 'Events::show/$1');
 $routes->group('teams', function($routes) {
     $routes->get('/', 'Teams::index');
-    $routes->get('/teams/new', 'Teams::new');
+    $routes->get('new', 'Teams::new');
     $routes->post('/teams/create', 'Teams::create');
     $routes->get('(:num)', 'Teams::show/$1');
     $routes->get('/edit/(:num)', 'Teams::edit/$1');
