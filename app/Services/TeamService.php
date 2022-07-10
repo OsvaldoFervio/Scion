@@ -277,6 +277,7 @@ class TeamService
             return [
                 'team_id' => $teamId,
                 'username' => $item['username'],
+                'game_user_id' => $item['game_user_id']
             ];
         }, $pending_usernames);
     }
@@ -295,7 +296,8 @@ class TeamService
             return [
                 'team_id' => $teamId,
                 'user_id' => $item['user_id'],
-                'member_type_id' => 2
+                'member_type_id' => 2,
+                'game_user_id' => $item['game_user_id']
             ];
         }, $participants);
     }
