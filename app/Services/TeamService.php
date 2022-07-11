@@ -60,6 +60,17 @@ class TeamService
         $this->updateTeamMembers($id, $managerId, $participants);
     }
 
+    public function update1($id, $data, $image) {
+        $teamData = $this->buildTeamData($data);
+        $teamData['id'] = $id;
+
+        $this->model->save($teamData);
+        $this->storeImage($id, $image);
+
+        $managerId = $data['manager_id'];
+        $this->updateTeamManagerMember($id, $managerId);
+    }
+
     public function getAll($userId = null) {
 
         if($userId && $userId != 1) {
@@ -95,7 +106,7 @@ class TeamService
     }
 
     public function getTeamMembers($teamId){
-        $query = $this->teamMemberModel->select('users.id, users.username, users.first_name, users.last_name, member_types.id as type')
+        $query = $this->teamMemberModel->select('team_members.id as team_member_id, users.id, users.username, users.first_name, users.last_name, member_types.id as type, team_members.game_user_id')
         ->where(['team_id' => $teamId])->where('team_members.deleted_at is NULL')
         ->join('users', 'users.id = team_members.user_id')
         ->join('member_types', 'member_types.id = team_members.member_type_id');
@@ -177,6 +188,38 @@ class TeamService
         $this->updateCurrentMembers($currentMembers, $participantIds);
         $this->updateNewMembers($teamId, count($currentMembers), $participantIds);
         $this->deleteMembers($currentMembers, $participantIds);
+    }
+
+    public function updateTeamMembers1($teamId, $data) {
+        $participants = array_key_exists('participants', $data) ?
+            $data['participants'] : null;
+        $added = array_key_exists('added', $participants) ?
+            $participants['added'] : null;
+        $ghosts = null;
+        $users = null;
+        if(!is_null($added)) {
+            $ghosts = array_key_exists('ghostusers', $added) ?
+                $added['ghostusers'] : null;
+            $users = array_key_exists('users', $added) ?
+                $added['users'] : null;
+        }
+        $removed = array_key_exists('removed', $participants) ?
+            $participants['removed'] : null;
+        // New ghost users saved
+        if($ghosts) {
+            $ghostData = $this->buildGhostUsersData($teamId, $ghosts);
+            $pendingUsersModel = model('PendingUserModel');
+            $pendingUsersModel->insertBatch($ghostData);
+        }
+        // New register users saved
+        if($users) {
+            $usersData = $this->buildParticipantsData2($teamId, $users);
+            $this->teamMemberModel->insertBatch($usersData);
+        }
+        // Remove actual team members by id
+        if($removed) {
+            $this->deleteTeamMembers($removed);
+        }
     }
 
     private function updateCurrentMembers($currentMembers, $participantIds)
@@ -300,5 +343,25 @@ class TeamService
                 'game_user_id' => $item['game_user_id']
             ];
         }, $participants);
+    }
+
+    private function deleteTeamMembers($participants) {
+        $pendingUsersModel = model('PendingUserModel');
+        foreach ($participants as $participant) {
+            $id = $participant['id'];
+            if($participant['user_id'] == "-1")
+                $pendingUsersModel->delete($id);
+            else
+                $this->teamMemberModel->delete($id);
+        }
+    }
+
+    public function updateTeamManagerMember($id, $managerId) {
+        $result = $this->teamMemberModel->where(['team_id' => $id, 'member_type_id' => 1])->findAll();
+        $data = [
+            'id' => $result[0]->id,
+            'user_id' => $managerId
+        ];
+        $result = $this->teamMemberModel->save($data);
     }
 }

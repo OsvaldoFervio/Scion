@@ -1,5 +1,10 @@
     <div class="right_col" role="main" style="min-height: 941px;">
         <div class="container">
+            <?php if(session('success')) : ?>
+                <div class="alert alert-success">
+                    <?= session()->get('success') ?>
+                </div>
+            <?php endif ?>
 			<?php if(session('errors')) : ?>
 			<div class="alert alert-danger">
 				<ul class="m-0">
@@ -10,7 +15,7 @@
 			</div>
 			<?php endif ?>
             <div class="row">
-                <form method="post" enctype="multipart/form-data" action="<?=base_url('Dashboard/updateTeam/'.$team->id)?>">
+                <form method="post" enctype="multipart/form-data" action="<?=base_url('admin/teams/'.$team->id.'/update')?>">
                 <?= csrf_field() ?>
                     <input name="_method" value="PUT" hidden>
                     <div class="col-lg-12 ml-lg-auto mr-lg-auto">
@@ -136,72 +141,36 @@
 
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br><br>
-                    <p>&nbsp;&nbsp;</p>
-
-                    <div class="col-lg-12 ml-lg-auto mr-lg-auto">
-                        <h2><i class="booked-icon ion-person"></i> &nbsp; PARTICIPANTES</h2>
-                        <hr class="divider-sm">
-                        <div class="row">
-                            <div class="col-lg-8 offset-md-1">
-                                <div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <input class="form-control col-md-6" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
-                                                <span class="col-md-6 vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
-                                            </div>
-                                            <div class="px-4 py-1 rounded-sm overflow-auto d-none" style="height: 100px; background: rgba(0, 0, 0, 0.5);" id="users-list-p"></div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-2 mb-4" id="participants-lits">
-                                        <?php foreach($members['participants'] as $index=>$member): ?>
-                                            <div class="row">
-                                                <?php if($member->type): ?>
-                                                <input value="<?=$member->id?>" name="user_id[]" id="participant-<?=$index?>" hidden>
-                                                <?php endif ?>
-                                                <div class="col-md-12">
-                                                    <div class="row px-2">
-                                                        <span class="col-md-1 pl-4 border-0 vertical-center text-end"><?=$index?></span>
-                                                        <div class="col-md-2 form-control col-md-2 tex-center" style="background: rgba(0, 0, 0, 0.5);">
-                                                            <?=$member->username?>
-                                                        </div>
-                                                        <div class="form-control col-md-6 mx-2" style="background: rgba(0, 0, 0, 0.5);">
-                                                        <?php if($member->first_name): ?>    
-                                                            <?=$member->first_name ?> <?=$member->last_name?>
-                                                        <?php else: ?>
-                                                            Ghost User
-                                                        <?php endif ?>
-                                                        </div>
-                                                        <a class="border-0 vertical-center"><i class="booked-icon ion-close-circled border-0"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endforeach ?>
-                                    </div>
-                                    <div class="form-group form-group--lg form-nickname">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="terms" required>
-                                            <label class="custom-control-label" for="terms">He leído y acepto los</label> <a href="">Terminos y condiciones</a>
-                                        </div>
-                                    </div>
-                                    <div class="form-submit mt-2">
-                                        <input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Guardar cambios">
-                                    </div>
+                                <div class="mt-2 d-flex justify-content-end">
+                                    <input type="submit" class="btn btn-sm btn-primary" value="Guardar">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+            <div class="col-lg-12 ml-lg-auto mr-lg-auto">
+                <h2><i class="booked-icon ion-person"></i> &nbsp; PARTICIPANTES</h2>
+                <hr class="divider-sm">
+                <div class="row">
+                    <div class="col-lg-8 offset-md-1">
+                        <div id="app" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="https://unpkg.com/vue@3"></script>
     <script>
-		var BASE_URL = "<?=base_url('api/users')?>"
-	</script>
-	<script src="<?=base_url('js/teams.js')?>"></script>
-    <script src="<?=base_url('js/teams-admin.js')?>"></script>
+        var id = "<?=$team->id?>"
+        var URL = "<?=base_url('')?>"
+        var csrf_field = '<?=csrf_field()?>'
+    </script>
+    <script src="<?=base_url('js/ParticipantList.js')?>"></script>
+    <script>
+        var participants = JSON.parse('<?=json_encode($members['participants'])?>')
+        var BASE_URL = "<?=base_url('api/users')?>"
+        const { createApp } = Vue
+        createApp(component).mount('#app')
+    </script>
+    <script src="<?=base_url('js/teams.js')?>"></script>

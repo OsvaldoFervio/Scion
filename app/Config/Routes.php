@@ -48,7 +48,9 @@ $routes->group('admin', function($routes) {
 
     $routes->group('teams', static function($routes) {
         $routes->post('create', 'Admin\Teams::create');
+        $routes->put('(:num)/update', 'Admin\Teams::update/$1');
         $routes->post('(:num)/participants', 'Admin\Participants::join/$1');
+        $routes->put('(:num)/participants', 'Admin\Participants::update/$1');
     });
 
     $routes->group('videogames', function($routes) {

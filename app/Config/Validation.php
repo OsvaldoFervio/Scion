@@ -71,7 +71,10 @@ class Validation
         'whatsapp_number' => 'required',
         'email' => 'required|valid_email',
         'country_id' => 'required',
-        'user_id' => 'required'
+    ];
+
+    public $team_participants = [
+        'username' => 'required|is_unique[pending_users.username]',
     ];
 
     public $signup_errors = [
@@ -161,5 +164,12 @@ class Validation
         'user_id' => [
             'required' => 'Agrega miembros a tu equipo'
         ]
+    ];
+
+    public $team_participants_errors = [
+        'username' => [
+            'required' => 'NO ME DIGAS QUE ERA ESTO',
+            'is_unique' => 'Usuario no disponible',
+        ],
     ];
 }

@@ -334,7 +334,7 @@ class Dashboard extends BaseController
             return redirect()->to(base_url('Dashboard/showTeam/' . $id))->with('success', 'Datos actualizados');
         }
         $errors = $validation->getErrors();
-        return redirect()->back()->with('errors', $errors);
+        return redirect()->to(base_url('Dashboard/editTeam/'.$id))->with('errors', $errors);
     }
 
     public function deleteTeam($id)
