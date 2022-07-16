@@ -156,18 +156,26 @@
 								<hr class="divider-sm">
 								<div class="row">
 									<div class="col-lg-9 offset-md-1">
-										<div id="" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
+										<div id="app" class="tab-pane booked-tab-content  bookedClearFix" role="tabpanel" aria-labelledby="profile-edit-tab">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="row">
-														<input class="form-control col-md-6" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
-														<button type="button" class="btn btn-info col-md-2" id="btn-search">Buscar</button>
+														<input v-model="username" class="form-control col-md-6" type="text" id="username-p" placeholder="Username..." data-username-type="participant">
+														<button type="button" class="btn btn-info col-md-2" id="btn-search" @click="search" :disabled="participants.length === 6">Buscar</button>
 														<span class="col-md-4 vertical-center border-0">Agrega 4 mínimo y 6 máximo de participantes</span>
 													</div>
-													<div class="text-danger d-none" id="alert-result">No se encontró el usuario</div>
+													<div v-if="showAlert" class="text-danger" id="alert-result">{{ alertMessage }}</div>
 												</div>
 											</div>
-											<div class="mt-2 mb-4" id="participants-lits"></div>
+											<div class="mt-2 mb-4" id="participants-lits">
+												<div class="row" v-for="(participant, index) in participants">
+													<input type="hidden" name="user_id[]" :value="participant.id">
+													<div class="col-md-6">
+														<p class="form-control text-success my-3">{{participant.username}}</p>
+													</div>
+													<button class="btn btn-sm text-white" type="button" @click="remove(index)">Eliminar</button>
+												</div>
+											</div>
 											<div class="form-group form-group--lg form-nickname">
 												<div class="custom-control custom-checkbox">
 													<input type="checkbox" class="custom-control-input" id="terms" required>
@@ -175,9 +183,8 @@
 												</div>
 											</div>
 											<div class="form-submit mt-2">
-												<input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Crear Equipo" disabled>
+												<input type="submit" id="btnCreate" class="btn btn-lg btn-primary" value="Crear Equipo" :disabled="participants.length < 4">
 											</div>
-
 										</div>
 									</div>
 								</div>
@@ -205,4 +212,62 @@
 		var BASE_URL = "<?=base_url('api/users')?>"
 	</script>
 	<script src="<?=base_url('js/teams.js')?>"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+	<script>
+		const { createApp } = Vue
+		createApp({
+			data() {
+				return {
+					participants: [],
+					username: '',
+					showAlert: false,
+					alertMessage: 'No se encontró el usuario',
+				}
+			},
+			methods: {
+				search() {
+					const exits = this.participants.filter(
+						item => item.username === this.username).length > 0
+					if(! exits) {
+						fetch(`${BASE_URL}/?search=${this.username}&type=participant`)
+						.then(response => {
+							if(response.ok)
+								return response.json()
+							return Promise.reject('Error')
+						})
+						.then(result => {
+							if(result.data.length > 0 && result.exists) {
+								const { id, first_name, last_name, username } = result.data[0]
+								this.participants.push({ id: id, first_name, last_name, username })
+								this.username = ''
+							} else {
+								this.alertMessage = 'Usuario no disponible para equipo'
+								this.showAlert = true
+								setTimeout(event => {
+									this.showAlert = false
+								}, 2000)
+							}
+						})
+						.catch(err => {
+							console.log(err)
+							this.alertMessage = err
+							this.showAlert = true
+							setTimeout(event => {
+								this.showAlert = false
+							}, 2000)
+						})
+					} else {
+						this.alertMessage = 'Ya existe el usuario'
+						this.showAlert = true
+						setTimeout(event => {
+							this.showAlert = false
+						}, 2000)
+					}
+				},
+				remove(index) {
+					this.participants.splice(index, 1)
+				}
+			}
+		}).mount('#app')
+	</script>
 </body>

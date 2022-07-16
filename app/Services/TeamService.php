@@ -24,15 +24,12 @@ class TeamService
         $this->storeImage($teamId, $image);
 
         $managerId = $data['manager_id'];
-        log_message('error', 'TEAM_DATA: '.json_encode($teamData));
         $this->createManager($teamId, $managerId);
+        $participants = array_key_exists('user_id', $data) ? $data['user_id'] : null;
+        if($participants) {
+            $this->createMembersV3($teamId, $participants);
+        }
         return $teamId;
-        /*$participants = $data['user_id']; // array
-        $pendingUsernames = [];
-        $userGameIds = $data['game_user_id'];
-        if(array_key_exists('pending_username', $data))
-            $pendingUsernames = $data['pending_username'];*/
-        //$this->createMembers($teamId, $managerId, $participants, $pendingUsernames, $userGameIds);
     }
 
     private function createManager($teamId, $managerId) {
@@ -131,6 +128,13 @@ class TeamService
         }
         $participants = array_merge($participants, $pendingUsers);
         return ['manager' => $manager, 'participants' => $participants];
+    }
+
+    private function createMembersV3($teamId, $participants) {
+        $participantsData = $this->buildParticipantsData($teamId, $participants);
+        if(count($participantsData) > 0) {
+            $this->teamMemberModel->insertBatch($participantsData);
+        }
     }
 
     private function createMembers($teamId, $managerId, $participants, $pendingUsernames, $userGameIds)
